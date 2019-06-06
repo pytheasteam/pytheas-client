@@ -33,11 +33,12 @@ export class Profile extends Component {
   }
 
   render() {
-    if (!this.props.user) {
-      return <Redirect to="/login" />;
-    }
-    console.log(this.state.profiles);
-    return this.state.profiles ? (
+    // if (!this.props.user) {
+    //   return <Redirect to="/login" />;
+    // }
+    const { profiles } = this.state;
+    console.log(profiles);
+    return profiles ? (
       <React.Fragment>
         <IonGrid>
           <IonHeader>
@@ -45,7 +46,7 @@ export class Profile extends Component {
               <IonTitle>Hello from Profiles</IonTitle>
             </IonToolbar>
           </IonHeader>
-          {this.state.profiles.map(profile => {
+          {profiles.map(profile => {
             return (
               <IonItem key={profile[0]}>
                 <IonAvatar slot="start">
