@@ -1,15 +1,5 @@
 import React, { Component } from "react";
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonLabel,
-  IonAvatar,
-  IonItem,
-  IonIcon,
-  IonButton,
-  IonGrid
-} from "@ionic/react";
+import { IonIcon, IonButton } from "@ionic/react";
 import ProfileElement from "../../components/profileElement";
 import { API_BASE, MAX_PROFILE_COUNT } from "../../api/consts";
 import { connect } from "react-redux";
@@ -28,23 +18,15 @@ export class Profile extends Component {
     };
   }
   componentWillMount() {
-    // this.props.user &&
-    //   fetch(API_BASE + "/profile", {
-    //     method: "GET",
-    //     headers: {
-    //       Authorization: this.props.user
-    //     }
-    //   })
-    //     .then(res => res.json())
-    //     .then(body => this.setState({ profiles: body.profiles }));
-
-    this.setState({
-      profiles: [
-        { id: "art", name: "Art" },
-        { id: "bachelors", name: "Bachelors" },
-        { id: "family", name: "Family" }
-      ]
-    });
+    this.props.user &&
+      fetch(API_BASE + "/profile", {
+        method: "GET",
+        headers: {
+          Authorization: this.props.user
+        }
+      })
+        .then(res => res.json())
+        .then(body => this.setState({ profiles: body.profiles }));
   }
 
   componentWillUnmount() {
@@ -56,9 +38,9 @@ export class Profile extends Component {
   }
 
   render() {
-    // if (!this.props.user) {
-    //   return <Redirect to="/login" />;
-    // }
+    if (!this.props.user) {
+      return <Redirect to="/login" />;
+    }
 
     const { profiles } = this.state;
 
@@ -99,28 +81,6 @@ export class Profile extends Component {
           </span>
           <div className="profile-wrapper">{profileElms}</div>
         </div>
-      </React.Fragment>
-    );
-
-    return (
-      <React.Fragment>
-        <IonGrid>
-          <IonHeader>
-            <IonToolbar>
-              <IonTitle>Hello from Profiles</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          {profiles.map(profile => {
-            return (
-              <IonItem key={profile.id}>
-                <IonAvatar slot="start">
-                  <img alt={profile.name} src="https://picsum.photos/113" />
-                </IonAvatar>
-                <IonLabel>{profile.name}</IonLabel>
-              </IonItem>
-            );
-          })}
-        </IonGrid>
       </React.Fragment>
     );
   }
