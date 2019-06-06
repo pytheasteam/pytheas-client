@@ -1,0 +1,39 @@
+.login-wrapper {
+  margin-top: 1em;
+  text-align: center;
+
+  font-family: Roboto;
+}
+
+.login-wrapper a {
+  text-transform: uppercase;
+}
+
+.login-button-wrapper {
+  margin-top: 2em;
+}
+
+.login-button .login-logo-google {
+  color: black;
+}
+
+.login-button {
+  /* Ionic element */
+  --border-radius: 20px;
+  --background: white;
+  --color: #ff5347;
+  font-weight: bold;
+}
+
+.login-body {
+  /* Old browsers */
+  background: #fe784d;
+  /* FF3.6-15 */
+  background: -moz-linear-gradient(left, #fe784d 0%, #ff5347 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-linear-gradient(left, #fe784d 0%, #ff5347 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe784d', endColorstr='#ff5347',GradientType=1 );
+}
