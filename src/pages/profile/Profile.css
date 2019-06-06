@@ -1,0 +1,26 @@
+.profile-page {
+  text-align: center;
+}
+
+.profile-page-title {
+  color: #f7f7f7;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.profile-wrapper {
+  margin: auto;
+  margin-top: 15px;
+
+  /* Have enough space for 2 items in a row */
+  display: flex;
+  flex-wrap: wrap;
+  width: 256px;
+}
+
+.back-btn {
+  --color: white;
+  --ripple-color: white;
+  --color-activated: white;
+  --color-focused: white;
+}

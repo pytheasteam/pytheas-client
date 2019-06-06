@@ -1,8 +1,22 @@
 import React, { Component } from "react";
 
+import "./ProfileElement.css";
+
 export class ProfileElement extends Component {
   render() {
-    return <div />;
+    const { id, name } = this.props.profile;
+    return (
+      <div
+        className="profile-element"
+        onClick={e => this.props.onClick && this.props.onClick(e, id)}
+      >
+        <div
+          className="profile-element-img"
+          style={{ backgroundImage: "url(https://picsum.photos/113)" }}
+        />
+        <span>{name}</span>
+      </div>
+    );
   }
 }
 
