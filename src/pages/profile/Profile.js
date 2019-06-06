@@ -21,7 +21,6 @@ export class Profile extends Component {
     };
   }
   componentWillMount() {
-    console.log("here");
     this.props.user &&
       fetch(API_BASE + "/profile", {
         method: "GET",
@@ -48,8 +47,8 @@ export class Profile extends Component {
           </IonHeader>
           {this.state.profiles.map(profile => {
             return (
-              <IonItem>
-                <IonAvatar slot="start" key={profile[0]}>
+              <IonItem key={profile[0]}>
+                <IonAvatar slot="start">
                   <img alt={profile[1]} src="https://picsum.photos/113" />
                 </IonAvatar>
                 <IonLabel>{profile[1]}</IonLabel>
