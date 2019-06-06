@@ -47,11 +47,11 @@ export class Profile extends Component {
           </IonHeader>
           {this.state.profiles.map(profile => {
             return (
-              <IonItem key={profile[0]}>
+              <IonItem key={profile.id}>
                 <IonAvatar slot="start">
-                  <img alt={profile[1]} src="https://picsum.photos/113" />
+                  <img alt={profile.name} src="https://picsum.photos/113" />
                 </IonAvatar>
-                <IonLabel>{profile[1]}</IonLabel>
+                <IonLabel>{profile.name}</IonLabel>
               </IonItem>
             );
           })}
