@@ -26,7 +26,7 @@ class Login extends Component {
 
     return (
       <div className="login-wrapper">
-        <img src={logo} />
+        <img alt="logo" src={logo} />
         <br />
         <div className="login-button-wrapper">
           <Link to="/">

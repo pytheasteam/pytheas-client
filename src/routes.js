@@ -10,11 +10,11 @@ class Routes extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exac path="/profile" component={Profile} />
-          <Route exac path="/login" component={Login} />
-          <Route exac path="/explore" component={Explore} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/login" component={Login} />
+          <Route path="/explore" component={Explore} />
           <Route exac path="/" component={Main} />
-          <Route exac path="/*" component={Explore} />
+          <Route path="/*" component={Explore} />
         </Switch>
       </BrowserRouter>
     );

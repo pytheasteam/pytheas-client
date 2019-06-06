@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import {
   IonFab,
-  IonApp,
   IonList,
   IonFabButton,
   IonIcon,
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonFabList,
-  IonContent,
-  IonGrid
+  IonFabList
 } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
@@ -44,7 +41,6 @@ export class Main extends Component {
     if (!this.props.user) {
       return <Redirect to="/login" />;
     }
-    console.log(this.state.trips);
     return this.state.trips ? (
       <React.Fragment>
         <IonHeader>
