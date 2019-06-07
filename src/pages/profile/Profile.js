@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { IonIcon, IonButton } from "@ionic/react";
 import ProfileElement from "../../components/profileElement";
-import { API_BASE, MAX_PROFILE_COUNT } from "../../api/consts";
+import {
+  API_BASE,
+  MAX_PROFILE_COUNT,
+  PICTURE_GENERATOR
+} from "../../api/consts";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { Redirect } from "react-router";
@@ -51,7 +55,7 @@ export class Profile extends Component {
     const profileElms = profiles.map((profile, i) => (
       <ProfileElement
         key={i}
-        profile={profile}
+        profile={{ ...profile, pic: PICTURE_GENERATOR }}
         onClick={(e, p) => console.log(e, p)}
       />
     ));
@@ -60,7 +64,11 @@ export class Profile extends Component {
       profileElms.push(
         <ProfileElement
           key={"add"}
-          profile={{ id: "add", name: "Add Profile" }}
+          profile={{
+            id: "add",
+            name: "Add Profile",
+            pic: "https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+          }}
           onClick={(e, p) => console.log(e, p)}
         />
       );

@@ -4,7 +4,7 @@ import "./ProfileElement.css";
 
 export class ProfileElement extends Component {
   render() {
-    const { id, name } = this.props.profile;
+    const { id, name, pic } = this.props.profile;
     return (
       <div
         className="profile-element"
@@ -12,7 +12,7 @@ export class ProfileElement extends Component {
       >
         <div
           className="profile-element-img"
-          style={{ backgroundImage: "url(https://picsum.photos/113)" }}
+          style={{ backgroundImage: `url(${pic})` }}
         />
         <span>{name}</span>
       </div>

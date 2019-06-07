@@ -15,7 +15,7 @@
   /* Have enough space for 2 items in a row */
   display: flex;
   flex-wrap: wrap;
-  width: 256px;
+  width: 80%;
 }
 
 .back-btn {
