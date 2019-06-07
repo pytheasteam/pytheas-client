@@ -1,17 +1,14 @@
 import React, { Component } from "react";
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonLabel,
-  IonAvatar,
-  IonItem,
-  IonGrid
-} from "@ionic/react";
-import { API_BASE } from "../../api/consts";
+import { IonIcon, IonButton } from "@ionic/react";
+import ProfileElement from "../../components/profileElement";
+import { API_BASE, MAX_PROFILE_COUNT } from "../../api/consts";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { Redirect } from "react-router";
+import { removeGradientBg } from "../../common/styleHelper";
+
+import "../../common/common-style.css";
+import "./Profile.css";
 
 export class Profile extends Component {
   constructor(props) {
@@ -32,32 +29,60 @@ export class Profile extends Component {
         .then(body => this.setState({ profiles: body.profiles }));
   }
 
+  componentWillUnmount() {
+    removeGradientBg();
+  }
+
+  componentDidMount() {
+    document.body.className += " gradient-bg";
+  }
+
   render() {
     if (!this.props.user) {
       return <Redirect to="/login" />;
     }
-    console.log(this.state.profiles);
-    return this.state.profiles ? (
+
+    const { profiles } = this.state;
+
+    if (!profiles) {
+      return null;
+    }
+
+    const profileElms = profiles.map((profile, i) => (
+      <ProfileElement
+        key={i}
+        profile={profile}
+        onClick={(e, p) => console.log(e, p)}
+      />
+    ));
+
+    if (profileElms.length < MAX_PROFILE_COUNT) {
+      profileElms.push(
+        <ProfileElement
+          key={"add"}
+          profile={{ id: "add", name: "Add Profile" }}
+          onClick={(e, p) => console.log(e, p)}
+        />
+      );
+    }
+
+    return (
       <React.Fragment>
-        <IonGrid>
-          <IonHeader>
-            <IonToolbar>
-              <IonTitle>Hello from Profiles</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          {this.state.profiles.map(profile => {
-            return (
-              <IonItem key={profile.id}>
-                <IonAvatar slot="start">
-                  <img alt={profile.name} src="https://picsum.photos/113" />
-                </IonAvatar>
-                <IonLabel>{profile.name}</IonLabel>
-              </IonItem>
-            );
-          })}
-        </IonGrid>
+        <IonButton
+          fill="clear"
+          className="back-btn"
+          onClick={() => window.history.back()}
+        >
+          <IonIcon slot="icon-only" name="arrow-back" />
+        </IonButton>
+        <div className="profile-page">
+          <span className="profile-page-title">
+            Choose your traveler profile
+          </span>
+          <div className="profile-wrapper">{profileElms}</div>
+        </div>
       </React.Fragment>
-    ) : null;
+    );
   }
 }
 

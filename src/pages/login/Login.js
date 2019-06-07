@@ -3,21 +3,20 @@ import { IonButton, IonIcon } from "@ionic/react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
+import { removeGradientBg } from "../../common/styleHelper";
 
 import logo from "../assets/logo.svg";
 
 import "./Login.css";
+import "../../common/common-style.css";
 
 class Login extends Component {
   componentWillUnmount() {
-    const classNames = document.body.className.split(" ");
-    document.body.className = classNames
-      .filter(cName => cName !== "login-body")
-      .join(" ");
+    removeGradientBg();
   }
 
   componentDidMount() {
-    document.body.className += " login-body";
+    document.body.className += " gradient-bg";
   }
 
   render() {
