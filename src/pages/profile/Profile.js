@@ -8,6 +8,7 @@ import {
 } from "../../api/consts";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
+import { selectProfile } from "../../actions/profileAction";
 import { Redirect } from "react-router";
 import { removeGradientBg } from "../../common/styleHelper";
 
@@ -17,9 +18,7 @@ import "./Profile.css";
 export class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      chosenProfile: {}
-    };
+    this.state = {};
   }
   componentWillMount() {
     this.props.user &&
@@ -42,6 +41,7 @@ export class Profile extends Component {
   }
 
   render() {
+    console.log(`choosen profile: ${this.props.profile}`);
     if (!this.props.user) {
       return <Redirect to="/login" />;
     }
@@ -56,7 +56,7 @@ export class Profile extends Component {
       <ProfileElement
         key={i}
         profile={{ ...profile, pic: PICTURE_GENERATOR }}
-        onClick={(e, p) => console.log(e, p)}
+        onClick={(e, p) => this.props.selectProfile(profile)}
       />
     ));
 
@@ -98,5 +98,5 @@ const mapStateToProps = state => ({ user: state.user.token });
 
 export default connect(
   mapStateToProps,
-  { login }
+  { login, selectProfile }
 )(Profile);

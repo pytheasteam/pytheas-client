@@ -11,6 +11,7 @@ import {
 } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
+import { selectProfile } from "../../actions/profileAction";
 import { Redirect } from "react-router";
 import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
@@ -83,5 +84,5 @@ const mapStateToProps = state => ({ user: state.user.token });
 
 export default connect(
   mapStateToProps,
-  { login }
+  { login, selectProfile }
 )(Main);
