@@ -1,0 +1,25 @@
+.back-btn {
+  --color: #ff5347;
+  --ripple-color: #ff5347;
+  --color-activated: #ff5347;
+  --color-focused: #ff5347;
+}
+
+.title {
+  --color: #ff5347;
+}
+
+.label {
+  --color: #ff5347;
+  margin-top: 20px;
+}
+
+.label-icon {
+  --color: #ff5347;
+  margin-right: 115px;
+}
+.icon-style {
+  margin-right: 4px;
+  position: relative;
+  bottom: -2px;
+}

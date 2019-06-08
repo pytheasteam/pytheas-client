@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IonIcon, IonButton } from "@ionic/react";
+import { IonIcon, IonButton, IonToolbar } from "@ionic/react";
 import ProfileElement from "../../components/profileElement";
 import {
   API_BASE,
@@ -11,16 +11,21 @@ import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
 import { Redirect } from "react-router";
 import { removeGradientBg } from "../../common/styleHelper";
-
 import "../../common/common-style.css";
 import "./Profile.css";
+import { styleBackBtn, styleToolkit as styleToolbar } from "./style";
 
 export class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  componentWillMount() {
+
+  componentWillUnmount() {
+    removeGradientBg();
+  }
+
+  componentDidMount() {
     this.props.user &&
       fetch(API_BASE + "/profile", {
         method: "GET",
@@ -30,18 +35,10 @@ export class Profile extends Component {
       })
         .then(res => res.json())
         .then(body => this.setState({ profiles: body.profiles }));
-  }
-
-  componentWillUnmount() {
-    removeGradientBg();
-  }
-
-  componentDidMount() {
     document.body.className += " gradient-bg";
   }
 
   render() {
-    console.log(`choosen profile: ${this.props.profile}`);
     if (!this.props.user) {
       return <Redirect to="/login" />;
     }
@@ -56,7 +53,10 @@ export class Profile extends Component {
       <ProfileElement
         key={i}
         profile={{ ...profile, pic: PICTURE_GENERATOR }}
-        onClick={(e, p) => this.props.selectProfile(profile)}
+        onClick={(e, p) => {
+          this.props.history.push("/filter");
+          this.props.selectProfile(profile);
+        }}
       />
     ));
 
@@ -76,13 +76,16 @@ export class Profile extends Component {
 
     return (
       <React.Fragment>
-        <IonButton
-          fill="clear"
-          className="back-btn"
-          onClick={() => window.history.back()}
-        >
-          <IonIcon slot="icon-only" name="arrow-back" />
-        </IonButton>
+        <IonToolbar style={styleToolbar} className="toolbar-background">
+          <IonButton
+            fill="clear"
+            style={styleBackBtn}
+            onClick={() => window.history.back()}
+          >
+            <IonIcon slot="icon-only" name="arrow-back" />
+          </IonButton>
+        </IonToolbar>
+
         <div className="profile-page">
           <span className="profile-page-title">
             Choose your traveler profile
@@ -94,7 +97,10 @@ export class Profile extends Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.user.token });
+const mapStateToProps = state => ({
+  user: state.user.token,
+  profile: state.profile
+});
 
 export default connect(
   mapStateToProps,

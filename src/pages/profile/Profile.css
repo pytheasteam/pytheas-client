@@ -24,3 +24,15 @@
   --color-activated: white;
   --color-focused: white;
 }
+
+.back-btn-offset {
+  --color: #ff5347;
+  --ripple-color: #ff5347;
+  --color-activated: #ff5347;
+  --color-focused: #ff5347;
+}
+
+.toolbar-background {
+  --background: transparent;
+  --ion-toolbar-background: transparent;
+}
