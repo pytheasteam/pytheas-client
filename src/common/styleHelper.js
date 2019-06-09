@@ -8,4 +8,8 @@ export const removeBg = bgClass => {
 export const upperFistLetter = word =>
   word.replace(/^\w/, c => c.toUpperCase());
 
-export const tagIcons = {};
+export const tagIcons = {
+  music: "musical-notes",
+  test2: "camera",
+  test3: "restaurant"
+};

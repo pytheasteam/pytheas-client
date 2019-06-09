@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:700&display=swap");
-
 .list-ios,
 .list-md {
   background: none;
@@ -55,31 +53,5 @@
     right: 20px;
     color: #c6c6c6;
     font-size: 28px;
-  }
-
-  & .trip-date {
-    position: absolute;
-    top: 34px;
-    right: 6px;
-  }
-
-  & .day {
-    right: 11px;
-    bottom: -29px;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: #ff5347;
-  }
-
-  & .month {
-    right: 10px;
-    bottom: -41px;
-    position: absolute;
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    color: #4f4e4f;
   }
 }

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { IonIcon } from "@ionic/react";
-import "./Trip.scss";
+import "./AtrractionMin.scss";
 import { upperFistLetter, tagIcons } from "../../common/styleHelper";
 
-export class Trip extends Component {
+export class AttractionMin extends Component {
   render() {
     return (
       <div className="trip">
@@ -13,13 +13,10 @@ export class Trip extends Component {
         <IonIcon className="tag-icon" name={tagIcons.test2} />
         <IonIcon className="tag-icon" name={tagIcons.test3} />
         <div className="trip-devider" />
-        <div className="trip-date">
-          <p className="day">{this.props.day || "07"}</p>
-          <p className="month">{this.props.day || "JUN"}</p>
-        </div>
+        <IonIcon className="rate-trip" name="star" />
       </div>
     );
   }
 }
 
-export default Trip;
+export default AttractionMin;
