@@ -4,3 +4,8 @@ export const removeBg = bgClass => {
     .filter(cName => cName !== bgClass)
     .join(" ");
 };
+
+export const upperFistLetter = word =>
+  word.replace(/^\w/, c => c.toUpperCase());
+
+export const tagIcons = {};

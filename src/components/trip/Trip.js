@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { IonItem, IonCard, IonIcon, IonLabel } from "@ionic/react";
-import "./Trip.css";
+import "./Trip.scss";
+import { upperFistLetter } from "../../common/styleHelper";
 
 export class Trip extends Component {
   render() {
     return (
-      <IonCard>
-        <IonItem lines="none" color="transparent">
+      <div className="trip">
+        <div className="trip-picture" />
+        <p className="city-name">{upperFistLetter(this.props.city)}</p>
+        {/* <IonItem lines="none" color="transparent">
           <IonIcon name="pin" slot="start" />
           <IonLabel>{this.props.city}</IonLabel>
-        </IonItem>
-      </IonCard>
+        </IonItem> */}
+      </div>
     );
   }
 }
