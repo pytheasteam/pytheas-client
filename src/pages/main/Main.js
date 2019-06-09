@@ -7,7 +7,8 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonFabList
+  IonFabList,
+  IonAvatar
 } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
@@ -17,6 +18,10 @@ import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
 import { Link } from "react-router-dom";
+import "./Main.css";
+import "../../common/common-style.css";
+import { removeGradientBg } from "../../common/styleHelper";
+import ProfilePanel from "../../components/profilePanel/ProfilePanel";
 
 export class Main extends Component {
   constructor(props) {
@@ -25,8 +30,15 @@ export class Main extends Component {
       SavedTrips: []
     };
   }
+
+  componentWillUnmount() {
+    removeGradientBg();
+  }
+
   componentDidMount() {
     this.setState({ trips: TRIP_MOCK });
+    document.body.className += " main-bg";
+
     // this.props.user &&
     //   fetch(API_BASE + "/trip", {
     //     method: "GET",
@@ -39,17 +51,12 @@ export class Main extends Component {
   }
 
   render() {
-    if (!this.props.user) {
-      return <Redirect to="/login" />;
-    }
+    // if (!this.props.user) {
+    //   return <Redirect to="/login" />;
+    // }
     return this.state.trips ? (
       <React.Fragment>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Hello from Main</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
+        <ProfilePanel img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
         <IonList>
           {this.state.trips.map(trip => {
             return (
@@ -60,18 +67,19 @@ export class Main extends Component {
             );
           })}
         </IonList>
+
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton>
+          <IonFabButton className="fab-main">
             <IonIcon name="add" />
           </IonFabButton>
           <IonFabList side="top">
             <IonFabButton>
               <Link to="/profile">
-                <ion-icon name="compass" />
+                <IonIcon className="icon-inner" name="compass" />
               </Link>
             </IonFabButton>
             <IonFabButton>
-              <ion-icon name="airplane" />
+              <IonIcon className="icon-inner" name="airplane" />
             </IonFabButton>
           </IonFabList>
         </IonFab>

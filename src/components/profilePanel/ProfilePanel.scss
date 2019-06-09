@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.profile-panel {
+  height: 245px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  & .profile-block {
+    position: absolute;
+    width: 86%;
+    height: 50%;
+    background-color: white;
+    top: 56%;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 1px -1px 13px -11px;
+  }
+
+  & .profile-avatar {
+    width: 113px;
+    height: 113px;
+    background: white;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 20%;
+    box-shadow: 0px 4px 21px -17px;
+    border-radius: 63px;
+  }
+
+  & .avatar-img {
+    top: 2px;
+    margin: 0 auto;
+    width: 110px;
+    height: 110px;
+  }
+
+  & button {
+    position: absolute;
+    bottom: 0;
+    background: rgb(255, 83, 71);
+    color: white;
+    text-align: center;
+    width: 154px;
+    height: 34px;
+    border: none;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    border-radius: 17px;
+    display: block;
+  }
+
+  & .trips {
+    color: #4f4e4f;
+    position: absolute;
+    bottom: 11%;
+    left: 70%;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.8rem;
+    height: 100%;
+    width: 100%;
+  }
+
+  & .trips-number {
+    position: absolute;
+    top: 57%;
+    left: 9px;
+    font-size: 2.2rem;
+    font-family: "Roboto black", sans-serif;
+    font-weight: bolder;
+  }
+
+  & .trips-text {
+    position: absolute;
+    bottom: 4px;
+    font-family: "Roboto medium", sans-serif, sans-serif;
+  }
+
+  & .saved-trips {
+    color: #4f4e4f;
+    position: absolute;
+    bottom: 11%;
+    left: 16%;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.8rem;
+    height: 100%;
+    width: 100%;
+  }
+
+  & .saved-trips-number {
+    position: absolute;
+    top: 57%;
+    left: 20px;
+    font-size: 2.2rem;
+    font-family: "Roboto black", sans-serif;
+    font-weight: bolder;
+  }
+
+  & .saved-trips-text {
+    position: absolute;
+    bottom: 4px;
+    left: 11px;
+    font-family: "Roboto medium", sans-serif, sans-serif;
+  }
+
+  & .header-profile {
+    top: 0;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    /* Old browsers */
+    background: #fe784d;
+    /* FF3.6-15 */
+    background: -moz-linear-gradient(left, #fe784d 0%, #ff5347 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-linear-gradient(left, #fe784d 0%, #ff5347 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+    /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe784d', endColorstr='#ff5347',GradientType=1 );
+  }
+}
