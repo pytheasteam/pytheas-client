@@ -64,17 +64,17 @@ export class Main extends Component {
         </IonList>
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton className="fab-main">
+          <IonFabButton>
             <IonIcon name="add" />
           </IonFabButton>
           <IonFabList side="top">
             <IonFabButton>
               <Link to="/profile">
-                <IonIcon className="icon-inner" name="compass" />
+                <IonIcon name="compass" />
               </Link>
             </IonFabButton>
             <IonFabButton>
-              <IonIcon className="icon-inner" name="airplane" />
+              <IonIcon name="airplane" />
             </IonFabButton>
           </IonFabList>
         </IonFab>
