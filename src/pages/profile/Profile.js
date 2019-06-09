@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
 import { Redirect } from "react-router";
-import { removeGradientBg } from "../../common/styleHelper";
+import { removeBg } from "../../common/styleHelper";
 import "../../common/common-style.css";
 import "./Profile.css";
 import { styleBackBtn, styleToolkit as styleToolbar } from "./style";
@@ -22,7 +22,7 @@ export class Profile extends Component {
   }
 
   componentWillUnmount() {
-    removeGradientBg();
+    removeBg("gradient-bg");
   }
 
   componentDidMount() {

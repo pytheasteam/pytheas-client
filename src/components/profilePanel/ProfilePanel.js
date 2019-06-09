@@ -8,11 +8,7 @@ export class ProfilePanel extends Component {
       <div className="profile-panel">
         <div className="header-profile" />
         <div className="profile-block" />
-        <div className="profile-avatar">
-          <IonAvatar className="avatar-img">
-            <img src={this.props.img} alt="profile" />
-          </IonAvatar>
-        </div>
+        <div className="profile-avatar" />
         <div className="saved-trips">
           <p className="saved-trips-number">0</p>
           <p className="saved-trips-text">SAVED</p>

@@ -4,23 +4,18 @@ import {
   IonList,
   IonFabButton,
   IonIcon,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonFabList,
-  IonAvatar
+  IonFabList
 } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { Redirect } from "react-router";
 import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
 import { Link } from "react-router-dom";
-import "./Main.css";
+import "./Main.scss";
 import "../../common/common-style.css";
-import { removeGradientBg } from "../../common/styleHelper";
+import { removeBg } from "../../common/styleHelper";
 import ProfilePanel from "../../components/profilePanel/ProfilePanel";
 
 export class Main extends Component {
@@ -32,7 +27,7 @@ export class Main extends Component {
   }
 
   componentWillUnmount() {
-    removeGradientBg();
+    removeBg("main-bg");
   }
 
   componentDidMount() {
@@ -55,7 +50,7 @@ export class Main extends Component {
     //   return <Redirect to="/login" />;
     // }
     return this.state.trips ? (
-      <React.Fragment>
+      <div className="main">
         <ProfilePanel img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
         <IonList>
           {this.state.trips.map(trip => {
@@ -83,7 +78,7 @@ export class Main extends Component {
             </IonFabButton>
           </IonFabList>
         </IonFab>
-      </React.Fragment>
+      </div>
     ) : null;
   }
 }
