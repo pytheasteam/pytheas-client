@@ -62,7 +62,11 @@ export class Main extends Component {
             );
           })}
         </IonList>
-
+        <IonFabButton>
+            <Link to="/map">
+                <IonIcon name="map" />
+              </Link>
+          </IonFabButton>
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton>
             <IonIcon name="add" />

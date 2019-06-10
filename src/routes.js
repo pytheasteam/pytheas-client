@@ -5,12 +5,14 @@ import Main from "./pages/main/Main";
 import Explore from "./pages/explore/Explore";
 import Profile from "./pages/profile/Profile";
 import Filter from "./pages/filter/Filter";
+import MapView from './pages/map/MapView';
 
 class Routes extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
+        <Route path="/map" component={MapView}/>
           <Route path="/profile" component={Profile} />
           <Route path="/filter" component={Filter} />
           <Route path="/login" component={Login} />
