@@ -48,9 +48,9 @@ export class Main extends Component {
   }
 
   render() {
-    // if (!this.props.user) {
-    //   return <Redirect to="/login" />;
-    // }
+    if (!this.props.user) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div className="main">
         <ProfilePanel img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
