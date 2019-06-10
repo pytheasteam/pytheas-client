@@ -68,7 +68,18 @@
 }
 
 .main {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+
   & .trip {
     margin: 20% auto;
+  }
+
+  & .no-trip {
+    position: relative;
+    margin: 20% auto;
+    color: #b4b4b4;
   }
 }

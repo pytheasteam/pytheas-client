@@ -4,7 +4,8 @@ import {
   IonList,
   IonFabButton,
   IonIcon,
-  IonFabList
+  IonFabList,
+  IonLoading
 } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
@@ -12,7 +13,7 @@ import { selectProfile } from "../../actions/profileAction";
 import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./Main.scss";
 import "../../common/common-style.css";
 import { removeBg } from "../../common/styleHelper";
@@ -22,6 +23,7 @@ export class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      trips: [],
       SavedTrips: []
     };
   }
@@ -49,19 +51,26 @@ export class Main extends Component {
     // if (!this.props.user) {
     //   return <Redirect to="/login" />;
     // }
-    return this.state.trips ? (
+    return (
       <div className="main">
         <ProfilePanel img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
-        <IonList>
-          {this.state.trips.map(trip => {
-            return (
-              <Trip
-                key={`${trip.start_date}-${trip.end_date}`}
-                city={trip.city}
-              />
-            );
-          })}
-        </IonList>
+        {this.state.trips.length > 0 ? (
+          <IonList>
+            {this.state.trips.map(trip => {
+              return (
+                <Trip
+                  key={`${trip.start_date}-${trip.end_date}`}
+                  city={trip.city}
+                  startDate={trip.start_date}
+                  endDate={trip.end_date}
+                  attractions={trip.places}
+                />
+              );
+            })}
+          </IonList>
+        ) : (
+          <p className="no-trip">You dont have any trips</p>
+        )}
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton>
@@ -79,7 +88,7 @@ export class Main extends Component {
           </IonFabList>
         </IonFab>
       </div>
-    ) : null;
+    );
   }
 }
 
