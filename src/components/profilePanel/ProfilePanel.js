@@ -4,9 +4,13 @@ import "./ProfilePanel.scss";
 
 export class ProfilePanel extends Component {
   render() {
+    const name = "SHAKED ZRIHEN";
+
     return (
       <div className="profile-panel">
-        <div className="header-profile" />
+        <div className="header-profile">
+          <p className="username">{name}</p>
+        </div>
         <div className="profile-block" />
         <div
           className="profile-avatar"

@@ -5,7 +5,6 @@ import { upperFistLetter, tagIcons } from "../../common/styleHelper";
 
 export class Trip extends Component {
   render() {
-    console.log(JSON.stringify(this.props.attractions));
     let attractionLen = this.props.attractions.reduce(
       (attractions, day) => attractions + day.length,
       0
