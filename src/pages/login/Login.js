@@ -21,7 +21,8 @@ class Login extends Component {
 
   render() {
     if (this.props.user) {
-      return <Redirect to="/" />;
+      window.history.back();
+      return null;
     }
 
     return (

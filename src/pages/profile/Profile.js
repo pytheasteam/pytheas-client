@@ -26,6 +26,7 @@ export class Profile extends Component {
   }
 
   componentDidMount() {
+    this.props.login();
     this.props.user &&
       fetch(API_BASE + "/profile", {
         method: "GET",

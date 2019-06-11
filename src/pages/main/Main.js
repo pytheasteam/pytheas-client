@@ -35,6 +35,7 @@ export class Main extends Component {
   componentDidMount() {
     this.setState({ trips: TRIP_MOCK });
     document.body.className += " main-bg";
+    this.props.login();
 
     // this.props.user &&
     //   fetch(API_BASE + "/trip", {
