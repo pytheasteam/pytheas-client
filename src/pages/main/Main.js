@@ -32,19 +32,19 @@ export class Main extends Component {
   }
 
   componentDidMount() {
-    this.setState({ trips: TRIP_MOCK });
+    // this.setState({ trips: TRIP_MOCK });
     document.body.className += " main-bg";
     this.props.login();
 
-    // this.props.user &&
-    //   fetch(API_BASE + "/trip", {
-    //     method: "GET",
-    //     headers: {
-    //       Authorization: this.props.user
-    //     }
-    //   })
-    //     .then(res => res.json())
-    //     .then(body => this.setState({ trips: body }));
+    this.props.user &&
+      fetch(API_BASE + "/trip", {
+        method: "GET",
+        headers: {
+          Authorization: this.props.user
+        }
+      })
+        .then(res => res.json())
+        .then(body => this.setState({ trips: body }));
   }
 
   render() {
@@ -65,6 +65,7 @@ export class Main extends Component {
                   startDate={trip.start_date}
                   endDate={trip.end_date}
                   attractions={trip.places}
+                  viewTrip={() => this.props.history.push(`/trips/1`)}
                 />
               );
             })}

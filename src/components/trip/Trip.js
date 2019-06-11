@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { IonIcon } from "@ionic/react";
 import "./Trip.scss";
-import { upperFistLetter, tagIcons } from "../../common/styleHelper";
+import { upperFistLetter } from "../../common/styleHelper";
 
 export class Trip extends Component {
   render() {
@@ -11,7 +11,7 @@ export class Trip extends Component {
     );
     let days = "3";
     return (
-      <div className="trip">
+      <div className="trip" onClick={() => this.props.viewTrip()}>
         <div className="trip-picture" />
         <div className="trip-content">
           <p className="city-name">{upperFistLetter(this.props.city)}</p>
