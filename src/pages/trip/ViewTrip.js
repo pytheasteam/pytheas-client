@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ViewTrip.scss";
 import { removeBg } from "../../common/styleHelper";
-import { IonButton, IonIcon } from "@ionic/react";
+import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlane,
@@ -39,13 +39,19 @@ export class ViewTrip extends Component {
     return (
       <div className="trip-main-page">
         <div className="header">
-          <IonButton
-            fill="clear"
-            onClick={() => window.history.back()}
-            className="back-btn"
-          >
-            <IonIcon slot="icon-only" name="arrow-back" />
-          </IonButton>
+          <IonToolbar className="toolbar-background">
+            <IonButton
+              fill="clear"
+              onClick={() => {
+                console.log("click");
+                window.history.back();
+              }}
+              className="back-btn"
+            >
+              <IonIcon slot="icon-only" name="arrow-back" />
+            </IonButton>
+          </IonToolbar>
+
           <p className="trip-name">Trip to {trip.city}</p>
         </div>
         <button className="go-to-map">

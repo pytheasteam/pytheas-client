@@ -20,8 +20,9 @@
       font-family: "Roboto";
       font-weight: bold;
       color: white;
-      font-size: 20pt;
-      bottom: 7pt;
+      z-index: 1;
+      font-size: 17pt;
+      bottom: 35pt;
     }
 
     .back-btn {
@@ -223,4 +224,8 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+.toolbar-background {
+  background: transparent;
 }
