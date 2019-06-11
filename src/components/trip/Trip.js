@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { IonIcon } from "@ionic/react";
 import "./Trip.scss";
 import { upperFistLetter } from "../../common/styleHelper";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export class Trip extends Component {
   render() {
@@ -17,7 +18,10 @@ export class Trip extends Component {
           <p className="city-name">{upperFistLetter(this.props.city)}</p>
           <div className="total-attractions">
             <p className="total-attraction-days">{attractionLen}</p>
-            <IonIcon className="total-attraction-number" name="pin" />
+            <FontAwesomeIcon
+              className="total-attraction-number"
+              icon={faMapMarkerAlt}
+            />
           </div>
           <div className="total-days">
             <p className="total-days-number">

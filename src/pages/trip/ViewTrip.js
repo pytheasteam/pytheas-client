@@ -41,7 +41,7 @@ export class ViewTrip extends Component {
         <div className="header">
           <IonButton
             fill="clear"
-            onClick={() => this.props.history.goBack()}
+            onClick={() => window.history.back()}
             className="back-btn"
           >
             <IonIcon slot="icon-only" name="arrow-back" />
@@ -75,7 +75,6 @@ export class ViewTrip extends Component {
           </div>
         </div>
         {trip.places.map((day, i) => {
-          console.log(day);
           return <DayTrip key={i} attractions={day} day={i} />;
         })}
       </div>

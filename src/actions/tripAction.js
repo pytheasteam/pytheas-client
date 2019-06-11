@@ -10,7 +10,6 @@ export const fetchTrips = () => dispatch => {
   })
     .then(res => res.json())
     .then(body => {
-      console.log("here");
       return dispatch({ type: FETCH_TRIPS, payload: body });
     });
 };
