@@ -23,6 +23,11 @@ export class ViewTrip extends Component {
   componentDidMount() {
     document.body.className += " trip-main-bg";
   }
+
+  viewAttraction = (day, attractionId) => {
+    this.props.history.push(`/attractions/${day}/${attractionId}`);
+  };
+
   render() {
     const trip = this.props.trips.trips[this.props.match.params.id];
     if (!trip) {
@@ -43,7 +48,6 @@ export class ViewTrip extends Component {
             <IonButton
               fill="clear"
               onClick={() => {
-                console.log("click");
                 window.history.back();
               }}
               className="back-btn"
@@ -81,17 +85,26 @@ export class ViewTrip extends Component {
           </div>
         </div>
         {trip.places.map((day, i) => {
-          return <DayTrip key={i} attractions={day} day={i} />;
+          return (
+            <DayTrip
+              key={i}
+              attractions={day}
+              day={i}
+              viewAttraction={this.viewAttraction}
+            />
+          );
         })}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user.token,
-  trips: state.trips
-});
+const mapStateToProps = state => {
+  return {
+    user: state.user.token,
+    trips: state.trips
+  };
+};
 
 export default connect(
   mapStateToProps,

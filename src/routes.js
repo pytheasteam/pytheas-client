@@ -6,6 +6,7 @@ import Explore from "./pages/explore/Explore";
 import Profile from "./pages/profile/Profile";
 import Filter from "./pages/filter/Filter";
 import ViewTrip from "./pages/trip/ViewTrip";
+import ViewAttraction from "./pages/attraction/ViewAttraction";
 
 class Routes extends Component {
   render() {
@@ -13,6 +14,7 @@ class Routes extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/trips/:id" component={ViewTrip} />
+          <Route path="/attractions/:day/:id" component={ViewAttraction} />
           <Route path="/profile" component={Profile} />
           <Route path="/filter" component={Filter} />
           <Route path="/login" component={Login} />

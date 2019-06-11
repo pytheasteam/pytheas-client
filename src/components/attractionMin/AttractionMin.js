@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { IonIcon } from "@ionic/react";
 import "./AtrractionMin.scss";
 import { upperFistLetter, tagIcons } from "../../common/styleHelper";
+
 const maxlimit = 13;
 
 export class AttractionMin extends Component {
@@ -14,7 +15,12 @@ export class AttractionMin extends Component {
   render() {
     const attractionName = upperFistLetter(this.props.city);
     return (
-      <div className="trip">
+      <div
+        className="attraction-min"
+        onClick={() =>
+          this.props.viewAttraction(this.props.day, this.props.attractionId)
+        }
+      >
         <div className="trip-picture" />
         <p aria-labelledby={attractionName} className="city-name">
           {this.formatName(attractionName)}

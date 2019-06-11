@@ -12,6 +12,9 @@ export class DayTrip extends Component {
             <AttractionMin
               className="attraction"
               key={i}
+              day={this.props.day}
+              attractionId={i}
+              viewAttraction={this.props.viewAttraction}
               city={attraction.name}
             />
           );

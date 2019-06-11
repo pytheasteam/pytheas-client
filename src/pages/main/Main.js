@@ -9,7 +9,7 @@ import {
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { fetchTrips } from "../../actions/tripAction";
+import { fetchTrips, selectTrip } from "../../actions/tripAction";
 import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
@@ -59,7 +59,10 @@ export class Main extends Component {
                   startDate={trip.start_date}
                   endDate={trip.end_date}
                   attractions={trip.places}
-                  viewTrip={() => this.props.history.push(`/trips/${i}`)}
+                  viewTrip={() => {
+                    this.props.history.push(`/trips/${i}`);
+                    this.props.selectTrip(trip);
+                  }}
                 />
               );
             })}
@@ -95,5 +98,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { login, selectProfile, fetchTrips }
+  { login, selectProfile, fetchTrips, selectTrip }
 )(Main);
