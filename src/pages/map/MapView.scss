@@ -1,16 +1,16 @@
 
 .back {
-    display: inline-block;
-    margin-top: 29px;
-    margin-left: 30px;
-}
+        float: left;
+        margin-top: 29px;
+        margin-left: 30px;
+    }
 
 .title {
     font-size: 20px;
     font-weight: bold;
-    margin-left: 13%;
-    display: inline-block;
-    margin-bottom: 7%;
+    margin-left: 26%;
+    margin-top: 6%;
+    float: left;
 }
 
 .top {
@@ -20,24 +20,43 @@
     background: linear-gradient(to right, #FE784D, #FF5347);
     color: white;
 }
-.map-placehplder{
-    position: initial !important;
-    height: 95% !important;
+.map-placeholder{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+.gm-svpc{
+    display: none !important; 
+}
+.gmnoprint{
+    display: none !important;
 }
 #map{
-    height: 50%;
-    position: absolute;
+    position: absolute !important;
+    overflow: hidden !important;
+    height: 100%;
+    width: 100%;
 }
 .container {
     background-color: #F7F7F7;
     padding-bottom: 20px;
     height: 100vh;
 }
-.map {
-    height: 300px;
-}
 .details{
-    padding:50px;
+        .marker{
+            font-weight: bold;
+            margin-left: 11px;
+        }
+        padding: 13px;
+        overflow-y: scroll;
+        position: absolute;
+        margin-top: 83%;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 80%;
+        margin-left: 6%;
+        text-align: left;
+        height: 40%;
+        box-shadow: 0px 2px 14px -11px;
     > img{
         float: left;
         width: 24px;
@@ -49,9 +68,13 @@
         margin-left: 11px;
         span:first-child{
             display: block;
-            font-size: 14px;
             font-weight: bold;
         }
+    }
+}
+.place{
+    >img{
+        vertical-align: bottom;
     }
 }
 .routes{
@@ -62,11 +85,12 @@
         float: left;
         width: 24px;
         height: 24px;
+        vertical-align: bottom;
     }
     .route{
-        float: left;
-        width: 70%;
-        margin-left: 11px;
+        width: 90%;
+        margin-top: 5%;
+        margin-left: 16%;
         span:first-child{
             display: block;
             font-size: 14px;
