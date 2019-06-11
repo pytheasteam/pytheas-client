@@ -40,7 +40,8 @@ export class Profile extends Component {
 
   render() {
     if (!this.props.user) {
-      return <Redirect to="/login" />;
+      this.props.history.push("/login");
+      return null;
     }
 
     const { profiles } = this.state;

@@ -49,7 +49,8 @@ export class Main extends Component {
 
   render() {
     if (!this.props.user) {
-      return <Redirect to="/login" />;
+      this.props.history.push("/login");
+      return null;
     }
     return (
       <div className="main">

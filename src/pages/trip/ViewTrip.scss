@@ -1,0 +1,202 @@
+.trip-main-bg {
+  background-color: #f7f7f7;
+}
+
+.trip-main-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+
+  & .header {
+    position: relative;
+    width: 100%;
+    height: 48pt;
+    text-align: center;
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+
+    .trip-name {
+      position: relative;
+      font-family: "Roboto";
+      font-weight: bold;
+      color: white;
+      font-size: 20pt;
+      bottom: 7pt;
+    }
+
+    .back-btn {
+      color: white;
+      position: absolute;
+      left: 0;
+      top: 8px;
+      color: "white";
+    }
+  }
+
+  & .trip-picture {
+    width: 100%;
+    position: relative;
+    height: 137pt;
+    background-image: url(https://picsum.photos/380/207);
+  }
+
+  & .trip-info {
+    width: 92%;
+    position: relative;
+    height: 74pt;
+    background-color: white;
+    bottom: 41pt;
+    margin: 0 auto;
+    border-radius: 7pt;
+    box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
+
+    .days-info {
+      position: absolute;
+      left: 24pt;
+      .days {
+        position: absolute;
+        top: 24pt;
+        left: -8px;
+        font-size: 13pt;
+        font-family: "Roboto";
+        font-weight: bold;
+        color: #4f4e4f;
+      }
+      .number {
+        font-family: "Roboto";
+        font-weight: bold;
+        font-size: 16pt;
+        color: #ff5347;
+      }
+    }
+
+    .places-info {
+      position: absolute;
+      left: 32%;
+      .places {
+        position: absolute;
+        top: 24pt;
+        left: -19px;
+        font-size: 13pt;
+        font-family: "Roboto";
+        font-weight: bold;
+        color: #4f4e4f;
+      }
+      .number {
+        font-family: "Roboto";
+        font-weight: bold;
+        font-size: 16pt;
+        color: #ff5347;
+      }
+    }
+
+    .hotels-info {
+      position: absolute;
+      right: 36%;
+      .hotels {
+        position: absolute;
+        top: 24pt;
+        left: -19px;
+        font-size: 13pt;
+        font-family: "Roboto";
+        font-weight: bold;
+        color: #4f4e4f;
+      }
+      .hotel-icon {
+        font-family: "Roboto";
+        font-weight: bold;
+        font-size: 16pt;
+        color: #ff5347;
+      }
+    }
+
+    .flights-info {
+      position: absolute;
+      right: 36pt;
+      .flights {
+        position: absolute;
+        top: 24pt;
+        left: -18px;
+        font-size: 13pt;
+        font-family: "Roboto";
+        font-weight: bold;
+        color: #4f4e4f;
+      }
+      .plane {
+        transform: rotate(-26deg);
+        font-family: "Roboto";
+        font-weight: bold;
+        position: relative;
+        font-size: 14pt;
+        color: #ff5347;
+        top: 2pt;
+        left: 5pt;
+      }
+    }
+  }
+}
+
+:root {
+  --ion-color-primary: #ff5347;
+  --ion-color-primary-rgb: 255, 83, 71;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #e0493e;
+  --ion-color-primary-tint: #ff6459;
+
+  --ion-color-secondary: #fe784d;
+  --ion-color-secondary-rgb: 254, 120, 77;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #e06a44;
+  --ion-color-secondary-tint: #fe865f;
+
+  --ion-color-tertiary: #2dafa5;
+  --ion-color-tertiary-rgb: 45, 175, 165;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #289a91;
+  --ion-color-tertiary-tint: #42b7ae;
+
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+}
