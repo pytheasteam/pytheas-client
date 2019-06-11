@@ -48,9 +48,9 @@ export class ViewTrip extends Component {
           </IonButton>
           <p className="trip-name">Trip to {trip.city}</p>
         </div>
-        <div className="go-to-map">
+        <button className="go-to-map">
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
-        </div>
+        </button>
         <div className="trip-picture" />
         <div className="trip-info">
           <div className="days-info">

@@ -34,7 +34,9 @@
   }
   & .go-to-map {
     width: 46pt;
+    padding: 0;
     height: 46pt;
+    border: none;
     border-radius: 50px;
     position: absolute;
     z-index: 1;
@@ -47,8 +49,6 @@
       position: relative;
       color: white;
       font-size: 19pt;
-      left: 34%;
-      top: 28%;
     }
   }
   & .trip-picture {
