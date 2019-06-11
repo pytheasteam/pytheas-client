@@ -9,6 +9,7 @@ import {
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
+import { fetchTrips } from "../../actions/tripAction";
 import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
@@ -32,19 +33,9 @@ export class Main extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ trips: TRIP_MOCK });
     document.body.className += " main-bg";
     this.props.login();
-
-    this.props.user &&
-      fetch(API_BASE + "/trip", {
-        method: "GET",
-        headers: {
-          Authorization: this.props.user
-        }
-      })
-        .then(res => res.json())
-        .then(body => this.setState({ trips: body }));
+    this.props.user && this.props.fetchTrips();
   }
 
   render() {
@@ -54,10 +45,13 @@ export class Main extends Component {
     }
     return (
       <div className="main">
-        <ProfilePanel img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
-        {this.state.trips.length > 0 ? (
+        <ProfilePanel
+          img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+          trips={this.props.trips.trips.length}
+        />
+        {this.props.trips.trips.length > 0 ? (
           <IonList>
-            {this.state.trips.map(trip => {
+            {this.props.trips.trips.map((trip, i) => {
               return (
                 <Trip
                   key={`${trip.start_date}-${trip.end_date}`}
@@ -65,7 +59,7 @@ export class Main extends Component {
                   startDate={trip.start_date}
                   endDate={trip.end_date}
                   attractions={trip.places}
-                  viewTrip={() => this.props.history.push(`/trips/1`)}
+                  viewTrip={() => this.props.history.push(`/trips/${i}`)}
                 />
               );
             })}
@@ -94,9 +88,12 @@ export class Main extends Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.user.token });
+const mapStateToProps = state => ({
+  user: state.user.token,
+  trips: state.trips
+});
 
 export default connect(
   mapStateToProps,
-  { login, selectProfile }
+  { login, selectProfile, fetchTrips }
 )(Main);

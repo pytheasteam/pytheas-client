@@ -21,7 +21,7 @@ export class ProfilePanel extends Component {
           <p className="saved-trips-text">SAVED</p>
         </div>
         <div className="trips">
-          <p className="trips-number">0</p>
+          <p className="trips-number">{this.props.trips}</p>
           <p className="trips-text">TRIPS</p>
         </div>
         <button
