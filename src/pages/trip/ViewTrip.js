@@ -3,7 +3,11 @@ import "./ViewTrip.scss";
 import { removeBg } from "../../common/styleHelper";
 import { IonButton, IonIcon } from "@ionic/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlane, faBed } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlane,
+  faBed,
+  faMapMarkerAlt
+} from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
@@ -43,6 +47,9 @@ export class ViewTrip extends Component {
             <IonIcon slot="icon-only" name="arrow-back" />
           </IonButton>
           <p className="trip-name">Trip to {trip.city}</p>
+        </div>
+        <div className="go-to-map">
+          <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
         </div>
         <div className="trip-picture" />
         <div className="trip-info">

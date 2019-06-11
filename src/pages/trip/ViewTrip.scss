@@ -32,7 +32,25 @@
       color: "white";
     }
   }
+  & .go-to-map {
+    width: 46pt;
+    height: 46pt;
+    border-radius: 50px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0pt 1pt 4pt rgba(0, 0, 0, 0.16);
+    left: 4%;
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+    top: 62pt;
 
+    .icon {
+      position: relative;
+      color: white;
+      font-size: 19pt;
+      left: 34%;
+      top: 28%;
+    }
+  }
   & .trip-picture {
     width: 100%;
     position: relative;
