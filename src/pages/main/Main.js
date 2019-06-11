@@ -4,8 +4,7 @@ import {
   IonList,
   IonFabButton,
   IonIcon,
-  IonFabList,
-  IonLoading
+  IonFabList
 } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
@@ -13,7 +12,7 @@ import { selectProfile } from "../../actions/profileAction";
 import { TRIP_MOCK } from "../../mock/tripMock";
 import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Main.scss";
 import "../../common/common-style.css";
 import { removeBg } from "../../common/styleHelper";

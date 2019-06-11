@@ -9,7 +9,6 @@ import {
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { Redirect } from "react-router";
 import { removeBg } from "../../common/styleHelper";
 import "../../common/common-style.css";
 import "./Profile.css";
