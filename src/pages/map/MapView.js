@@ -42,6 +42,11 @@ export class MapView extends Component {
       var marker = new window.google.maps.Marker({ position: markers[i], map: map });
     }
   }
+  // getKilometers(origin, destination){
+  //   var o = new google.maps.LatLng(origin);
+  //   var d =  new google.maps.LatLng(destination);
+  //   this.kilometers = (google.maps.geometry.spherical.computeDistanceBetween(o, d)/ 1000).toFixed(2);
+  // }  
 
 
   render() {
