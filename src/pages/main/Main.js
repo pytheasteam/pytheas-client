@@ -70,19 +70,11 @@ export class Main extends Component {
         )}
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton>
-            <IonIcon name="add" />
-          </IonFabButton>
-          <IonFabList side="top">
+          <Link to="/profile">
             <IonFabButton>
-              <Link to="/profile">
-                <IonIcon name="compass" />
-              </Link>
+              <IonIcon name="add" />
             </IonFabButton>
-            <IonFabButton>
-              <IonIcon name="airplane" />
-            </IonFabButton>
-          </IonFabList>
+          </Link>
         </IonFab>
       </div>
     );
