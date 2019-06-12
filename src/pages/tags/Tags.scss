@@ -1,0 +1,46 @@
+.tags {
+  & .header {
+    position: relative;
+    width: 100%;
+    height: 48pt;
+    text-align: center;
+    background: transparent;
+    .back-btn {
+      position: absolute;
+      left: 0;
+      top: 8px;
+    }
+  }
+
+  & .title {
+    color: black;
+    text-align: left;
+    font-family: "Roboto";
+    font-size: 30pt;
+    font-weight: 700;
+    width: 90%;
+    margin: 2pt auto 43pt auto;
+    position: relative;
+    display: block;
+  }
+
+  & .next {
+    margin: 33pt auto;
+    border: 1pt solid transparent;
+    color: white;
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+    padding: 0 10pt 0 10pt;
+    text-align: center;
+    width: 147pt;
+    height: 39pt;
+    border-radius: 27pt;
+    display: block;
+    font-family: "Roboto";
+    font-size: 13pt;
+  }
+
+  & .chip-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

@@ -84,3 +84,20 @@ export const exploreMock = [
     ]
   }
 ];
+
+const newExplore = {
+  destination: "cityName",
+  start_date: "DD/MM/YYYY",
+  end_date: "DD/MM/YYYY",
+  days: 3,
+  price: 3000,
+  corrency: "",
+  pictures: ["assets/Barcelona2.jpg", "assets/Barcelona3.jpeg"],
+  people_number: 2,
+  flights: [],
+  hotels: [],
+  places: [
+    { name: "Sagrada Familia", picture: "/assets/b1.jpg", day: 1 },
+    { name: "Park Guell", picture: "/assets/b2.jpg", day: 1 }
+  ]
+};

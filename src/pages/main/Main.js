@@ -9,8 +9,7 @@ import {
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { TRIP_MOCK } from "../../mock/tripMock";
-import { API_BASE } from "../../api/consts";
+import { fetchTrips, selectTrip } from "../../actions/tripAction";
 import Trip from "../../components/trip/Trip";
 import { Link } from "react-router-dom";
 import "./Main.scss";
@@ -22,6 +21,7 @@ export class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      trips: [],
       SavedTrips: []
     };
   }
@@ -31,60 +31,62 @@ export class Main extends Component {
   }
 
   componentDidMount() {
-    this.setState({ trips: TRIP_MOCK });
     document.body.className += " main-bg";
-
-    // this.props.user &&
-    //   fetch(API_BASE + "/trip", {
-    //     method: "GET",
-    //     headers: {
-    //       Authorization: this.props.user
-    //     }
-    //   })
-    //     .then(res => res.json())
-    //     .then(body => this.setState({ trips: body }));
+    this.props.login();
+    this.props.user && this.props.fetchTrips();
   }
 
   render() {
-    // if (!this.props.user) {
-    //   return <Redirect to="/login" />;
-    // }
-    return this.state.trips ? (
+    if (!this.props.user) {
+      this.props.history.push("/login");
+      return null;
+    }
+    return (
       <div className="main">
-        <ProfilePanel img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" />
-        <IonList>
-          {this.state.trips.map(trip => {
-            return (
-              <Trip
-                key={`${trip.start_date}-${trip.end_date}`}
-                city={trip.city}
-              />
-            );
-          })}
-        </IonList>
+        <ProfilePanel
+          img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+          trips={this.props.trips.trips.length}
+        />
+        {this.props.trips.trips.length > 0 ? (
+          <IonList>
+            {this.props.trips.trips.map((trip, i) => {
+              return (
+                <Trip
+                  key={`${trip.start_date}-${trip.end_date}`}
+                  city={trip.city}
+                  startDate={trip.start_date}
+                  endDate={trip.end_date}
+                  attractions={trip.places}
+                  viewTrip={() => {
+                    this.props.history.push(`/trips/${i}`);
+                    this.props.selectTrip(trip);
+                  }}
+                />
+              );
+            })}
+          </IonList>
+        ) : (
+          <p className="no-trip">You dont have any trips</p>
+        )}
+
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton>
-            <IonIcon name="add" />
-          </IonFabButton>
-          <IonFabList side="top">
+          <Link to="/profile">
             <IonFabButton>
-              <Link to="/profile">
-                <IonIcon name="compass" />
-              </Link>
+              <IonIcon name="add" />
             </IonFabButton>
-            <IonFabButton>
-              <IonIcon name="airplane" />
-            </IonFabButton>
-          </IonFabList>
+          </Link>
         </IonFab>
       </div>
-    ) : null;
+    );
   }
 }
 
-const mapStateToProps = state => ({ user: state.user.token });
+const mapStateToProps = state => ({
+  user: state.user.token,
+  trips: state.trips
+});
 
 export default connect(
   mapStateToProps,
-  { login, selectProfile }
+  { login, selectProfile, fetchTrips, selectTrip }
 )(Main);

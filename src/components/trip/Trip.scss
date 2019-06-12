@@ -25,16 +25,6 @@
     background-color: green;
   }
 
-  & .city-name {
-    position: absolute;
-    left: 66px;
-    bottom: 15px;
-    color: #313131;
-    font-family: "Roboto";
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-
   & .tag-icon {
     position: relative;
     color: #ff5347;
@@ -43,18 +33,72 @@
     margin-right: 8px;
   }
 
+  & .trip-content {
+    position: relative;
+    bottom: 1px;
+    width: 100%;
+    height: 100%;
+    .city-name {
+      position: absolute;
+      left: 67px;
+      bottom: 18px;
+      color: #313131;
+      font-family: "Roboto";
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+    .total-attractions {
+      position: absolute;
+      left: 56px;
+      bottom: 17px;
+
+      .total-attraction-days {
+        position: relative;
+        left: 81px;
+        top: 33px;
+        margin-right: 8px;
+        font-family: "Roboto";
+        font-weight: 700;
+        color: #4f4e4f;
+        font-size: 0.9rem;
+      }
+
+      .total-attraction-number {
+        left: 69px;
+        bottom: 1pt;
+        position: relative;
+        color: #ff5347;
+        font-family: "Roboto";
+        font-weight: 700;
+        font-size: 8pt;
+      }
+    }
+
+    .total-days {
+      position: absolute;
+      bottom: 32px;
+
+      .total-days-days {
+        color: #4f4e4f;
+      }
+
+      .total-days-number {
+        left: 66px;
+        top: 30px;
+        position: relative;
+        color: #ff5347;
+        font-family: "Roboto";
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+    }
+  }
+
   & .trip-devider {
     position: absolute;
     right: 61px;
     border-left: 1px solid #c6c6c6;
     height: 55%;
-  }
-
-  & .rate-trip {
-    position: absolute;
-    right: 20px;
-    color: #c6c6c6;
-    font-size: 28px;
   }
 
   & .trip-date {

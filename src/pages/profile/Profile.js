@@ -9,7 +9,6 @@ import {
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { Redirect } from "react-router";
 import { removeBg } from "../../common/styleHelper";
 import "../../common/common-style.css";
 import "./Profile.css";
@@ -26,6 +25,7 @@ export class Profile extends Component {
   }
 
   componentDidMount() {
+    this.props.login();
     this.props.user &&
       fetch(API_BASE + "/profile", {
         method: "GET",
@@ -40,7 +40,8 @@ export class Profile extends Component {
 
   render() {
     if (!this.props.user) {
-      return <Redirect to="/login" />;
+      this.props.history.push("/login");
+      return null;
     }
 
     const { profiles } = this.state;
@@ -69,7 +70,7 @@ export class Profile extends Component {
             name: "Add Profile",
             pic: "https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
           }}
-          onClick={(e, p) => console.log(e, p)}
+          onClick={() => this.props.history.push("/new-profile")}
         />
       );
     }

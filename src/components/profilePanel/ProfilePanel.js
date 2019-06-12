@@ -4,9 +4,13 @@ import "./ProfilePanel.scss";
 
 export class ProfilePanel extends Component {
   render() {
+    const name = "SHAKED ZRIHEN";
+
     return (
       <div className="profile-panel">
-        <div className="header-profile" />
+        <div className="header-profile">
+          <p className="username">{name}</p>
+        </div>
         <div className="profile-block" />
         <div
           className="profile-avatar"
@@ -17,7 +21,7 @@ export class ProfilePanel extends Component {
           <p className="saved-trips-text">SAVED</p>
         </div>
         <div className="trips">
-          <p className="trips-number">0</p>
+          <p className="trips-number">{this.props.trips}</p>
           <p className="trips-text">TRIPS</p>
         </div>
         <button
