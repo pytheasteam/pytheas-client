@@ -10,14 +10,41 @@ export class Tags extends Component {
     super(props);
     this.state = {
       tags: null,
-      dialogOpen: false
+      dialogOpen: false,
+      selectedTags: []
     };
     this.getDialogInput = this.getDialogInput.bind(this);
     this.handleDialogClose = this.handleDialogClose.bind(this);
+    this.selectTag = this.selectTag.bind(this);
+  }
+
+  selectTag(tagId) {
+    let index = this.state.selectedTags.indexOf(tagId);
+    if (index === -1) {
+      this.state.selectedTags.push(tagId);
+    } else {
+      this.state.selectedTags.splice(index, 1);
+    }
   }
 
   getDialogInput(input) {
-    console.log(input);
+    const selectedTags = [];
+    this.state.selectedTags.forEach(tag =>
+      selectedTags.push(this.state.tags[tag])
+    );
+    if (input.length > 0) {
+      console.log("Creating new profile...");
+      fetch(API_BASE + "/profile", {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token")
+        },
+        body: JSON.stringify({
+          name: input,
+          tags: selectedTags
+        })
+      }).then(res => res.json());
+    }
     this.setState({ dialogOpen: false });
   }
   handleDialogClose() {
@@ -54,8 +81,14 @@ export class Tags extends Component {
           </div>
           <p className="title">What you’re interested in?</p>
           <div className="chip-container">
-            {this.state.tags.map(tag => {
-              return <Chip key={tag.id} name={tag.name} />;
+            {this.state.tags.map((tag, i) => {
+              return (
+                <Chip
+                  key={tag.id}
+                  name={tag.name}
+                  select={() => this.selectTag(i)}
+                />
+              );
             })}
           </div>
           <button

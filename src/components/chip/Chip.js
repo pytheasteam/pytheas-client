@@ -9,6 +9,7 @@ export class Chip extends Component {
   }
 
   toggleChip() {
+    this.props.select();
     this.setState({ selected: !this.state.selected });
   }
 

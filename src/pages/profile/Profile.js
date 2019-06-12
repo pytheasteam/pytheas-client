@@ -81,7 +81,7 @@ export class Profile extends Component {
           <IonButton
             fill="clear"
             style={styleBackBtn}
-            onClick={() => window.history.back()}
+            onClick={() => this.props.history.push("/")}
           >
             <IonIcon slot="icon-only" name="arrow-back" />
           </IonButton>
