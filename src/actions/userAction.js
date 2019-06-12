@@ -2,10 +2,10 @@ import { GOOGLE_LOGIN } from "../actions/types";
 import { LOGIN_PATH } from "../api/consts";
 
 export const login = () => dispatch => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    return dispatch({ type: GOOGLE_LOGIN, payload: token });
-  }
+  // const token = localStorage.getItem("token");
+  // if (token) {
+  //   return dispatch({ type: GOOGLE_LOGIN, payload: token });
+  // }
   console.log("login to google...");
   fetch(LOGIN_PATH, {
     method: "POST",

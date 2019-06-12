@@ -70,7 +70,7 @@ export class Profile extends Component {
             name: "Add Profile",
             pic: "https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
           }}
-          onClick={(e, p) => console.log(e, p)}
+          onClick={() => this.props.history.push("/new-profile")}
         />
       );
     }

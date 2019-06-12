@@ -1,0 +1,15 @@
+.chip {
+  height: 25pt;
+  margin: 3pt;
+  border-radius: 27pt;
+  border: 1pt solid #ff5347;
+  color: #ff5347;
+  background: transparent;
+  padding: 0 10pt 0 10pt;
+  text-align: center;
+}
+.selected {
+  border: 1pt solid transparent;
+  color: white;
+  background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+}

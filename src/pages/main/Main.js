@@ -10,8 +10,6 @@ import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips, selectTrip } from "../../actions/tripAction";
-import { TRIP_MOCK } from "../../mock/tripMock";
-import { API_BASE } from "../../api/consts";
 import Trip from "../../components/trip/Trip";
 import { Link } from "react-router-dom";
 import "./Main.scss";
