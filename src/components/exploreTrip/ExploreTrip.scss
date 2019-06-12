@@ -1,0 +1,116 @@
+.explore-trip {
+  width: 92%;
+  height: 201pt;
+  margin: 31pt auto;
+  display: flex;
+  position: relative;
+  flex-flow: column;
+  border-radius: 5pt;
+  background: white;
+  box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
+
+  & .picture {
+    position: relative;
+    width: 94%;
+    margin: 0 auto;
+    height: 140pt;
+    background: url(https://picsum.photos/400/200);
+    top: 9pt;
+  }
+
+  & .trip-info {
+    position: relative;
+    left: 2%;
+    top: 47pt;
+    .save {
+      position: absolute;
+      right: 20pt;
+      font-size: 23pt;
+      bottom: 4pt;
+      color: rgba(193, 193, 193, 1);
+      border: rgba(167, 167, 167, 1);
+    }
+    .trip-name {
+      position: absolute;
+      bottom: -1pt;
+      font-family: "Roboto";
+      font-size: 16pt;
+      left: 9pt;
+      width: 100pt;
+      font-weight: bold;
+    }
+    .info {
+      position: relative;
+      top: 13pt;
+      .days-container {
+        position: absolute;
+        bottom: -3px;
+        left: 10pt;
+
+        .number {
+          position: relative;
+          top: 27pt;
+          font-size: 13pt;
+          font-family: "Roboto";
+          font-weight: bold;
+          color: #ff4357;
+        }
+
+        .days {
+          position: relative;
+          left: 19pt;
+          font-size: 12pt;
+          font-weight: bold;
+          color: #4f4e4f;
+        }
+      }
+
+      .attractions-container {
+        position: absolute;
+        bottom: -3px;
+        left: 70pt;
+
+        .location {
+          position: relative;
+          top: 26pt;
+          font-size: 12pt;
+          font-family: "Roboto";
+          font-weight: bold;
+          color: #ff4357;
+        }
+
+        .attraction {
+          position: relative;
+          left: 13pt;
+          font-size: 12pt;
+          font-weight: bold;
+          color: #4f4e4f;
+        }
+      }
+
+      .price-container {
+        position: absolute;
+        bottom: 23pt;
+        left: 109pt;
+
+        .icon {
+          position: relative;
+          top: 28pt;
+          font-size: 12pt;
+          font-family: "Roboto";
+          font-weight: bold;
+          color: #ff4357;
+        }
+
+        .price {
+          position: relative;
+          left: 16pt;
+          top: 14pt;
+          font-size: 12pt;
+          font-weight: bold;
+          color: #4f4e4f;
+        }
+      }
+    }
+  }
+}
