@@ -3,13 +3,25 @@ import { API_BASE } from "../../api/consts";
 import Chip from "../../components/chip/Chip";
 import "./Tags.scss";
 import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
+import NameDialog from "../../components/nameDialog/NameDialog";
 
 export class Tags extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: null
+      tags: null,
+      dialogOpen: false
     };
+    this.getDialogInput = this.getDialogInput.bind(this);
+    this.handleDialogClose = this.handleDialogClose.bind(this);
+  }
+
+  getDialogInput(input) {
+    console.log(input);
+    this.setState({ dialogOpen: false });
+  }
+  handleDialogClose() {
+    this.setState({ dialogOpen: false });
   }
   componentDidMount() {
     fetch(API_BASE + "/tags", {
@@ -46,7 +58,19 @@ export class Tags extends Component {
               return <Chip key={tag.id} name={tag.name} />;
             })}
           </div>
-          <button className="next">Next</button>
+          <button
+            className="next"
+            onClick={() => this.setState({ dialogOpen: true })}
+          >
+            Next
+          </button>
+          <NameDialog
+            open={this.state.dialogOpen}
+            onCreate={this.getDialogInput}
+            handleDialogClose={this.handleDialogClose}
+            title="Enter profile name"
+            text="Next"
+          />
         </div>
       )
     );

@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  IonFab,
-  IonList,
-  IonFabButton,
-  IonIcon,
-  IonFabList
-} from "@ionic/react";
+import { IonFab, IonList, IonFabButton, IonIcon } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
