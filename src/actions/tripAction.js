@@ -1,17 +1,14 @@
 import { FETCH_TRIPS, SELECT_TRIP } from "../actions/types";
-import { API_BASE } from "../api/consts";
+import PytheasApi from "../api/Api";
+/*
+.then(body => this.setState({ profiles: body.profiles }))
+      .catch(err => this.props.history.push("/login"));
 
+*/
 export const fetchTrips = () => dispatch => {
-  fetch(API_BASE + "/trip", {
-    method: "GET",
-    headers: {
-      Authorization: localStorage.getItem("token")
-    }
-  })
-    .then(res => res.json())
-    .then(body => {
-      return dispatch({ type: FETCH_TRIPS, payload: body });
-    });
+  PytheasApi.get("/trip").then(body => {
+    return dispatch({ type: FETCH_TRIPS, payload: body });
+  });
 };
 
 export const selectTrip = trip => dispatch =>

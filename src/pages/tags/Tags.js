@@ -4,6 +4,7 @@ import Chip from "../../components/chip/Chip";
 import "./Tags.scss";
 import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import NameDialog from "../../components/nameDialog/NameDialog";
+import PytheasApi from "../../api/Api";
 
 export class Tags extends Component {
   constructor(props) {
@@ -33,16 +34,10 @@ export class Tags extends Component {
       selectedTags.push(this.state.tags[tag])
     );
     if (input.length > 0) {
-      console.log("Creating new profile...");
-      fetch(API_BASE + "/profile", {
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("token")
-        },
-        body: JSON.stringify({
-          name: input,
-          tags: selectedTags
-        })
+      console.log("Creating new profile (need to be checked)...");
+      PytheasApi.post("/profile", {
+        name: input,
+        tags: selectedTags
       }).then(res => res.json());
     }
     this.setState({ dialogOpen: false });

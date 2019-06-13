@@ -17,14 +17,13 @@ class Login extends Component {
 
   componentDidMount() {
     document.body.className += " gradient-bg";
-  }
-
-  render() {
     if (this.props.user) {
       window.history.back();
       return null;
     }
+  }
 
+  render() {
     return (
       <div className="login-wrapper">
         <img alt="logo" src={logo} />

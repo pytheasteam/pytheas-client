@@ -10,6 +10,7 @@ import "./Main.scss";
 import "../../common/common-style.css";
 import { removeBg } from "../../common/styleHelper";
 import ProfilePanel from "../../components/profilePanel/ProfilePanel";
+import PytheasApi from "../../api/Api";
 
 export class Main extends Component {
   constructor(props) {
@@ -26,15 +27,13 @@ export class Main extends Component {
 
   componentDidMount() {
     document.body.className += " main-bg";
-    this.props.login();
-    this.props.user && this.props.fetchTrips();
+    this.props.fetchTrips();
+    if (!PytheasApi.getAuth()) {
+      this.props.history.push("/login");
+    }
   }
 
   render() {
-    if (!this.props.user) {
-      this.props.history.push("/login");
-      return null;
-    }
     return (
       <div className="main">
         <ProfilePanel

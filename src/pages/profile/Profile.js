@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { IonIcon, IonButton, IonToolbar } from "@ionic/react";
 import ProfileElement from "../../components/profileElement";
-import {
-  API_BASE,
-  MAX_PROFILE_COUNT,
-  PICTURE_GENERATOR
-} from "../../api/consts";
+import { MAX_PROFILE_COUNT, PICTURE_GENERATOR } from "../../api/consts";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
@@ -13,6 +9,7 @@ import { removeBg } from "../../common/styleHelper";
 import "../../common/common-style.css";
 import "./Profile.css";
 import { styleBackBtn, styleToolkit as styleToolbar } from "./style";
+import PytheasApi from "../../api/Api";
 
 export class Profile extends Component {
   constructor(props) {
@@ -24,26 +21,18 @@ export class Profile extends Component {
     removeBg("gradient-bg");
   }
 
+  fetchData() {
+    PytheasApi.get("/profile")
+      .then(body => this.setState({ profiles: body.profiles }))
+      .catch(err => this.props.history.push("/login"));
+  }
+
   componentDidMount() {
-    this.props.login();
-    this.props.user &&
-      fetch(API_BASE + "/profile", {
-        method: "GET",
-        headers: {
-          Authorization: this.props.user
-        }
-      })
-        .then(res => res.json())
-        .then(body => this.setState({ profiles: body.profiles }));
+    this.fetchData();
     document.body.className += " gradient-bg";
   }
 
   render() {
-    if (!this.props.user) {
-      this.props.history.push("/login");
-      return null;
-    }
-
     const { profiles } = this.state;
 
     if (!profiles) {
