@@ -8,9 +8,8 @@ import {
   IonLabel,
   IonItem
 } from "@ionic/react";
-import "./Filter.css";
+import "./Filter.scss";
 import Fab from "@material-ui/core/Fab";
-import { Link } from "react-router-dom";
 
 const iconStyle = {
   marginRight: "4px",
@@ -21,7 +20,7 @@ const iconStyle = {
 export class Filter extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="filter">
         <IonToolbar>
           <IonButton
             fill="clear"
@@ -90,7 +89,7 @@ export class Filter extends Component {
             Explore
           </Fab>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
