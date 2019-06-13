@@ -28,18 +28,7 @@ export class Explore extends Component {
     );
   }
 
-  // viewAttraction = (day, attractionId) => {
-  //   this.props.history.push(`/attractions/${day}/${attractionId}`);
-  // };
-
   render() {
-    // const trip = this.props.trips.trips[this.props.match.params.id];
-    // if (!trip) {
-    //   this.props.history.push("/");
-    //   return null;
-    // }
-    // TODO: Move to external function
-
     return (
       <div className="explore">
         <div className="header">
