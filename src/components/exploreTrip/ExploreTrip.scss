@@ -1,7 +1,7 @@
 .explore-trip {
   width: 92%;
   height: 201pt;
-  margin: 31pt auto;
+  margin: 18pt auto;
   display: flex;
   position: relative;
   flex-flow: column;
@@ -22,7 +22,7 @@
     position: relative;
     left: 2%;
     top: 47pt;
-    .save {
+    & .save {
       position: absolute;
       right: 20pt;
       font-size: 23pt;
@@ -30,7 +30,7 @@
       color: rgba(193, 193, 193, 1);
       border: rgba(167, 167, 167, 1);
     }
-    .trip-name {
+    & .trip-name {
       position: absolute;
       bottom: -1pt;
       font-family: "Roboto";
@@ -39,50 +39,53 @@
       width: 100pt;
       font-weight: bold;
     }
-    .info {
+    & .info {
       position: relative;
       top: 13pt;
-      .days-container {
+      & .days-container {
         position: absolute;
         bottom: -3px;
         left: 10pt;
 
-        .number {
+        & .number {
           position: relative;
-          top: 27pt;
+          top: 28pt;
           font-size: 13pt;
           font-family: "Roboto";
           font-weight: bold;
           color: #ff4357;
         }
 
-        .days {
+        & .days {
           position: relative;
-          left: 19pt;
+          left: 12pt;
+          top: 1pt;
           font-size: 12pt;
           font-weight: bold;
           color: #4f4e4f;
         }
       }
 
-      .attractions-container {
+      & .attractions-container {
         position: absolute;
         bottom: -3px;
         left: 70pt;
 
-        .location {
+        & .location {
           position: relative;
-          top: 26pt;
-          font-size: 12pt;
+          top: 30pt;
+          font-size: 11pt;
           font-family: "Roboto";
           font-weight: bold;
           color: #ff4357;
         }
 
-        .attraction {
+        & .attraction {
           position: relative;
-          left: 13pt;
-          font-size: 12pt;
+          left: 12pt;
+          top: 3pt;
+          font-size: 13pt;
+          font-family: "Roboto";
           font-weight: bold;
           color: #4f4e4f;
         }
@@ -90,8 +93,8 @@
 
       .price-container {
         position: absolute;
-        bottom: 23pt;
-        left: 109pt;
+        bottom: 22pt;
+        left: 103pt;
 
         .icon {
           position: relative;
@@ -104,11 +107,12 @@
 
         .price {
           position: relative;
-          left: 16pt;
+          left: 10pt;
           top: 14pt;
           font-size: 12pt;
           font-weight: bold;
           color: #4f4e4f;
+          font-family: "Roboto";
         }
       }
     }

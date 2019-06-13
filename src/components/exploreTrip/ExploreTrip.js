@@ -14,21 +14,26 @@ export class ExploreTrip extends Component {
     super(props);
     this.state = {
       currency: {
-        dollar: <FontAwesomeIcon icon={faDollarSign} />,
+        USD: <FontAwesomeIcon icon={faDollarSign} />,
         nis: <FontAwesomeIcon icon={faShekelSign} />,
         euro: <FontAwesomeIcon icon={faEuroSign} />
       }
     };
   }
   render() {
+    console.log(this.props.attractions);
+    let attractionLen = this.props.attractions.reduce(
+      (attractions, day) => attractions + day.length,
+      0
+    );
     return (
       <div className="explore-trip">
         <div className="picture" />
         <div className="trip-info">
-          <p className="trip-name">Trip to city</p>
+          <p className="trip-name">Trip to {this.props.city}</p>
           <div className="info">
             <div className="days-container">
-              <p className="number">12</p>
+              <p className="number">{this.props.days}</p>
               <p className="days">DAYS</p>
             </div>
             <div className="attractions-container">
@@ -38,11 +43,13 @@ export class ExploreTrip extends Component {
                   icon={faMapMarkerAlt}
                 />
               </p>
-              <p className="attraction">40</p>
+              <p className="attraction">{attractionLen}</p>
             </div>
             <div className="price-container">
-              <div className="icon">{this.state.currency.nis}</div>
-              <div className="price">1200</div>
+              <div className="icon">
+                {this.state.currency[this.props.currency]}
+              </div>
+              <div className="price">{this.props.price}</div>
             </div>
           </div>
 

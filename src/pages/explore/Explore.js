@@ -7,14 +7,25 @@ import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips } from "../../actions/tripAction";
 import "./Explore.scss";
 import ExploreTrip from "../../components/exploreTrip/ExploreTrip";
+import PytheasApi from "../../api/Api";
 
 export class Explore extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      trips: []
+    };
+  }
   componentWillUnmount() {
     removeBg("explore-bg");
   }
 
   componentDidMount() {
     document.body.className += " explore-bg";
+    const queryString = this.props.location.search;
+    PytheasApi.get("/explore", queryString).then(trips =>
+      this.setState({ trips })
+    );
   }
 
   // viewAttraction = (day, attractionId) => {
@@ -42,8 +53,19 @@ export class Explore extends Component {
             </IonButton>
           </IonToolbar>
           <p className="title">Explore</p>
-        </div>
-        <ExploreTrip />
+        </div>{" "}
+        {this.state.trips.map((trip, i) => {
+          return (
+            <ExploreTrip
+              key={i}
+              city={trip.destination}
+              price={trip.price}
+              currency={trip.currency}
+              days={trip.days}
+              attractions={trip.places}
+            />
+          );
+        })}
       </div>
     );
   }

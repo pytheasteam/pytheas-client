@@ -4,18 +4,26 @@
   --color-activated: #ff5347;
   --color-focused: #ff5347;
 }
+.filter {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  & .container {
+    margin: 0 6%;
+  }
 
+  & .filter-item {
+    color: #ff5347;
+    margin: 20pt auto;
+  }
+}
 .title {
   --color: #ff5347;
 }
 
 .label {
   --color: #ff5347;
-}
-
-.filter-item {
-  --color: #ff5347;
-  margin-top: 20px;
 }
 
 .date-picker {

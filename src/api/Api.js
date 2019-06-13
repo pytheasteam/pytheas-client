@@ -10,8 +10,11 @@ export class PytheasApi {
     const token = PytheasApi.getAuth();
 
     let endpoint = API_BASE + route;
-    if (queryParams) {
+
+    if (typeof queryParams === "object" && queryParams) {
       endpoint += "?" + querystring.stringify(queryParams);
+    } else if (typeof queryParams === "string") {
+      endpoint += queryParams;
     }
     return await new Promise(function(resolve, reject) {
       fetch(endpoint, {
