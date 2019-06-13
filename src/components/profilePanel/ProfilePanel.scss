@@ -2,7 +2,6 @@
 
 .profile-panel {
   height: 245px;
-  width: 100%;
   position: relative;
   display: flex;
   flex-flow: row;
@@ -53,7 +52,6 @@
     font-family: "Roboto", sans-serif;
     font-size: 0.8rem;
     height: 100%;
-    width: 100%;
   }
 
   & .trips-number {
@@ -79,7 +77,6 @@
     font-family: "Roboto", sans-serif;
     font-size: 0.8rem;
     height: 100%;
-    width: 100%;
   }
 
   & .saved-trips-number {
