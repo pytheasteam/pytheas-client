@@ -42,7 +42,7 @@ export class Explore extends Component {
             </IonButton>
           </IonToolbar>
           <p className="title">Explore</p>
-        </div>{" "}
+        </div>
         {this.state.trips.map((trip, i) => {
           return (
             <ExploreTrip
