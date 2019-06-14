@@ -9,6 +9,7 @@ import MapView from './pages/map/MapView';
 import ViewTrip from "./pages/trip/ViewTrip";
 import ViewAttraction from "./pages/attraction/ViewAttraction";
 import Tags from "./pages/tags/Tags";
+import MapDirecion from "./pages/mapDirection/MapDirection";
 
 class Routes extends Component {
   render() {
@@ -16,6 +17,7 @@ class Routes extends Component {
       <BrowserRouter>
         <Switch>
         <Route path="/map" component={MapView}/>
+        <Route path="/path/:origin/:destination/:markers" component={MapDirecion}/>
           <Route path="/trips/:id" component={ViewTrip} />
           <Route path="/attractions/:day/:id" component={ViewAttraction} />
           <Route path="/profile" component={Profile} />

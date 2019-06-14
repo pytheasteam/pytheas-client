@@ -26,10 +26,11 @@
     "react-native-maps": "^0.24.2",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.0",
     "react-select": "^3.0.4",
     "react-skeleton-loader": "^1.0.4",
+    "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },

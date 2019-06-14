@@ -83,8 +83,14 @@
 }
 .routes{
     float: left;
-    width: 70%;
+    width: 90%;
     margin-top: 21px;
+    .set-loaction{
+        color: rgba(255, 83, 71, 0.7);
+        font-size: 14px;
+        float: right;
+        padding-top: 8px;
+    }
     > img{
         float: left;
         width: 24px;
