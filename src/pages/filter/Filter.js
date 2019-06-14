@@ -10,6 +10,7 @@ import "./Filter.scss";
 import Fab from "@material-ui/core/Fab";
 import moment from "moment";
 import { connect } from "react-redux";
+import { clearTrips } from "../../actions/tripAction";
 
 const iconStyle = {
   marginRight: "4px",
@@ -140,6 +141,7 @@ export class Filter extends Component {
           size="medium"
           style={fabStyle}
           onClick={() => {
+            this.props.clearTrips();
             this.props.history.push(
               `/explore?city=${this.state.destination}&price=${
                 this.state.price
@@ -159,10 +161,11 @@ export class Filter extends Component {
 
 const mapStateToProps = state => ({
   user: state.user.token,
-  profile: state.profile
+  profile: state.profile,
+  trips: state.trips
 });
 
 export default connect(
   mapStateToProps,
-  {}
+  { clearTrips }
 )(Filter);

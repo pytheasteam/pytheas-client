@@ -7,7 +7,54 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export class Flight extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reservationMode: false,
+      confirmationNumber: ""
+    };
+  }
+  getReservation = () => {
+    this.setState({ reservationMode: true });
+  };
+
+  handleChange = e => {
+    this.setState({ confirmationNumber: e.target.value });
+  };
+
   render() {
+    const orderTicket = (
+      <div className="order-ticket">
+        <div className="price">
+          <p className="price-header">Price</p>
+          <p className="price-content">{this.props.price}€</p>
+        </div>
+        <div className="order">
+          <p className="order-text">
+            <a
+              href={this.props.link}
+              onClick={this.getReservation}
+              target="_blank"
+            >
+              ORDER
+            </a>
+          </p>
+        </div>
+      </div>
+    );
+    const reservation = (
+      <div className="reservation">
+        <input
+          type="text"
+          placeholder="Enter reservation number"
+          name="reservation"
+          className="reservation-number"
+        />
+        <div className="confirm">
+          <p className="confirm-text">Confirm</p>
+        </div>
+      </div>
+    );
     return (
       <div className="flight">
         <div className="time-info-container">
@@ -45,19 +92,7 @@ export class Flight extends Component {
               <p className="city-name">San Francisco</p>
             </div>
           </div>
-          <div className="order-ticket">
-            <div className="price">
-              <p className="price-header">Price</p>
-              <p className="price-content">{this.props.price}$</p>
-            </div>
-            <div className="order">
-              <p className="order-text">
-                <a href={this.props.link} target="_blank">
-                  ORDER
-                </a>
-              </p>
-            </div>
-          </div>
+          {this.state.reservationMode ? reservation : orderTicket}
         </div>
       </div>
     );

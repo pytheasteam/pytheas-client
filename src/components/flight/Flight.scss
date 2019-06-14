@@ -77,6 +77,41 @@
       }
     }
 
+    & .reservation {
+      top: 123pt;
+      width: 90%;
+      height: 126pt;
+      background: white;
+      box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      & .reservation-number {
+        height: 30pt;
+        width: 70%;
+        text-align: center;
+        border-color: rgba(255, 83, 71, 0.19);
+      }
+      & .confirm {
+        width: 100pt;
+        height: 30pt;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        bottom: -10pt;
+        color: white;
+        border-radius: 28pt;
+        background: #ff5347;
+
+        & .confirm-text {
+          margin: 11px;
+        }
+      }
+    }
+
     & .order-ticket {
       top: 123pt;
       width: 90%;
