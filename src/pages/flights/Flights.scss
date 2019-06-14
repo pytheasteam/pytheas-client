@@ -26,5 +26,22 @@
 
   & .flight {
     margin-top: 6vh;
+    margin-bottom: 580px;
+    position: relative;
+  }
+
+  & .more-flights {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    bottom: 42pt;
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+    border: none;
+    text-align: center;
+    height: 40pt;
+    display: flex;
+    color: white;
+    border-radius: 34px;
+    flex-flow: column;
   }
 }

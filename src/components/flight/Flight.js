@@ -31,7 +31,7 @@ export class Flight extends Component {
           </div>
           <div className="flight-time">
             <p className="flight-time-title">Flight Time</p>
-            <p className="hours">2h 30m</p>
+            <p className="hours">{this.props.duration}</p>
           </div>
         </div>
         <div className="flight-info-container">
@@ -48,10 +48,14 @@ export class Flight extends Component {
           <div className="order-ticket">
             <div className="price">
               <p className="price-header">Price</p>
-              <p className="price-content">500 $</p>
+              <p className="price-content">{this.props.price}$</p>
             </div>
             <div className="order">
-              <p className="order-text">ORDER</p>
+              <p className="order-text">
+                <a href={this.props.link} target="_blank">
+                  ORDER
+                </a>
+              </p>
             </div>
           </div>
         </div>

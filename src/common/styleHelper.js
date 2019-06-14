@@ -6,7 +6,7 @@ export const removeBg = bgClass => {
 };
 
 export const upperFistLetter = word =>
-  word.replace(/^\w/, c => c.toUpperCase());
+  word && word.replace(/^\w/, c => c.toUpperCase());
 
 export const tagIcons = {
   music: "musical-notes",

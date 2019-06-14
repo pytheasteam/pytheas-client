@@ -21,7 +21,6 @@ export class ExploreTrip extends Component {
     };
   }
   render() {
-    console.log(this.props.attractions);
     let attractionLen = this.props.attractions.reduce(
       (attractions, day) => attractions + day.length,
       0
