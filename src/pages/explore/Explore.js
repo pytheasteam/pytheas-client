@@ -4,7 +4,12 @@ import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { fetchTrips, selectTrip, fetchExplore } from "../../actions/tripAction";
+import {
+  fetchTrips,
+  selectTrip,
+  fetchExplore,
+  clearTrips
+} from "../../actions/tripAction";
 import "./Explore.scss";
 import ExploreTrip from "../../components/exploreTrip/ExploreTrip";
 
@@ -16,6 +21,7 @@ export class Explore extends Component {
   componentDidMount() {
     document.body.className += " explore-bg";
     const queryString = this.props.location.search;
+    this.props.clearTrips();
     this.props.fetchExplore(queryString);
   }
 
@@ -70,6 +76,7 @@ export default connect(
     selectProfile,
     fetchTrips,
     selectTrip,
-    fetchExplore
+    fetchExplore,
+    clearTrips
   }
 )(Explore);

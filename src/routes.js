@@ -8,6 +8,7 @@ import Filter from "./pages/filter/Filter";
 import ViewTrip from "./pages/trip/ViewTrip";
 import ViewAttraction from "./pages/attraction/ViewAttraction";
 import Tags from "./pages/tags/Tags";
+import Flights from "./pages/flights/Flights";
 
 class Routes extends Component {
   render() {
@@ -20,9 +21,8 @@ class Routes extends Component {
           <Route path="/new-profile" component={Tags} />
           <Route path="/filter" component={Filter} />
           <Route path="/login" component={Login} />
-
           <Route path="/explore" component={Explore} />
-
+          <Route path="/flights" component={Flights} />
           <Route exac path="/" component={Main} />
           <Route path="/*" component={Explore} />
         </Switch>

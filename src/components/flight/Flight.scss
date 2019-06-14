@@ -1,0 +1,254 @@
+.flights-bg {
+  background-color: #f7f7f7;
+}
+
+.flight {
+  display: flex;
+  flex-flow: row;
+  align-content: center;
+  position: relative;
+  justify-content: center;
+
+  & .flight-info-container {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+
+    & .destination {
+      top: 123pt;
+      width: 90%;
+      display: flex;
+      height: 126pt;
+      background: linear-gradient(to bottom right, #ff5347, #fe784d 100% 100%);
+      border-radius: 12pt 12pt 0 0;
+      margin: 0 auto;
+      position: relative;
+      flex-flow: row;
+
+      & .map {
+        background: img("../../pages/assets/world.svg");
+      }
+      & .destination-from {
+        position: absolute;
+        & .city-id {
+          color: white;
+          font-weight: bold;
+          font-size: 230%;
+          font-family: "Fira Sans";
+          position: relative;
+          left: 24pt;
+          margin-bottom: 0pt;
+        }
+
+        & .city-name {
+          color: white;
+          width: 100%;
+          font-size: 100%;
+          margin: 0;
+          font-family: "Fira Sans";
+          position: relative;
+          left: 24pt;
+        }
+      }
+
+      & .destination-to {
+        position: absolute;
+        right: 50pt;
+        & .city-id {
+          color: white;
+          font-weight: bold;
+          font-size: 230%;
+          font-family: "Fira Sans";
+          position: relative;
+          left: 24pt;
+          margin-bottom: 0pt;
+        }
+
+        & .city-name {
+          color: white;
+          width: 100%;
+          font-size: 100%;
+          margin: 0;
+          font-family: "Fira Sans";
+          position: relative;
+          left: 24pt;
+        }
+      }
+    }
+
+    & .order-ticket {
+      top: 123pt;
+      width: 90%;
+      height: 126pt;
+      background: white;
+      box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      & .price {
+        & .price-header {
+          font-family: "Roboto";
+          font-weight: bolder;
+          font-size: 160%;
+          margin: 0pt;
+        }
+
+        & .price-content {
+          color: #ff5347;
+          font-family: "Roboto";
+          font-weight: bold;
+          font-size: 110%;
+          margin: 9px;
+        }
+      }
+
+      & .order {
+        width: 100pt;
+        height: 30pt;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        bottom: -10pt;
+        color: white;
+        border-radius: 28pt;
+        background: #ff5347;
+
+        & .order-text {
+          margin: 11px;
+        }
+      }
+    }
+  }
+  & .time-info-container {
+    position: absolute;
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+
+    & .departure {
+      border-radius: 50%;
+      color: white;
+      width: 14vh;
+      display: flex;
+      position: relative;
+      height: 14vh;
+      background: linear-gradient(to right, #fe784d 100%, #ff5347 100%);
+      left: 5%;
+      flex-flow: column;
+
+      & .icon-departure {
+        position: relative;
+        margin: 0 auto;
+        top: 17pt;
+        font-size: 126%;
+      }
+
+      & .departure-name {
+        position: relative;
+        margin: 19% auto;
+        top: 1vh;
+        font-size: 90%;
+        font-family: "Roboto";
+        font-weight: bold;
+      }
+
+      & .at {
+        position: relative;
+        top: 34%;
+        left: 0;
+        margin: 0 auto;
+        font-family: "Roboto";
+        font-weight: bold;
+        font-size: 80%;
+        color: #9db1d5;
+
+        & .time {
+          color: #ff4357;
+        }
+      }
+    }
+
+    & .line {
+      border-style: none none dashed none;
+      width: 15vh;
+      color: #ff4357;
+      position: absolute;
+      top: 7vh;
+      left: 21vh;
+    }
+
+    & .arrival {
+      display: flex;
+      flex-flow: column;
+      border-radius: 50%;
+      color: white;
+      width: 14vh;
+      height: 14vh;
+      position: absolute;
+      background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+      right: 5%;
+
+      & .icon-arrival {
+        position: relative;
+        margin: 0 auto;
+        top: 17pt;
+        font-size: 126%;
+      }
+
+      & .arrival-name {
+        position: relative;
+        margin: 19% auto;
+        top: 1vh;
+        font-size: 90%;
+        font-family: "Roboto";
+        font-weight: bold;
+      }
+
+      & .at {
+        position: relative;
+        top: 34%;
+        left: 0;
+        margin: 0 auto;
+        font-family: "Roboto";
+        font-weight: bold;
+        font-size: 80%;
+        color: #9db1d5;
+        & .time {
+          color: #ff4357;
+        }
+      }
+    }
+
+    & .flight-time {
+      position: absolute;
+      height: 39pt;
+      width: 35%;
+      top: 12vh;
+      right: 33%;
+      border-radius: 38pt;
+      background: #ff5347;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+
+      & .flight-time-title {
+        color: white;
+        margin: 0px auto;
+        position: relative;
+        font-family: "Roboto";
+        top: 15px;
+      }
+
+      & .hours {
+        color: white;
+        font-family: "Roboto";
+        font-weight: bolder;
+      }
+    }
+  }
+}

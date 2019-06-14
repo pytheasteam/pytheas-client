@@ -1,0 +1,30 @@
+.flights {
+  & .header {
+    position: relative;
+    width: 100%;
+    height: 48pt;
+    text-align: center;
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+
+    .title {
+      position: relative;
+      font-family: "Roboto";
+      font-weight: bold;
+      color: white;
+      z-index: 1;
+      font-size: 17pt;
+      bottom: 35pt;
+    }
+
+    .back-btn {
+      color: white;
+      position: absolute;
+      left: 0;
+      top: 8px;
+    }
+  }
+
+  & .flight {
+    margin-top: 6vh;
+  }
+}
