@@ -27,7 +27,7 @@ export class ExploreTrip extends Component {
       0
     );
     return (
-      <div className="explore-trip">
+      <div className="explore-trip" onClick={() => this.props.viewTrip()}>
         <div className="picture" />
         <div className="trip-info">
           <p className="trip-name">Trip to {this.props.city}</p>

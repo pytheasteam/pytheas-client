@@ -4,18 +4,11 @@ import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { fetchTrips } from "../../actions/tripAction";
+import { fetchTrips, selectTrip, fetchExplore } from "../../actions/tripAction";
 import "./Explore.scss";
 import ExploreTrip from "../../components/exploreTrip/ExploreTrip";
-import PytheasApi from "../../api/Api";
 
 export class Explore extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      trips: []
-    };
-  }
   componentWillUnmount() {
     removeBg("explore-bg");
   }
@@ -23,9 +16,7 @@ export class Explore extends Component {
   componentDidMount() {
     document.body.className += " explore-bg";
     const queryString = this.props.location.search;
-    PytheasApi.get("/explore", queryString).then(trips =>
-      this.setState({ trips })
-    );
+    this.props.fetchExplore(queryString);
   }
 
   render() {
@@ -43,7 +34,7 @@ export class Explore extends Component {
           </IonToolbar>
           <p className="title">Explore</p>
         </div>
-        {this.state.trips.map((trip, i) => {
+        {this.props.trips.trips.map((trip, i) => {
           return (
             <ExploreTrip
               key={i}
@@ -52,6 +43,10 @@ export class Explore extends Component {
               currency={trip.currency}
               days={trip.days}
               attractions={trip.places}
+              viewTrip={() => {
+                this.props.history.push(`/trips/${i}`);
+                this.props.selectTrip(trip);
+              }}
             />
           );
         })}
@@ -63,11 +58,18 @@ export class Explore extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user.token,
-    trips: state.trips
+    trips: state.trips,
+    explore: state.explore
   };
 };
 
 export default connect(
   mapStateToProps,
-  { login, selectProfile, fetchTrips }
+  {
+    login,
+    selectProfile,
+    fetchTrips,
+    selectTrip,
+    fetchExplore
+  }
 )(Explore);

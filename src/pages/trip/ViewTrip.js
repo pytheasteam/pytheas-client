@@ -64,7 +64,7 @@ export class ViewTrip extends Component {
         <div className="trip-picture" />
         <div className="trip-info">
           <div className="days-info">
-            <p className="number">{calculateDays}</p>
+            <p className="number">{trip.days || calculateDays}</p>
             <p className="days">DAYS</p>
           </div>
           <div className="places-info">

@@ -20,7 +20,9 @@ class Routes extends Component {
           <Route path="/new-profile" component={Tags} />
           <Route path="/filter" component={Filter} />
           <Route path="/login" component={Login} />
+
           <Route path="/explore" component={Explore} />
+
           <Route exac path="/" component={Main} />
           <Route path="/*" component={Explore} />
         </Switch>
