@@ -1,6 +1,6 @@
 const serverApi = "https://pytheas-server.herokuapp.com/api";
 const serverLogin = "https://pytheas-server.herokuapp.com/login";
-//   "https://pytheas-server.herokuapp.com/api";
+
 const localhostApi = "http://127.0.0.1:5000/api";
 const localhostLogin = "http://127.0.0.1:5000/login";
 
