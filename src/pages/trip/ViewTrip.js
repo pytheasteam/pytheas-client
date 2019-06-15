@@ -58,48 +58,52 @@ export class ViewTrip extends Component {
 
           <p className="trip-name">Trip to {trip.city}</p>
         </div>
-        <button className="go-to-map">
-          <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
-        </button>
-        <div className="trip-picture" />
-        <div className="trip-info">
-          <div className="days-info">
-            <p className="number">{trip.days || calculateDays}</p>
-            <p className="days">DAYS</p>
-          </div>
-          <div className="places-info">
-            <p className="number">{attractionLen}</p>
-            <p className="places">PLACES</p>
-          </div>
-          <div
-            className="hotels-info"
-            onClick={() => this.props.history.push("/hotels")}
-          >
-            <p className="hotel-icon">
-              <FontAwesomeIcon icon={faBed} />
-            </p>
-            <p className="hotels">HOTELS</p>
-          </div>
-          <div
-            className="flights-info"
-            onClick={() => this.props.history.push("/flights")}
-          >
-            <p className="plane">
-              <FontAwesomeIcon icon={faPlane} />
-            </p>
-            <p className="flights">FLIGHTS</p>
+        <div className="view-trip-header">
+          <button className="go-to-map">
+            <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
+          </button>
+          <div className="trip-picture" />
+          <div className="trip-info">
+            <div className="days-info">
+              <p className="number">{trip.days || calculateDays}</p>
+              <p className="days">DAYS</p>
+            </div>
+            <div className="places-info">
+              <p className="number">{attractionLen}</p>
+              <p className="places">PLACES</p>
+            </div>
+            <div
+              className="hotels-info"
+              onClick={() => this.props.history.push("/hotels")}
+            >
+              <p className="hotel-icon">
+                <FontAwesomeIcon icon={faBed} />
+              </p>
+              <p className="hotels">HOTELS</p>
+            </div>
+            <div
+              className="flights-info"
+              onClick={() => this.props.history.push("/flights")}
+            >
+              <p className="plane">
+                <FontAwesomeIcon icon={faPlane} />
+              </p>
+              <p className="flights">FLIGHTS</p>
+            </div>
           </div>
         </div>
-        {trip.places.map((day, i) => {
-          return (
-            <DayTrip
-              key={i}
-              attractions={day}
-              day={i}
-              viewAttraction={this.viewAttraction}
-            />
-          );
-        })}
+        <div className="trips-container">
+          {trip.places.map((day, i) => {
+            return (
+              <DayTrip
+                key={i}
+                attractions={day}
+                day={i}
+                viewAttraction={this.viewAttraction}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

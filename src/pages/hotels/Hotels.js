@@ -101,7 +101,7 @@ export class Hotels extends Component {
           </IonToolbar>
           <p className="title">Hotel</p>
         </div>
-        {hotel}
+        <div className="hotels-container">{hotel}</div>
         {booking}
       </div>
     );

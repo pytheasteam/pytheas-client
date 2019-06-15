@@ -8,12 +8,24 @@
   justify-content: center;
   align-content: center;
 
-  & .header {
+  & .trips-container {
     position: relative;
+    top: 42pt;
+  }
+
+  & .view-trip-header {
+    position: relative;
+    top: 48pt;
+  }
+
+  & .header {
+    position: fixed;
     width: 100%;
+    z-index: 3;
     height: 48pt;
     text-align: center;
     background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+    top: 0;
 
     .trip-name {
       position: relative;
@@ -43,7 +55,7 @@
     box-shadow: 0pt 1pt 4pt rgba(0, 0, 0, 0.16);
     left: 4%;
     background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
-    top: 62pt;
+    top: 15pt;
 
     .icon {
       position: relative;

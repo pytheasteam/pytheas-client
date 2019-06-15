@@ -34,22 +34,24 @@ export class Explore extends Component {
           </IonToolbar>
           <p className="title">Explore</p>
         </div>
-        {this.props.trips.trips.map((trip, i) => {
-          return (
-            <ExploreTrip
-              key={i}
-              city={trip.destination}
-              price={trip.price}
-              currency={trip.currency}
-              days={trip.days}
-              attractions={trip.places}
-              viewTrip={() => {
-                this.props.history.push(`/trips/${i}`);
-                this.props.selectTrip(trip);
-              }}
-            />
-          );
-        })}
+        <div className="explore-trip-container">
+          {this.props.trips.trips.map((trip, i) => {
+            return (
+              <ExploreTrip
+                key={i}
+                city={trip.destination}
+                price={trip.price}
+                currency={trip.currency}
+                days={trip.days}
+                attractions={trip.places}
+                viewTrip={() => {
+                  this.props.history.push(`/trips/${i}`);
+                  this.props.selectTrip(trip);
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
