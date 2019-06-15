@@ -21,7 +21,8 @@ export class Flights extends Component {
   }
   render() {
     const allFlights =
-      Object.keys(this.props.trips.trip).length > 0
+      Object.keys(this.props.trips.trip).length > 0 &&
+      this.props.trips.trip.explore === true
         ? this.props.trips.trip.flights.map((flight, i) => {
             return (
               <Flight

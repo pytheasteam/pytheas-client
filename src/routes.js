@@ -9,7 +9,7 @@ import ViewTrip from "./pages/trip/ViewTrip";
 import ViewAttraction from "./pages/attraction/ViewAttraction";
 import Tags from "./pages/tags/Tags";
 import Flights from "./pages/flights/Flights";
-import { Hotels } from "./pages/hotels/Hotels";
+import Hotels from "./pages/hotels/Hotels";
 
 class Routes extends Component {
   render() {
