@@ -5,6 +5,9 @@ export const login = () => dispatch => {
   console.log("login to google...");
   fetch(LOGIN_PATH, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       email: "user.test@example.com",
       full_name: "userTest",
