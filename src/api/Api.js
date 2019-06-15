@@ -1,11 +1,10 @@
-import { API_BASE } from "./consts";
+import { API_BASE, MOCK_MODE } from "./consts";
 import querystring from "querystring";
 import { exploreMock } from "../mock/exploreMock";
 import { TRIP_MOCK } from "../mock/tripMock";
 import { profileMock } from "../mock/profileMock";
 import { Plugins } from "@capacitor/core";
 
-const MOCK_MODE = true;
 const ROUTES = {
   "/explore": exploreMock,
   "/trip": TRIP_MOCK,
