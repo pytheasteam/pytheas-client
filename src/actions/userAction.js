@@ -1,5 +1,14 @@
 import { GOOGLE_LOGIN } from "../actions/types";
 import { LOGIN_PATH } from "../api/consts";
+import { Plugins } from "@capacitor/core";
+
+const { Storage } = Plugins;
+async function updateToken(token) {
+  await Storage.set({
+    key: "token",
+    value: token
+  });
+}
 
 export const login = () => dispatch => {
   console.log("login to google...");
@@ -16,7 +25,7 @@ export const login = () => dispatch => {
   })
     .then(res => res.json())
     .then(body => {
-      localStorage.setItem("token", body.token);
+      updateToken(body.token);
       return dispatch({ type: GOOGLE_LOGIN, payload: body.token });
     });
 };

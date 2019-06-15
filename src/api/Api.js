@@ -3,6 +3,7 @@ import querystring from "querystring";
 import { exploreMock } from "../mock/exploreMock";
 import { TRIP_MOCK } from "../mock/tripMock";
 import { profileMock } from "../mock/profileMock";
+import { Plugins } from "@capacitor/core";
 
 const MOCK_MODE = true;
 const ROUTES = {
@@ -11,9 +12,14 @@ const ROUTES = {
   "/profile": profileMock
 };
 
+const { Storage } = Plugins;
+async function getToken() {
+  return await Storage.get({ key: "token" });
+}
+
 export class PytheasApi {
   static getAuth() {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     return token;
   }
   static async get(route, queryParams) {
