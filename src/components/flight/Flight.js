@@ -58,13 +58,14 @@ export class Flight extends Component {
     return (
       <div className="flight">
         <div className="time-info-container">
+          <div className="devider" />
           <div className="departure">
             <div className="icon-departure">
               <FontAwesomeIcon icon={faPlaneDeparture} />
             </div>
             <p className="departure-name">Departure</p>
             <p className="at">
-              At <span className="time">7:00</span>
+              At <span className="time">{this.props.departureTime}</span>
             </p>
           </div>
           <div className="arrival">
@@ -73,7 +74,7 @@ export class Flight extends Component {
             </div>
             <p className="arrival-name">Arrival</p>
             <p className="at">
-              At <span className="time">7:00</span>
+              At <span className="time">{this.props.arrivalTime}</span>
             </p>
           </div>
           <div className="flight-time">
@@ -84,12 +85,12 @@ export class Flight extends Component {
         <div className="flight-info-container">
           <div className="destination">
             <div className="destination-from">
-              <p className="city-id">NYC</p>
-              <p className="city-name">New York</p>
+              <p className="city-id">{this.props.fromCode}</p>
+              <p className="city-name">{this.props.from}</p>
             </div>
             <div className="destination-to">
-              <p className="city-id">SFO</p>
-              <p className="city-name">San Francisco</p>
+              <p className="city-id">{this.props.destinationCode}</p>
+              <p className="city-name">{this.props.destination}</p>
             </div>
           </div>
           {this.state.reservationMode ? reservation : orderTicket}

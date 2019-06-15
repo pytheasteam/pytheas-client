@@ -1,0 +1,124 @@
+.hotels-bg {
+  background-color: #f7f7f7;
+}
+
+.hotels {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+
+  & .header {
+    position: relative;
+    width: 100%;
+    height: 48pt;
+    text-align: center;
+    background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
+
+    .title {
+      position: relative;
+      font-family: "Roboto";
+      font-weight: bold;
+      color: white;
+      z-index: 1;
+      font-size: 17pt;
+      bottom: 35pt;
+    }
+
+    .back-btn {
+      color: white;
+      position: absolute;
+      left: 0;
+      top: 8px;
+    }
+  }
+
+  & .hotel-picture {
+    height: 220pt;
+    width: 100%;
+    background: black;
+  }
+
+  & .hotel-name {
+    position: relative;
+    left: 10pt;
+
+    & .name {
+      font-size: 140%;
+      font-family: "Roboto";
+      font-weight: bold;
+      margin: 20pt 0 0 0;
+    }
+
+    & .hotel-address {
+      font-size: 116%;
+      margin: 8pt 0 0 0;
+    }
+  }
+  & .hotel-info {
+    display: flex;
+    flex-flow: row;
+    & .price-container {
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      left: 11pt;
+      top: 4pt;
+      & .price-title {
+        position: relative;
+        color: #969696;
+      }
+
+      & .price {
+        margin: 0;
+        position: relative;
+        bottom: 8pt;
+        font-size: 120%;
+        font-weight: bolder;
+      }
+    }
+
+    & .rate-container {
+      display: flex;
+      flex-flow: column;
+      position: relative;
+      left: 12%;
+      top: 18pt;
+      & .rate {
+        margin: 0;
+        bottom: 2pt;
+        color: #969696;
+        position: relative;
+      }
+      & .stars {
+        margin: 0;
+        position: relative;
+        font-size: 120%;
+        color: #ffd247;
+        font-weight: bolder;
+      }
+    }
+  }
+
+  & .book {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    bottom: 26pt;
+    background: #ff5347;
+    height: 39pt;
+    left: 50%;
+    border-radius: 30pt;
+    margin-left: -25.5%;
+    position: fixed;
+
+    & p {
+      font-size: 120%;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+  }
+}

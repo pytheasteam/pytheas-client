@@ -1,5 +1,15 @@
 import { API_BASE } from "./consts";
 import querystring from "querystring";
+import { exploreMock } from "../mock/exploreMock";
+import { TRIP_MOCK } from "../mock/tripMock";
+import { profileMock } from "../mock/profileMock";
+
+const MOCK_MODE = true;
+const ROUTES = {
+  "/explore": exploreMock,
+  "/trip": TRIP_MOCK,
+  "/profile": profileMock
+};
 
 export class PytheasApi {
   static getAuth() {
@@ -7,6 +17,9 @@ export class PytheasApi {
     return token;
   }
   static async get(route, queryParams) {
+    if (MOCK_MODE) {
+      return ROUTES[route];
+    }
     const token = PytheasApi.getAuth();
 
     let endpoint = API_BASE + route;

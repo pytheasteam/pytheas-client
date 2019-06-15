@@ -26,10 +26,12 @@ export class Flights extends Component {
             return (
               <Flight
                 key={i}
-                destination={flight.to}
-                from={flight.from}
+                destination={flight.to_city}
+                destinationCode={flight.to_city_code}
+                from={flight.from_city}
+                fromCode={flight.from_city_code}
                 arrivalTime={flight.arrival_time}
-                link={flight.deep_ling}
+                link={flight.link}
                 departureTime={flight.departure_time}
                 duration={flight.duration}
                 price={flight.price}

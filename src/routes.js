@@ -9,6 +9,7 @@ import ViewTrip from "./pages/trip/ViewTrip";
 import ViewAttraction from "./pages/attraction/ViewAttraction";
 import Tags from "./pages/tags/Tags";
 import Flights from "./pages/flights/Flights";
+import { Hotels } from "./pages/hotels/Hotels";
 
 class Routes extends Component {
   render() {
@@ -23,6 +24,7 @@ class Routes extends Component {
           <Route path="/login" component={Login} />
           <Route path="/explore" component={Explore} />
           <Route path="/flights" component={Flights} />
+          <Route path="/hotels" component={Hotels} />
           <Route exac path="/" component={Main} />
           <Route path="/*" component={Explore} />
         </Switch>

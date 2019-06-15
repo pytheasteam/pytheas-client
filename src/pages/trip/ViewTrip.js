@@ -71,7 +71,10 @@ export class ViewTrip extends Component {
             <p className="number">{attractionLen}</p>
             <p className="places">PLACES</p>
           </div>
-          <div className="hotels-info">
+          <div
+            className="hotels-info"
+            onClick={() => this.props.history.push("/hotels")}
+          >
             <p className="hotel-icon">
               <FontAwesomeIcon icon={faBed} />
             </p>

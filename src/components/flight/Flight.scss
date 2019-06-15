@@ -168,7 +168,8 @@
     display: flex;
     flex-flow: row;
     width: 100%;
-
+    & .devider {
+    }
     & .departure {
       border-radius: 50%;
       color: white;
