@@ -24,15 +24,19 @@
     }
   }
 
+  & .flights-container {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    bottom: 61pt;
+  }
+
   & .flight {
-    margin-top: 6vh;
-    margin-bottom: 580px;
+    margin-top: 96pt;
     position: relative;
   }
 
   & .more-flights {
-    position: fixed;
-    margin: 0 auto;
     width: 90%;
     left: 50%;
     margin-left: -45%;
@@ -44,5 +48,6 @@
     color: white;
     border-radius: 34px;
     flex-flow: column;
+    position: relative;
   }
 }
