@@ -25,13 +25,19 @@ export class Main extends Component {
     removeBg("main-bg");
   }
 
+  async checkAuth() {
+    let token = await PytheasApi.getAuth();
+    if (!token) this.props.history.push("/login");
+    this.fetchTrips();
+  }
+
   componentDidMount() {
     document.body.className += " main-bg";
     this.props.clearTrips();
+    this.checkAuth();
+  }
+  fetchTrips() {
     this.props.fetchTrips();
-    if (!PytheasApi.getAuth()) {
-      this.props.history.push("/login");
-    }
   }
 
   render() {

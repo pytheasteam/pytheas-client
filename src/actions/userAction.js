@@ -1,6 +1,7 @@
 import { GOOGLE_LOGIN } from "../actions/types";
 import { LOGIN_PATH } from "../api/consts";
 import { Plugins } from "@capacitor/core";
+import PytheasApi from "../api/Api";
 
 const { Storage } = Plugins;
 async function updateToken(token) {
@@ -24,8 +25,8 @@ export const login = () => dispatch => {
     })
   })
     .then(res => res.json())
-    .then(body => {
-      updateToken(body.token);
+    .then(async body => {
+      await updateToken(body.token);
       return dispatch({ type: GOOGLE_LOGIN, payload: body.token });
     });
 };

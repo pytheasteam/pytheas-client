@@ -14,13 +14,11 @@ class Login extends Component {
   componentWillUnmount() {
     removeBg("gradient-bg");
   }
-
+  componentDidUpdate(prevProps) {
+    if (this.props.user) this.props.history.push("/");
+  }
   componentDidMount() {
     document.body.className += " gradient-bg";
-    if (this.props.user) {
-      window.history.back();
-      return null;
-    }
   }
 
   render() {
@@ -29,16 +27,14 @@ class Login extends Component {
         <img alt="logo" src={logo} />
         <br />
         <div className="login-button-wrapper">
-          <Link to="/">
-            <IonButton onClick={this.props.login} className="login-button">
-              <IonIcon
-                slot="start"
-                name="logo-google"
-                className="login-logo-google"
-              />
-              Connect With Google
-            </IonButton>
-          </Link>
+          <IonButton onClick={this.props.login} className="login-button">
+            <IonIcon
+              slot="start"
+              name="logo-google"
+              className="login-logo-google"
+            />
+            Connect With Google
+          </IonButton>
         </div>
       </div>
     );

@@ -14,19 +14,20 @@ const ROUTES = {
 
 const { Storage } = Plugins;
 async function getToken() {
-  return await Storage.get({ key: "token" });
+  const ret = await Storage.get({ key: "token" });
+  return ret.value;
 }
 
 export class PytheasApi {
-  static getAuth() {
-    const token = getToken();
+  static async getAuth() {
+    const token = await getToken();
     return token;
   }
   static async get(route, queryParams) {
     if (MOCK_MODE) {
       return ROUTES[route];
     }
-    const token = PytheasApi.getAuth();
+    const token = await PytheasApi.getAuth();
 
     let endpoint = API_BASE + route;
 

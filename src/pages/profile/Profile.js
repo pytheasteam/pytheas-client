@@ -21,10 +21,13 @@ export class Profile extends Component {
     removeBg("gradient-bg");
   }
 
-  fetchData() {
-    PytheasApi.get("/profile")
+  async fetchData() {
+    await PytheasApi.get("/profile")
       .then(body => this.setState({ profiles: body.profiles }))
-      .catch(err => this.props.history.push("/login"));
+      .catch(err => {
+        console.log("error:", err);
+        this.props.history.push("/login");
+      });
   }
 
   componentDidMount() {
