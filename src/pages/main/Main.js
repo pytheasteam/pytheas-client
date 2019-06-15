@@ -3,7 +3,7 @@ import { IonFab, IonList, IonFabButton, IonIcon } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { fetchTrips, selectTrip } from "../../actions/tripAction";
+import { fetchTrips, selectTrip, clearTrips } from "../../actions/tripAction";
 import Trip from "../../components/trip/Trip";
 import { Link } from "react-router-dom";
 import "./Main.scss";
@@ -27,6 +27,7 @@ export class Main extends Component {
 
   componentDidMount() {
     document.body.className += " main-bg";
+    this.props.clearTrips();
     this.props.fetchTrips();
     if (!PytheasApi.getAuth()) {
       this.props.history.push("/login");
@@ -81,5 +82,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { login, selectProfile, fetchTrips, selectTrip }
+  { login, selectProfile, fetchTrips, selectTrip, clearTrips }
 )(Main);
