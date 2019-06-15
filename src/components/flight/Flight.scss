@@ -4,16 +4,16 @@
 
 .flight {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   align-content: center;
   position: relative;
   justify-content: center;
 
   & .flight-info-container {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-flow: column;
-    width: 100%;
+    bottom: 81pt;
 
     & .destination {
       top: 123pt;
@@ -166,7 +166,7 @@
     }
   }
   & .time-info-container {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-flow: row;
     width: 100%;
