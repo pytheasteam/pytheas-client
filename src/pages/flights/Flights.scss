@@ -31,14 +31,13 @@
   }
 
   & .more-flights {
-    position: absolute;
+    position: fixed;
     margin: 0 auto;
-    width: 78%;
-    bottom: 42pt;
+    width: 90%;
+    left: 50%;
+    margin-left: -45%;
     background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
     border: none;
-    left: 50%;
-    margin-left: -38%;
     text-align: center;
     height: 40pt;
     display: flex;
