@@ -3,7 +3,7 @@ import { LOGIN_PATH } from "../api/consts";
 
 export const login = () => dispatch => {
   console.log("login to google...");
-  fetch(LOGIN_PATH, {
+  fetch("http://ec2-35-180-205-235.eu-west-3.compute.amazonaws.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
