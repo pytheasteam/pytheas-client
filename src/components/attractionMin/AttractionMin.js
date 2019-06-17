@@ -21,7 +21,13 @@ export class AttractionMin extends Component {
           this.props.viewAttraction(this.props.day, this.props.attractionId)
         }
       >
-        <div className="trip-picture" />
+        <div
+          className="trip-picture"
+          style={{
+            background: `url(${this.props.img || "https://picsum.photos/35"})`,
+            backgroundSize: "cover"
+          }}
+        />
         <p aria-labelledby={attractionName} className="city-name">
           {this.formatName(attractionName)}
         </p>

@@ -16,6 +16,7 @@ export class DayTrip extends Component {
               attractionId={i}
               viewAttraction={this.props.viewAttraction}
               city={attraction.name}
+              img={attraction.photo_url}
             />
           );
         })}

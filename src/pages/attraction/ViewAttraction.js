@@ -47,7 +47,14 @@ export class ViewAttraction extends Component {
         <button className="go-to-map">
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
         </button>
-        <div className="trip-picture" />
+        <div
+          className="trip-picture"
+          style={{
+            background: `url(${attraction.photo_url ||
+              "https://picsum.photos/35"})`,
+            backgroundSize: "cover"
+          }}
+        />
         <div className="description-container">
           <p className="title">Description</p>
           <p className="description">{attraction.description}</p>

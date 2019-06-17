@@ -16,7 +16,9 @@ export class Explore extends Component {
   componentDidMount() {
     document.body.className += " explore-bg";
     const queryString = this.props.location.search;
-    this.props.fetchExplore(queryString);
+    if (!this.props.trips.trips.length > 0) {
+      this.props.fetchExplore(queryString);
+    }
   }
 
   render() {

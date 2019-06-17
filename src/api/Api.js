@@ -54,7 +54,7 @@ export class PytheasApi {
   }
 
   static async post(route, body) {
-    const token = this.getAuth();
+    const token = await PytheasApi.getAuth();
     let endpoint = API_BASE + route;
     return await new Promise(function(resolve, reject) {
       fetch(endpoint, {
