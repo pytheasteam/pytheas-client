@@ -1,0 +1,30 @@
+.map-attraction {
+  & .attraction-header {
+    display: flex;
+    flex-flow: row;
+    & .attraction-img {
+      width: 34pt;
+      background: url(https://picsum.photos/113);
+      height: 34pt;
+      border-radius: 50%;
+      background-size: cover;
+      position: relative;
+      top: 15pt;
+      left: 12pt;
+    }
+
+    & .title {
+      left: 23pt;
+      top: 5pt;
+      font-weight: bold;
+      position: relative;
+    }
+  }
+
+  & .address {
+    left: 55pt;
+    bottom: 16pt;
+    position: relative;
+    width: 75%;
+  }
+}
