@@ -59,7 +59,12 @@ export class ViewTrip extends Component {
           <p className="trip-name">Trip to {trip.city}</p>
         </div>
         <div className="view-trip-header">
-          <button className="go-to-map">
+          <button
+            className="go-to-map"
+            onClick={() =>
+              this.props.history.push(`/map/${this.props.match.params.id}`)
+            }
+          >
             <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
           </button>
           <div className="trip-picture" />
@@ -94,6 +99,9 @@ export class ViewTrip extends Component {
         </div>
         <div className="trips-container">
           {trip.places.map((day, i) => {
+            if (!day) {
+              return null;
+            }
             return (
               <DayTrip
                 key={i}

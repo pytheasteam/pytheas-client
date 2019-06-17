@@ -38,6 +38,9 @@ export class Explore extends Component {
         </div>
         <div className="explore-trip-container">
           {this.props.trips.trips.map((trip, i) => {
+            if (!trip) {
+              return null;
+            }
             return (
               <ExploreTrip
                 key={i}

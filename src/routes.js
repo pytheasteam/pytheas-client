@@ -10,12 +10,14 @@ import ViewAttraction from "./pages/attraction/ViewAttraction";
 import Tags from "./pages/tags/Tags";
 import Flights from "./pages/flights/Flights";
 import Hotels from "./pages/hotels/Hotels";
+import ViewMap from "./pages/map/ViewMap";
 
 class Routes extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
+          <Route path="/map/:tripId" component={ViewMap} />
           <Route path="/trips/:id" component={ViewTrip} />
           <Route path="/attractions/:day/:id" component={ViewAttraction} />
           <Route path="/profile" component={Profile} />

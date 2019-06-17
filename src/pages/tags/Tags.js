@@ -31,16 +31,15 @@ export class Tags extends Component {
   async getDialogInput(input) {
     const selectedTags = [];
     this.state.selectedTags.forEach(tag =>
-      selectedTags.push(this.state.tags[tag])
+      selectedTags.push(this.state.tags[tag].name)
     );
     if (input.length > 0) {
       console.log("Creating new profile (need to be checked)...");
       await PytheasApi.post("/profile", {
         name: input,
         tags: selectedTags
-      }).then(res => res.json());
+      }).then(this.props.history.push("/profile"));
     }
-    this.setState({ dialogOpen: false });
   }
   handleDialogClose() {
     this.setState({ dialogOpen: false });
