@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips } from "../../actions/tripAction";
-import GoogleMapReact from "google-map-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import MapAttraction from "../../components/mapAttraction/MapAttraction";
 
 export class ViewMap extends Component {
@@ -56,15 +56,13 @@ export class ViewMap extends Component {
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
         </button> */}
         <div className="map-view">
-          <GoogleMapReact
-            bootstrapURLKeys={{
-              key: "AIzaSyCDe3sqd5dpKRbwC37Hnu1lxIdjTqVMhtk"
-            }}
-            defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom}
+          <Map
+            google={this.props.google}
+            zoom={8}
+            initialCenter={{ lat: 47.444, lng: -122.176 }}
           >
-            <div lat={59.955413} lng={30.337844} />
-          </GoogleMapReact>
+            <Marker position={{ lat: 48.0, lng: -122.0 }} />
+          </Map>
         </div>
         <div className="attractions-container">
           {dayAttractions.map(attraction => {
@@ -90,7 +88,11 @@ const mapStateToProps = state => {
   };
 };
 
+const WrappedWithGoogleApi = GoogleApiWrapper({
+  apiKey: "AIzaSyCDe3sqd5dpKRbwC37Hnu1lxIdjTqVMhtk"
+})(ViewMap);
+
 export default connect(
   mapStateToProps,
   { login, selectProfile, fetchTrips }
-)(ViewMap);
+)(WrappedWithGoogleApi);
