@@ -8,6 +8,7 @@ import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips } from "../../actions/tripAction";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import MapAttraction from "../../components/mapAttraction/MapAttraction";
+import { GOOGLE_API_KEY } from "../../consts";
 
 export class ViewMap extends Component {
   static defaultProps = {
@@ -89,7 +90,7 @@ const mapStateToProps = state => {
 };
 
 const WrappedWithGoogleApi = GoogleApiWrapper({
-  apiKey: "AIzaSyCDe3sqd5dpKRbwC37Hnu1lxIdjTqVMhtk"
+  apiKey: GOOGLE_API_KEY
 })(ViewMap);
 
 export default connect(
