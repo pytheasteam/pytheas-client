@@ -56,7 +56,7 @@ export class ViewTrip extends Component {
             </IonButton>
           </IonToolbar>
 
-          <p className="trip-name">Trip to {trip.city}</p>
+          <p className="trip-name">Trip to {trip.city || trip.destination}</p>
         </div>
         <div className="view-trip-header">
           <button

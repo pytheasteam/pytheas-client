@@ -8,7 +8,7 @@ export class MapAttraction extends Component {
         <div className="attraction-header">
           <div
             className="attraction-img"
-            style={{ background: `url(${this.props.img})` }}
+            style={{ background: `url(${this.props.img})  0% 0% / cover` }}
           />
           <p className="title">{this.props.title}</p>
         </div>

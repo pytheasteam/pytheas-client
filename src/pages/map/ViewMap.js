@@ -36,7 +36,7 @@ export class ViewMap extends Component {
       return null;
     }
     return (
-      <div className="trip-main-page">
+      <div className="view-map">
         <div className="header">
           <IonToolbar className="toolbar-background">
             <IonButton
@@ -55,7 +55,7 @@ export class ViewMap extends Component {
         {/* <button className="go-to-map">
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
         </button> */}
-        <div className="map-view" style={{ height: "60vh", width: "100%" }}>
+        <div className="map-view">
           <GoogleMapReact
             bootstrapURLKeys={{
               key: "AIzaSyCDe3sqd5dpKRbwC37Hnu1lxIdjTqVMhtk"
@@ -63,15 +63,14 @@ export class ViewMap extends Component {
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >
-            <div lat={59.955413} lng={30.337844}>
-              marker
-            </div>
+            <div lat={59.955413} lng={30.337844} />
           </GoogleMapReact>
         </div>
         <div className="attractions-container">
           {dayAttractions.map(attraction => {
             return (
               <MapAttraction
+                key={attraction.name}
                 img={attraction.photo_url || "https://picsum.photos/113"}
                 address={attraction.address}
                 title={attraction.name}
