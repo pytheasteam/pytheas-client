@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { IonButton, IonIcon } from "@ionic/react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { removeBg } from "../../common/styleHelper";

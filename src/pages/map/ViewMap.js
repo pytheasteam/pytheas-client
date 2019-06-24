@@ -9,15 +9,16 @@ import { fetchTrips } from "../../actions/tripAction";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import MapAttraction from "../../components/mapAttraction/MapAttraction";
 import { GOOGLE_API_KEY } from "../../consts";
+import Geocode from "react-geocode";
 
 export class ViewMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      center: {},
+      attractions: []
+    };
+  }
 
   componentWillUnmount() {
     removeBg("trip-main-bg");
@@ -25,18 +26,46 @@ export class ViewMap extends Component {
 
   componentDidMount() {
     document.body.className += " trip-main-bg";
+    const tripId = this.props.match.params.tripId;
+    const attractions = this.props.trips.trips[tripId].places[0];
+    this.getCoordinatesFromAddress(attractions);
   }
 
-  getCoordinatesFromAddress() {}
+  async calculateCoords(address) {
+    Geocode.setApiKey(GOOGLE_API_KEY);
+    return await Geocode.fromAddress(address).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        return {
+          lat,
+          lng
+        };
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+  async getCoordinatesFromAddress(attractions) {
+    const locations = [];
+    await attractions.forEach(async attraction => {
+      const coord = await this.calculateCoords(attraction.address);
+      locations.push(coord);
+      this.setState({ attractions: locations, center: locations[0] });
+    });
+  }
 
   render() {
-    const trip = this.props.trips.trips[this.props.match.params.tripId];
+    const tripId = this.props.match.params.tripId;
+    const trip = this.props.trips.trips[tripId];
     const dayAttractions = trip.places[0];
     if (!trip) {
       window.history.back();
       return null;
     }
-    return (
+    console.log(this.state.attractions);
+    return Object.keys(this.state.center).length !== 0 ? (
       <div className="view-map">
         <div className="header">
           <IonToolbar className="toolbar-background">
@@ -59,10 +88,12 @@ export class ViewMap extends Component {
         <div className="map-view">
           <Map
             google={this.props.google}
-            zoom={8}
-            initialCenter={{ lat: 47.444, lng: -122.176 }}
+            zoom={13}
+            initialCenter={this.state.center}
           >
-            <Marker position={{ lat: 48.0, lng: -122.0 }} />
+            {this.state.attractions.map((attraction, i) => {
+              return <Marker key={i} position={attraction} />;
+            })}
           </Map>
         </div>
         <div className="attractions-container">
@@ -78,7 +109,7 @@ export class ViewMap extends Component {
           })}
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 
