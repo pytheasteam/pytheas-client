@@ -1,4 +1,13 @@
 .map-attraction {
+  position: relative;
+  & .route-to-next {
+    position: absolute;
+    border-left: 3px solid #ff5247;
+    height: 38px;
+    top: 55pt;
+    left: 28pt;
+    opacity: 0.1;
+  }
   & .attraction-header {
     display: flex;
     flex-flow: row;
@@ -38,5 +47,6 @@
     bottom: 16pt;
     position: relative;
     width: 75%;
+    height: 13pt;
   }
 }

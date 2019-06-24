@@ -1,3 +1,5 @@
+/* global google */
+
 import React, { Component } from "react";
 import "./ViewMap.scss";
 import { removeBg } from "../../common/styleHelper";
@@ -14,6 +16,7 @@ import location from "../assets/location.png";
 import locationStroke from "../assets/locationStroke.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import _ from "lodash";
 
 export class ViewMap extends Component {
   constructor(props) {
@@ -21,8 +24,11 @@ export class ViewMap extends Component {
     this.state = {
       center: {},
       attractions: [],
-      currLocation: 0
+      currLocation: 0,
+      map: null
     };
+
+    this.handleMapReady = this.handleMapReady.bind(this);
   }
 
   componentWillUnmount() {
@@ -34,6 +40,49 @@ export class ViewMap extends Component {
     const tripId = this.props.match.params.tripId;
     const attractions = this.props.trips.trips[tripId].places[0];
     this.getCoordinatesFromAddress(attractions);
+  }
+
+  handleMapReady(mapProps, map) {
+    this.setState({ map });
+  }
+
+  showDirections() {
+    if (this.state.map === null) {
+      return;
+    }
+    const directionsService = new google.maps.DirectionsService();
+    const directionsDisplay = new google.maps.DirectionsRenderer({
+      polylineOptions: {
+        strokeColor: "#ff5347"
+      },
+      suppressMarkers: true
+    });
+    directionsDisplay.setMap(this.state.map);
+    const attractions = _.cloneDeep(this.state.attractions);
+    let waypoints = attractions.map(attraction => {
+      return {
+        location: { lat: attraction.lat, lng: attraction.lng },
+        stopover: true
+      };
+    });
+    const origin = waypoints.shift().location;
+    const destination = waypoints.pop().location;
+
+    directionsService.route(
+      {
+        origin: origin,
+        destination: destination,
+        waypoints: waypoints,
+        travelMode: "WALKING"
+      },
+      (response, status) => {
+        if (status === "OK") {
+          directionsDisplay.setDirections(response);
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
+      }
+    );
   }
 
   async calculateCoords(address) {
@@ -52,24 +101,28 @@ export class ViewMap extends Component {
     );
   }
 
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   async getCoordinatesFromAddress(attractions) {
     const locations = [];
-    await attractions.forEach(async attraction => {
+    for (let attraction of attractions) {
       const coord = await this.calculateCoords(attraction.address);
       locations.push(coord);
-      this.setState({ attractions: locations, center: locations[0] });
-    });
+    }
+    this.setState({ attractions: locations, center: locations[0] });
   }
 
   render() {
     const tripId = this.props.match.params.tripId;
     const trip = this.props.trips.trips[tripId];
     const dayAttractions = trip.places[0];
+    this.showDirections();
     if (!trip) {
       window.history.back();
       return null;
     }
-    console.log(this.state.center);
     return Object.keys(this.state.center).length !== 0 ? (
       <div className="view-map">
         <div className="header">
@@ -91,7 +144,13 @@ export class ViewMap extends Component {
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
         </button>
         <div className="map-view">
-          <Map google={this.props.google} zoom={13} center={this.state.center}>
+          <Map
+            google={this.props.google}
+            zoom={13}
+            center={this.state.center}
+            initialCenter={this.state.center}
+            onReady={this.handleMapReady}
+          >
             {this.state.attractions.map((attraction, i) => {
               if (i === this.state.currLocation) {
                 return <Marker icon={location} key={i} position={attraction} />;

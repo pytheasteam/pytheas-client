@@ -7,6 +7,7 @@ export class MapAttraction extends Component {
     const setCurrentColor = this.props.current ? "#ff5347" : "#404040";
     return (
       <div className="map-attraction">
+        <div className="route-to-next" />
         <div className="attraction-header">
           <div
             className="attraction-img"
