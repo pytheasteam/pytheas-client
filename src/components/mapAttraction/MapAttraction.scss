@@ -2,6 +2,18 @@
   & .attraction-header {
     display: flex;
     flex-flow: row;
+    position: relative;
+
+    & .set-current {
+      font-size: 8pt;
+      position: absolute;
+      right: 4%;
+      top: 11pt;
+      text-align: center;
+      color: #ff5347;
+      font-weight: bold;
+    }
+
     & .attraction-img {
       width: 34pt;
       background: url(https://picsum.photos/113);

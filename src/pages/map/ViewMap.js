@@ -10,13 +10,18 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import MapAttraction from "../../components/mapAttraction/MapAttraction";
 import { GOOGLE_API_KEY } from "../../consts";
 import Geocode from "react-geocode";
+import location from "../assets/location.png";
+import locationStroke from "../assets/locationStroke.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export class ViewMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
       center: {},
-      attractions: []
+      attractions: [],
+      currLocation: 0
     };
   }
 
@@ -64,7 +69,7 @@ export class ViewMap extends Component {
       window.history.back();
       return null;
     }
-    console.log(this.state.attractions);
+    console.log(this.state.center);
     return Object.keys(this.state.center).length !== 0 ? (
       <div className="view-map">
         <div className="header">
@@ -82,28 +87,36 @@ export class ViewMap extends Component {
 
           <p className="trip-name">Trip to {trip.city}</p>
         </div>
-        {/* <button className="go-to-map">
+        <button className="go-to-map">
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
-        </button> */}
+        </button>
         <div className="map-view">
-          <Map
-            google={this.props.google}
-            zoom={13}
-            initialCenter={this.state.center}
-          >
+          <Map google={this.props.google} zoom={13} center={this.state.center}>
             {this.state.attractions.map((attraction, i) => {
-              return <Marker key={i} position={attraction} />;
+              if (i === this.state.currLocation) {
+                return <Marker icon={location} key={i} position={attraction} />;
+              }
+              return (
+                <Marker icon={locationStroke} key={i} position={attraction} />
+              );
             })}
           </Map>
         </div>
         <div className="attractions-container">
-          {dayAttractions.map(attraction => {
+          {dayAttractions.map((attraction, i) => {
             return (
               <MapAttraction
                 key={attraction.name}
                 img={attraction.photo_url || "https://picsum.photos/113"}
                 address={attraction.address}
                 title={attraction.name}
+                current={i === this.state.currLocation}
+                setCurrent={() =>
+                  this.setState({
+                    currLocation: i,
+                    center: this.state.attractions[i]
+                  })
+                }
               />
             );
           })}
