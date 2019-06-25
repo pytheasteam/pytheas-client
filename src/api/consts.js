@@ -1,8 +1,8 @@
 const serverApi = "https://pytheas-server.herokuapp.com/api";
 const serverLogin = "https://pytheas-server.herokuapp.com/login";
 
-const localhostApi = "http://127.0.0.1:5000/api";
-const localhostLogin = "http://127.0.0.1:5000/login";
+const localhostApi = "http://10.0.0.10:5000/api";
+const localhostLogin = "http://10.0.0.10:5000/login";
 
 export const MOCK_MODE = false;
 const DEV_MODE = true;

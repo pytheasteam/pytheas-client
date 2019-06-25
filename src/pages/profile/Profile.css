@@ -1,5 +1,7 @@
 .profile-page {
   text-align: center;
+  position: relative;
+  top: 45pt;
 }
 
 .profile-page-title {
@@ -35,4 +37,7 @@
 .toolbar-background {
   --background: transparent;
   --ion-toolbar-background: transparent;
+  width: 41pt;
+  position: absolute;
+  left: 0;
 }

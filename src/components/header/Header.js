@@ -7,16 +7,26 @@ export class Header extends Component {
     const { title, back } = this.props;
     return (
       <div className="header">
-        <IonToolbar className="toolbar-background ios hydrated">
+        <div className="back-btn-container">
           <IonButton
             fill="clear"
             className="back-btn ios button button-clear button-has-icon-only ion-activatable ion-focusable hydrated"
             onClick={back}
           >
-            <IonIcon slot="icon-only" name="arrow-back" />
+            <IonIcon slot="icon-only" name="ios-arrow-back" />
           </IonButton>
-        </IonToolbar>
-        <p className="title">{title}</p>
+        </div>
+
+        {/* <IonToolbar className="toolbar-background ios hydrated">
+          <IonButton
+            fill="clear"
+            className="back-btn ios button button-clear button-has-icon-only ion-activatable ion-focusable hydrated"
+            onClick={back}
+          >
+            <IonIcon slot="icon-only" name="ios-arrow-back" />
+          </IonButton>
+        </IonToolbar> */}
+        <p className="title">{`${title}`}</p>
       </div>
     );
   }

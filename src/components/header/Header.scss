@@ -1,4 +1,7 @@
 .header {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
   position: fixed;
   width: 100%;
   height: 48pt;
@@ -7,20 +10,37 @@
   background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
   z-index: 6;
 
+  .back-btn-container {
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+  }
+
   .title {
+    width: 100%;
+    height: 48pt;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
     position: relative;
     font-family: "Roboto";
     font-weight: bold;
     color: white;
+    text-align: center;
     z-index: 1;
+    margin: 0;
     font-size: 17pt;
-    bottom: 35pt;
   }
 
   .back-btn {
     color: white;
     position: absolute;
     left: 0;
-    top: 8px;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 4;
   }
 }
