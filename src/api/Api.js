@@ -52,6 +52,28 @@ export class PytheasApi {
     });
   }
 
+  static async put(route, body) {
+    const token = await PytheasApi.getAuth();
+    let endpoint = API_BASE + route;
+    return await new Promise(function(resolve, reject) {
+      fetch(endpoint, {
+        method: "PUT",
+        headers: {
+          Authorization: token
+        },
+        body: JSON.stringify(body)
+      })
+        .then(response => {
+          if (response.ok) {
+            return resolve();
+          }
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   static async post(route, body) {
     const token = await PytheasApi.getAuth();
     let endpoint = API_BASE + route;

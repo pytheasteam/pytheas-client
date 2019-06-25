@@ -14,6 +14,7 @@ import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips } from "../../actions/tripAction";
 import Common from "../../utils/common";
 import DayTrip from "../../components/dayTrip/DayTrip";
+import Header from "../../components/header/Header";
 
 export class ViewTrip extends Component {
   componentWillUnmount() {
@@ -45,21 +46,12 @@ export class ViewTrip extends Component {
     let calculateDays = Common.date_diff_indays(trip.start_date, trip.end_date);
     return (
       <div className="trip-main-page">
-        <div className="header">
-          <IonToolbar className="toolbar-background">
-            <IonButton
-              fill="clear"
-              onClick={() => {
-                window.history.back();
-              }}
-              className="back-btn"
-            >
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-          </IonToolbar>
-
-          <p className="trip-name">Trip to {trip.city || trip.destination}</p>
-        </div>
+        <Header
+          title={`Trip to ${trip.city || trip.destination}`}
+          back={() => {
+            window.history.back();
+          }}
+        />
         <div className="view-trip-header">
           <button
             className="go-to-map"

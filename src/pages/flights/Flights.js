@@ -20,6 +20,23 @@ export class Flights extends Component {
     document.body.className += " flights-bg";
   }
   render() {
+    const rsrv = this.props.trips.trip.flight_rsrv;
+    console.log(rsrv);
+    if (rsrv && rsrv !== "") {
+      return (
+        <Flight
+          destination={rsrv.to_city}
+          destinationCode={rsrv.to_city_code}
+          from={rsrv.from_city}
+          fromCode={rsrv.from_city_code}
+          arrivalTime={rsrv.arrival_time}
+          departureTime={rsrv.departure_time}
+          duration={rsrv.duration}
+          price={rsrv.price}
+          reservationNumber={rsrv.reservationNumber}
+        />
+      );
+    }
     const allFlights =
       Object.keys(this.props.trips.trip).length > 0 &&
       this.props.trips.trip.explore === true
@@ -36,6 +53,7 @@ export class Flights extends Component {
                 departureTime={flight.departure_time}
                 duration={flight.duration}
                 price={flight.price}
+                reservationNumber="IlOVEnOGA"
               />
             );
           })

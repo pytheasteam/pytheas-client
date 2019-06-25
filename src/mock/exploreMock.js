@@ -1,604 +1,772 @@
-export const exploreMock = [
+export const exploreMock =  [
   {
-    currency: "USD",
-    days: 4,
-    destination: "paris",
-    end_date: "21/07/2019",
-    explore: true,
-    flights: [
-      {
-        arrival_time: "23:05",
-        departure_time: "19:10",
-        duration: "4h 55m",
-        from_city: "tel aviv",
-        from_city_code: "TLV",
-        link:
-          "https://www.kiwi.com/deep?from=TLV&to=CDG&departure=18-07-2019&flightsId=100725c346af0000ace5f476_0&price=130&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGpWmTDJcJhVF5IKA7IKHk0C6CkudjECAW5oZBd8fywpvCbvd1U79PBiOO3AwN4Kxq+eQqCEvMgDE2yQ2AlB+qiPF/hrTvyoAwLhHqzB333iinhGbnXG5Czed9NWNFJGftyFoj5LtYLniL97VznoRb944YgOzR99qbr9dZgYMKHYkAEQM6SrtCtmg+80VfubtTKgDSaYu6tyL9U7DE4l0tkIv34V2HjZezRLGHrOBCelDLcgB30ZO38eAqCZ9JzgrVH4k1Kp7xS0YD1ijMrvxwvHd4RrARZppcA2si8qZZKmc+Uc/+bdNWnWI/4oAIrOxgxBxWEuWThbAW6Bfr9N2ArVTugan1Nmr7jIgBLyUSmCvsJ9KfFE9iyrNhnWd/WBwqVBfI764TJn9Poyoe++FNQtOKVSWEdDFRUE1VwHYEgmVUiXnhnCUoWRjDaedupMNmWxYI2MRIDB3JQCuhF4n4JYZdAbXfRTEF8MXyWscU5XmdI12oLL0+mBqPLzIfAHuh0LuLYomu4Hu0p1OVBABUIW65YhKgku3gGhDcKtnp25FvlhqIEGbtKlYfXsJMuvyT7MPc6rGeCtXYrjDIMj1rq996JC7JRyz8YdViLa1SBaX80JEuHTNGSWcIvIriBGfUR4Z/t89dYxT8amF/tQhmpOjc51wzgsUi7W9nDyulsTDwtXGvKHnhUxNh5+RCfW0vjr1bZ2zsprYeQQ04j49Kh1wR4asqPb8Ad8o/1GlOacF/WPz3ViwUd11ImpSRN6d9",
-        price: 130,
-        to_city: "paris",
-        to_city_code: "PAR"
+      "currency": "USD",
+      "days": 4,
+      "destination": "paris",
+      "end_date": "17/07/2019",
+      "explore": true,
+      "flight_rsrv": null,
+      "flights": [
+          {
+              "arrival_time": "17:40",
+              "departure_time": "13:45",
+              "duration": "4h 55m",
+              "from_city": "tel aviv",
+              "from_city_code": "TLV",
+              "link": "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=17-07-2019&flightsId=10070a7c46ae0000c48afa59_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkDSkY+wJnPr5x7RcVQV7LTLs8jc7sn8v5IfWNb731GeQUoGVVMmjv6clSuB0T9jQZJIXk+H/Ya7JffWZkCb8/zTILQKMPRGXPSPMRSNsr51JaWqbg1Lqqth4U8LTZpZbnAn+Sw5vjLf0Rbo3U+C9M8Nw2nV7uzgUbw9uSKl7w2iQeKKubT5KKWsN9pL+WasCZN9O+/rxVIXeAJgUUc3+AetDA4sdpPm7eHTmShjWU+JpGh96aqZU7jfj1BlIvfcHwZ6Bpb7tnBKAo74zh64DZmjLu5feORGa6A0uXWnN+FFinhEeupZ2BDII93beJPI98DoU0Pd8SY4kQtLsD33j9WCgyCITT6JwZ+1H2HpfQSw+1F2qEBvfA04ZO4QQU0lwvtPpU3gKPzpc+R1KN1NRLNrMLf158QBlr+hYB2b6pVRdoTSlC7PcTnjMNmSxtZLdK0Q3KIV9WF8e1+LBtxEtvb/OyCPUxRG0VvJMF3owcDpq76sUzDe+YvVcoCBF62rmMpWpqDpvrH6EQlhAulmD+hkTykJ+8+TbZtz8Jgjas4L4hCtaNjmA0/K1x7Lv2LVj3ZU2U8zOksjGA1uBpQgjbePU6Hqd/iC8+Vaqnu7tHwym",
+              "price": 137,
+              "to_city": "paris",
+              "to_city_code": "PAR"
+          },
+          {
+              "arrival_time": "21:15",
+              "departure_time": "17:10",
+              "duration": "5h 5m",
+              "from_city": "tel aviv",
+              "from_city_code": "TLV",
+              "link": "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=16-07-2019&flightsId=10070a7c46ad0000dd6e707d_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkNNihi+Af9iyBGG/T/jWD8YHu2H/z0wIYLvHN5nuMyaqW2rcMd9XPAnkNPVcbsc92hr2nd4Hj3COx5v/UgdqyLzdGelp2+Jbxralt6MuS4ruCeWIwfQAr/w4KfklpDHKesa9O0f36Pn6z6ZAbjK/EBTDfPKZivcOIMz5Jm+eyZ+UXlAPGmzWPs7ighpH0bROgAineCDUx8ED/2r7G4iNr/EMZw8MAfjp6jAjlLbBDe3paD2bdHwCmDQAoIWvIOeGkoFju1/JHE9D70OMcDx4IVCKe6JNa3+2Koaulrrf6vD2xWo4OSe7gOo+3ZPEGYggUaiemOR9wWakQpflEdNvJHu3mJNrpqP6r9IgLa2OmQ++vAyKiDyCR2FjCszOpb9Sa16DEADI25oRZSTvCCZyPHIsw83twPtBXuWZ4jIAz1YZphniIrlyEE93arPXeJSW0NxF91H+qZ6aGcK++LkmcVDfaP7pFd9lQhSo42VJQWMPx2Nkb1qkKKCeG4giixEKghUtqDtFfFfECkVaNbvKKQr4/k3p8eFR/yIFzfEWoh/S5Obf62C+SmUgHF8oTZXrr4P9o2rBM/TgQcflNKiQl16f7DLY2EahdFhT54g4+Slx",
+              "price": 137,
+              "to_city": "paris",
+              "to_city_code": "PAR"
+          },
+          {
+              "arrival_time": "22:40",
+              "departure_time": "18:35",
+              "duration": "5h 5m",
+              "from_city": "tel aviv",
+              "from_city_code": "TLV",
+              "link": "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=13-07-2019&flightsId=10070a7c46aa0000f77cc98a_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkHWsQoK6h3QA1QZw4cEnCNKZDHd4SesHB5KDMR2vLTIN/YaF300ob6yc/1wVMX3yL++WgihuDLUqFTjUkqpmdRD1oUpA22tQQQoRLirnbJmp1aGwKQn3RWZH3wv3AbY5jseuDM9RQJeajZmWUruoE3mpZPdSQwr8L6z+30i9/+3pXfeiTZUjO2AewArnGqcI9U2Cwxl0yUBpcrU1y82FqgNkU2irMxdotjvkHXJVo2eDSL2eRYI9LTzHHdGXE8L5xjJ3Gfh7v3zuva4fw322EjX4VNv8/jTHFiR+wPgP4zhTi6L5rkXS310GPZYI++IhgOLzfOoW1/xCN8daJHtGO3f8DmAJl+oAJPxv9itH9fJzYDVqp+fBTMuzBl0qIP4e669z2IK+5XvWwgaIkwRVn/4qU0A2Rsed2rj/RPSjqEsiAA08atP6b3Klw/JqOcb/SrYWDmn8UtSvQbnSAROLjHhUa+fHZXGHN8ex5CAKFCYDEwcJ4tQ79uysFoUZSLDIfEygorlQ3vOhOX6tEKr/SF4y8iTUVElRL4Zs6lSFJJFTbDWQsF70Z4Cp3FS+9h9WqIrldjW9axFTcpOcqafGiMcRAIwttZTAw5JaTITGyjOj",
+              "price": 137,
+              "to_city": "paris",
+              "to_city_code": "PAR"
+          }
+      ],
+      "hotel": {
+          "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+          "currency": "EUR",
+          "description": "",
+          "end_date": "Wed, 17 Jul 2019 00:00:00 GMT",
+          "facilities": [],
+          "main_photo_url": "http://r-ec.bstatic.com/xdata/images/hotel/square350/153426572.jpg?k=2e6efa6a3b9342e47d666e16cb42100d00f93954bb5fcc7b5cb1caf837cf3ebb&o=",
+          "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+          "price_per_night": 124.8,
+          "room_type": "",
+          "stars": "3.0",
+          "start_date": "Sat, 13 Jul 2019 00:00:00 GMT",
+          "url": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
       },
-      {
-        arrival_time: "22:15",
-        departure_time: "18:10",
-        duration: "5h 5m",
-        from_city: "tel aviv",
-        from_city_code: "TLV",
-        link:
-          "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=19-07-2019&flightsId=10070a7c46b000001338de2d_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkLGhj2uVcxiyl61RWFC5oOdntgMigO6cPmDetRb9cva1+wQLjM0gz8Nv/eGFuQFF7oqu+RjfDolu/ImAZ6Yx30U0C3e4acFuQdA5fRuEvekdvc0dAVmxM9dy0dQGdTwojePPb7REwZER8gVmMnKLMfB5wJNWTRclaQ81/Bg/bJ+1SwBzp/RFGqA4Y9rgE5pIgexXqp+qCQMCFDZf3HdiyGMIMplAqUVX9rM4afJN/B7jYHii7YvgD3txzva041FtrWooHGrhWAJ2uovC+9+EXXRmTszjqt0hty933igGcvKGdOjaR1/ki42X/SC5KghRz47n7Gz+wW39Miy7OQk2wX51ruvCrsEJJjrCyjvG3U1JEQRHTuLk9DzBXQwdb3qxB0Po7YxiXimVxtPkPY/YfUHvxP80mNqGIBRRmOUkMfVLeHkxrprE9ZQ5lZiUO9zKMa72wS9oev8TAlTl9QmBvN04y1gng0EibHm8CQGIB1Gh7OYxJJhwsfcyD6mQR71OSEXEfH3896uYQKmyEEv5rxiUAXyPsC1fDlLZIkEiL55PofhrZCctAgijRKu60FXCTPQYoJm5hXg0PYMcGRzGVu9+7InH/IRPjEPS7J+4oojd",
-        price: 137,
-        to_city: "paris",
-        to_city_code: "PAR"
-      },
-      {
-        arrival_time: "23:25",
-        departure_time: "19:10",
-        duration: "5h 15m",
-        from_city: "tel aviv",
-        from_city_code: "TLV",
-        link:
-          "https://www.kiwi.com/deep?from=TLV&to=CDG&departure=17-07-2019&flightsId=100725c346ae0000cc2217c7_0&price=144&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGTIJlTNC5ztoLi5eSUkUYP3av5cDS63AlgtJ9mJE7ktB/N35nwSwz/9FCqCuyIZKGGyyTKXMasld7A7NYFonCh0U0fw0IbiJ0ZXnhnNTtMJXBhIs30pg7s/faA1z042mz/nLxuFeIxZorFu64pCVen7f/G58Jua155IrB3ZWzM/VHDzFaBHclERGKJvRSVN+pIiuCvlnKtINdTJWonTMsxqT1QwVNzULPe/M9mEhw5y0n8n9pdVHo8FnakjEcIDf8bRYec5sgch5r9lgqGxWXnzJQABfV0HGi+mewPuTtT93JEn87FKqM75MSh06pqMclkODlS4mpz0agvvIE7Og03W5IslCBZBhT/7IkoVZWSFQh6k6ET5ovTzBPIzKEH5yd3uK1w5pxOeyPto7A7tREJgDo5tZvorN7Cgf1EA2fe8M7EgceT0oCmqRQonztLUhOSoZ78eFClz2ZnEPz3S94WsX6sNqH0Hb/Rh853IVDOPt4UaQ0R+sxgmTuUHJ791uYgREEqI3E0Th3Jryc7lU7YYR1KdI9S/5YO/hRvb9G06dCesFAxdy2iOchk9YUc4Usi/eHEogDu6am7c9mp7JHLF6hJZCsX4yY8YJoFADC/mUj1CPg5WhzWnzBdoe8hXQVdDEsPmn3JjtGEzMFjWGnpyOOtm2X4dabLeEfKifrTKwrBhoUfOZV/JC5pNYS2maCtLRT7MjURs3mW8CqSFkz7JPK5JT11Iuc50s0j/iPXOCRKTsWbV5Kvk7m4e8R0MSr",
-        price: 144,
-        to_city: "paris",
-        to_city_code: "PAR"
-      }
-    ],
-    hotel: {
-      address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-      currency: "EUR",
-      description: "",
-      end_date: "Sun, 21 Jul 2019 00:00:00 GMT",
-      facilities: [],
-      main_photo_url:
-        "http://r-ec.bstatic.com/xdata/images/hotel/square350/30437986.jpg?k=df6f2f669259eb96724fea73fee31602272ac5c7c1c4b70518a8f1605897ed68&o=",
-      name: "Hotel Villa Saxe Eiffel",
-      price_per_night: 168.21,
-      room_type: "",
-      stars: "4.0",
-      start_date: "Wed, 17 Jul 2019 00:00:00 GMT",
-      url: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-    },
-    people_number: "2",
-    pictures: [],
-    places: [
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "rue cler near eiffel tower, 75007 paris, france",
-          city: "paris",
-          description:
-            "This lively cobblestone street effectively preserves the ambience of Paris of old and is home to countless small shops.",
-          id: 885,
-          name: "Rue Cler",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/01/23/3c/13/picking-the-best-flowers.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        },
-        {
-          address: "1 pl trocadero et du 11 novembre, 75116 paris, france",
-          city: "paris",
-          description: "",
-          id: 882,
-          name: "Palais de Chaillot",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/01/0e/4c/64/palais-de-chaillot.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        }
+      "hotel_rsrv": null,
+      "id": -1,
+      "people_number": "2",
+      "pictures": [],
+      "places": [
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "78 avenue de suffren, 75015 paris, france",
+                  "city": "paris",
+                  "description": "At the heart of Paris, near the Eiffel Tower, the Village Suisse is a gathering of antique dealers, decorators and one-of-a-kind art galleries. Since 1900, this pedestrian space welcomes the lovers of classic and modern art. It also offers to those...\nClosed todayHours Today: ClosedSee all hours",
+                  "id": 890,
+                  "name": "Le Village Suisse",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/17/81/0d/19/heroines-romanesques.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "1-2 hours",
+                  "website": ""
+              },
+              {
+                  "address": "rue cler near eiffel tower, 75007 paris, france",
+                  "city": "paris",
+                  "description": "This lively cobblestone street effectively preserves the ambience of Paris of old and is home to countless small shops.",
+                  "id": 885,
+                  "name": "Rue Cler",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/23/3c/13/picking-the-best-flowers.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "1 rue de la legion d'honneur, 75007 paris, france",
+                  "city": "paris",
+                  "description": "This beautiful museum, once a railroad station, now houses a staggering collection of Impressionist art, as well as other items created between 1848 and 1914. In 2011, the museum is running a renovation of the top floor (impressionist gallery). Only...\nClosed todayHours Today: ClosedSee all hours",
+                  "id": 156,
+                  "name": "Musee d'Orsay",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/ab/64/la-terrasse-lille-et.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "More than 3 hours",
+                  "website": ""
+              },
+              {
+                  "address": "40 boulevard haussmann, 75009 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1081,
+                  "name": "Galeries Lafayette Paris Haussmann",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/0c/aa/fb/74/underneath-the-glass.jpg",
+                  "price": 0,
+                  "rate": 4,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "63 rue de monceau, 75008 paris, france",
+                  "city": "paris",
+                  "description": "Closed todayHours Today: ClosedSee all hours",
+                  "id": 382,
+                  "name": "Musee Nissim de Camondo",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/9b/d9/74/musee-nissim-de-camondo.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              }
+          ],
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "24 rue de sevres, 75007 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1104,
+                  "name": "Le Bon Marche Rive Gauche",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/07/35/35/46/le-bon-marche.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "64 boulevard haussmann, 75009 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 887,
+                  "name": "Paris Takashimaya",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/c3/25/15/2.jpg",
+                  "price": 0,
+                  "rate": 4,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "64 boulevard haussmann, 75009 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1080,
+                  "name": "Printemps",
+                  "phone number": "",
+                  "photo_url": "https://cdn0.iconfinder.com/data/icons/travel-line-color-hipster-on-the-way/512/map-512.png",
+                  "price": 0,
+                  "rate": 4,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "158 boulevard haussmann, 75008 paris, france",
+                  "city": "paris",
+                  "description": "Built by Edouard André and his wife Nélie Jacquemart, both avid art collectors, in the new Paris being laid out by Baron Haussmann towards the end of the 19th century, this private mansion offers visitors a unique opportunity to explore a wealthy...\nClosed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
+                  "id": 180,
+                  "name": "Musee Jacquemard-Andre",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/0e/76/9f/85/cours-exterieure-du-musee.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "2-3 hours",
+                  "website": ""
+              },
+              {
+                  "address": "1 pl trocadero et du 11 novembre, 75116 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 882,
+                  "name": "Palais de Chaillot",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/0e/4c/64/palais-de-chaillot.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              }
+          ],
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "38 rue de sevres, 75007 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1194,
+                  "name": "La Grande Epicerie de Paris",
+                  "phone number": "",
+                  "photo_url": "https://cdn0.iconfinder.com/data/icons/travel-line-color-hipster-on-the-way/512/map-512.png",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "rue du cloitre notre-dame, 75004 paris, france",
+                  "city": "paris",
+                  "description": "A visit of the Towers of Notre Dame de Paris, built from 1160 in the Flamboyant Gothic style, gives visitors a close-up view of the Cathedral's flying buttresses, spires and roofs. Gargoyles and chimeras adorn the outer gallery of the North Tower...\nClosed NowHours Today: 7:45 AM - 6:45 PMSee all hours",
+                  "id": 182,
+                  "name": "Tours de la Cathedrale Notre-Dame",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-o/02/6b/c2/19/filename-48842881-jpg.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "boulevard richard lenoir, 75011 paris, france",
+                  "city": "paris",
+                  "description": "Closed todayHours Today: ClosedSee all hours",
+                  "id": 886,
+                  "name": "Bastille Market",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/05/65/64/bastille-market.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "< 1 hour",
+                  "website": ""
+              },
+              {
+                  "address": "16 rue du repos, 75020 paris, france",
+                  "city": "paris",
+                  "description": "This famous cemetery is the burial site of numerous French luminaries - authors, writers, musicians and more.",
+                  "id": 179,
+                  "name": "Pere-Lachaise Cemetery (Cimetiere du Pere-Lachaise)",
+                  "phone number": "",
+                  "photo_url": "https://cdn0.iconfinder.com/data/icons/travel-line-color-hipster-on-the-way/512/map-512.png",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "1-2 hours",
+                  "website": ""
+              },
+              {
+                  "address": "38 rue saint maur, 75011 paris, france",
+                  "city": "paris",
+                  "description": "Closed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
+                  "id": 391,
+                  "name": "Atelier des Lumieres",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/12/a9/45/c4/photo4jpg.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "< 1 hour",
+                  "website": ""
+              }
+          ],
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "140 rue du bac, 75007 paris, france",
+                  "city": "paris",
+                  "description": "Closed NowHours Today: 7:45 AM - 1:00 PM, 2:30 PM - 7:00 PMSee all hours",
+                  "id": 384,
+                  "name": "Chapelle Notre Dame de la Medaille Miraculeuse",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/09/bf/a0/64/caption.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "139 rue mouffetard, 75005 paris, france",
+                  "city": "paris",
+                  "description": "A large street market in the Latin Quarter.\nClosed NowHours Today: 9:00 AM - 1:00 PMSee all hours",
+                  "id": 884,
+                  "name": "Rue Mouffetard Market",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-o/01/23/2b/8f/while-not-the-most-hygenic.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "6 place sainte genevieve, 75005 paris, france",
+                  "city": "paris",
+                  "description": "This 16th-century cathedral is a mixture of Renaissance, Baroque and Gothic architecture.\nClosed NowHours Today: 8:45 AM - 7:45 PMSee all hours",
+                  "id": 883,
+                  "name": "Eglise Saint-Etienne-du-Mont de Paris",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/09/53/27/19/st-etienne-du-mont.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "place du pantheon, 75005 paris, france",
+                  "city": "paris",
+                  "description": "With the Pantheon, architect Jacques-Germain Soufflot met Louis XV’s wish to glorify the monarchy in the form of a church dedicated to Saint Geneviève, the patron saint of Paris. The edifice was deconsecrated during the Revolution in 1791 and...\nClosed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
+                  "id": 176,
+                  "name": "Pantheon",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/02/1a/da/41/il-pantheon.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "2-3 hours",
+                  "website": ""
+              },
+              {
+                  "address": "79 rue de varenne, 75007 paris, france",
+                  "city": "paris",
+                  "description": "Located in this 18th-century hotel (Hotel Biron), Musee Rodin holds an impressive collection of works by this famous French sculptor and his circle as Camille Claudel. The museum also features an exquisit garden and a temporary exhibition hall.\nClosed todayHours Today: ClosedSee all hours",
+                  "id": 169,
+                  "name": "Musee Rodin",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/0f/ec/32/31/vue-de-la-cour-d-honneur.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "More than 3 hours",
+                  "website": ""
+              }
+          ]
       ],
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "79 rue de varenne, 75007 paris, france",
-          city: "paris",
-          description:
-            "Located in this 18th-century hotel (Hotel Biron), Musee Rodin holds an impressive collection of works by this famous French sculptor and his circle as Camille Claudel. The museum also features an exquisit garden and a temporary exhibition hall.\nClosed todayHours Today: ClosedSee all hours",
-          id: 169,
-          name: "Musee Rodin",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/0f/ec/32/31/vue-de-la-cour-d-honneur.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "More than 3 hours",
-          website: ""
-        },
-        {
-          address: "1 rue de la legion d'honneur, 75007 paris, france",
-          city: "paris",
-          description:
-            "This beautiful museum, once a railroad station, now houses a staggering collection of Impressionist art, as well as other items created between 1848 and 1914. In 2011, the museum is running a renovation of the top floor (impressionist gallery). Only...\nClosed todayHours Today: ClosedSee all hours",
-          id: 156,
-          name: "Musee d'Orsay",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/ab/64/la-terrasse-lille-et.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "More than 3 hours",
-          website: ""
-        },
-        {
-          address: "99 rue de rivoli, 75001 paris, france",
-          city: "paris",
-          description:
-            "Home to Leonardo da Vinci's Mona Lisa, the Louvre is considered the world's greatest art museum, with an unparalleled collection of items covering the full spectrum of art through the ages.\nClosed NowHours Today: 9:00 AM - 6:00 PMSee all hours",
-          id: 158,
-          name: "Louvre Museum",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/05/6b/c7/ee/musee-du-louvre.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "< 1 hour",
-          website: ""
-        },
-        {
-          address: "17 rue geoffroy l asnier, 75004 paris, france",
-          city: "paris",
-          description: "Closed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
-          id: 389,
-          name: "Memorial de la Shoah",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-s/01/63/6c/49/copyright-memorial-de.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        },
-        {
-          address: "boulevard richard lenoir, 75011 paris, france",
-          city: "paris",
-          description: "Closed todayHours Today: ClosedSee all hours",
-          id: 886,
-          name: "Bastille Market",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-s/03/05/65/64/bastille-market.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "< 1 hour",
-          website: ""
-        }
-      ],
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "jardin des tuileries - cote seine, 75001 paris, france",
-          city: "paris",
-          description: "Closed NowHours Today: 9:00 AM - 6:00 PMSee all hours",
-          id: 168,
-          name: "Musee de l'Orangerie",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/0d/fd/7e/16/photo1jpg.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "< 1 hour",
-          website: ""
-        },
-        {
-          address: "63 rue de monceau, 75008 paris, france",
-          city: "paris",
-          description: "Closed todayHours Today: ClosedSee all hours",
-          id: 382,
-          name: "Musee Nissim de Camondo",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/01/9b/d9/74/musee-nissim-de-camondo.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        },
-        {
-          address: "158 boulevard haussmann, 75008 paris, france",
-          city: "paris",
-          description:
-            "Built by Edouard Andr\u00e9 and his wife N\u00e9lie Jacquemart, both avid art collectors, in the new Paris being laid out by Baron Haussmann towards the end of the 19th century, this private mansion offers visitors a unique opportunity to explore a wealthy...\nClosed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
-          id: 180,
-          name: "Musee Jacquemard-Andre",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/0e/76/9f/85/cours-exterieure-du-musee.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "2-3 hours",
-          website: ""
-        }
-      ],
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "10 rue servandoni, 75006 paris, france",
-          city: "paris",
-          description:
-            "Language is one of the fundamental abilities that makes us human. It has also played a key role in the evolution of people and modern society. To reveal the secrets of language, Mundolingua gives you the opportunity to discover language, languages...\nClosed NowHours Today: 10:00 AM - 7:00 PMSee all hours",
-          id: 387,
-          name: "Mundolingua",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/06/e2/81/01/mundolingua.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "1-2 hours",
-          website: ""
-        },
-        {
-          address: "139 rue mouffetard, 75005 paris, france",
-          city: "paris",
-          description:
-            "A large street market in the Latin Quarter.\nClosed NowHours Today: 9:00 AM - 1:00 PMSee all hours",
-          id: 884,
-          name: "Rue Mouffetard Market",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-o/01/23/2b/8f/while-not-the-most-hygenic.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        }
-      ]
-    ],
-    price: 802,
-    start_date: "17/07/2019"
+      "price": 633,
+      "start_date": "13/07/2019"
   },
   {
-    currency: "USD",
-    days: 4,
-    destination: "paris",
-    end_date: "21/07/2019",
-    explore: true,
-    flights: [
-      {
-        arrival_time: "23:05",
-        departure_time: "19:10",
-        duration: "4h 55m",
-        from_city: "tel aviv",
-        from_city_code: "TLV",
-        link:
-          "https://www.kiwi.com/deep?from=TLV&to=CDG&departure=18-07-2019&flightsId=100725c346af0000ace5f476_0&price=130&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGpWmTDJcJhVF5IKA7IKHk0C6CkudjECAW5oZBd8fywpvCbvd1U79PBiOO3AwN4Kxq+eQqCEvMgDE2yQ2AlB+qiPF/hrTvyoAwLhHqzB333iinhGbnXG5Czed9NWNFJGftyFoj5LtYLniL97VznoRb944YgOzR99qbr9dZgYMKHYkAEQM6SrtCtmg+80VfubtTKgDSaYu6tyL9U7DE4l0tkIv34V2HjZezRLGHrOBCelDLcgB30ZO38eAqCZ9JzgrVH4k1Kp7xS0YD1ijMrvxwvHd4RrARZppcA2si8qZZKmc+Uc/+bdNWnWI/4oAIrOxgxBxWEuWThbAW6Bfr9N2ArVTugan1Nmr7jIgBLyUSmCvsJ9KfFE9iyrNhnWd/WBwqVBfI764TJn9Poyoe++FNQtOKVSWEdDFRUE1VwHYEgmVUiXnhnCUoWRjDaedupMNmWxYI2MRIDB3JQCuhF4n4JYZdAbXfRTEF8MXyWscU5XmdI12oLL0+mBqPLzIfAHuh0LuLYomu4Hu0p1OVBABUIW65YhKgku3gGhDcKtnp25FvlhqIEGbtKlYfXsJMuvyT7MPc6rGeCtXYrjDIMj1rq996JC7JRyz8YdViLa1SBaX80JEuHTNGSWcIvIriBGfUR4Z/t89dYxT8amF/tQhmpOjc51wzgsUi7W9nDyulsTDwtXGvKHnhUxNh5+RCfW0vjr1bZ2zsprYeQQ04j49Kh1wR4asqPb8Ad8o/1GlOacF/WPz3ViwUd11ImpSRN6d9",
-        price: 130,
-        to_city: "paris",
-        to_city_code: "PAR"
+      "currency": "USD",
+      "days": 4,
+      "destination": "paris",
+      "end_date": "17/07/2019",
+      "explore": true,
+      "flight_rsrv": null,
+      "flights": [
+          {
+              "arrival_time": "17:40",
+              "departure_time": "13:45",
+              "duration": "4h 55m",
+              "from_city": "tel aviv",
+              "from_city_code": "TLV",
+              "link": "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=17-07-2019&flightsId=10070a7c46ae0000c48afa59_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkDSkY+wJnPr5x7RcVQV7LTLs8jc7sn8v5IfWNb731GeQUoGVVMmjv6clSuB0T9jQZJIXk+H/Ya7JffWZkCb8/zTILQKMPRGXPSPMRSNsr51JaWqbg1Lqqth4U8LTZpZbnAn+Sw5vjLf0Rbo3U+C9M8Nw2nV7uzgUbw9uSKl7w2iQeKKubT5KKWsN9pL+WasCZN9O+/rxVIXeAJgUUc3+AetDA4sdpPm7eHTmShjWU+JpGh96aqZU7jfj1BlIvfcHwZ6Bpb7tnBKAo74zh64DZmjLu5feORGa6A0uXWnN+FFinhEeupZ2BDII93beJPI98DoU0Pd8SY4kQtLsD33j9WCgyCITT6JwZ+1H2HpfQSw+1F2qEBvfA04ZO4QQU0lwvtPpU3gKPzpc+R1KN1NRLNrMLf158QBlr+hYB2b6pVRdoTSlC7PcTnjMNmSxtZLdK0Q3KIV9WF8e1+LBtxEtvb/OyCPUxRG0VvJMF3owcDpq76sUzDe+YvVcoCBF62rmMpWpqDpvrH6EQlhAulmD+hkTykJ+8+TbZtz8Jgjas4L4hCtaNjmA0/K1x7Lv2LVj3ZU2U8zOksjGA1uBpQgjbePU6Hqd/iC8+Vaqnu7tHwym",
+              "price": 137,
+              "to_city": "paris",
+              "to_city_code": "PAR"
+          },
+          {
+              "arrival_time": "21:15",
+              "departure_time": "17:10",
+              "duration": "5h 5m",
+              "from_city": "tel aviv",
+              "from_city_code": "TLV",
+              "link": "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=16-07-2019&flightsId=10070a7c46ad0000dd6e707d_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkNNihi+Af9iyBGG/T/jWD8YHu2H/z0wIYLvHN5nuMyaqW2rcMd9XPAnkNPVcbsc92hr2nd4Hj3COx5v/UgdqyLzdGelp2+Jbxralt6MuS4ruCeWIwfQAr/w4KfklpDHKesa9O0f36Pn6z6ZAbjK/EBTDfPKZivcOIMz5Jm+eyZ+UXlAPGmzWPs7ighpH0bROgAineCDUx8ED/2r7G4iNr/EMZw8MAfjp6jAjlLbBDe3paD2bdHwCmDQAoIWvIOeGkoFju1/JHE9D70OMcDx4IVCKe6JNa3+2Koaulrrf6vD2xWo4OSe7gOo+3ZPEGYggUaiemOR9wWakQpflEdNvJHu3mJNrpqP6r9IgLa2OmQ++vAyKiDyCR2FjCszOpb9Sa16DEADI25oRZSTvCCZyPHIsw83twPtBXuWZ4jIAz1YZphniIrlyEE93arPXeJSW0NxF91H+qZ6aGcK++LkmcVDfaP7pFd9lQhSo42VJQWMPx2Nkb1qkKKCeG4giixEKghUtqDtFfFfECkVaNbvKKQr4/k3p8eFR/yIFzfEWoh/S5Obf62C+SmUgHF8oTZXrr4P9o2rBM/TgQcflNKiQl16f7DLY2EahdFhT54g4+Slx",
+              "price": 137,
+              "to_city": "paris",
+              "to_city_code": "PAR"
+          },
+          {
+              "arrival_time": "22:40",
+              "departure_time": "18:35",
+              "duration": "5h 5m",
+              "from_city": "tel aviv",
+              "from_city_code": "TLV",
+              "link": "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=13-07-2019&flightsId=10070a7c46aa0000f77cc98a_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkHWsQoK6h3QA1QZw4cEnCNKZDHd4SesHB5KDMR2vLTIN/YaF300ob6yc/1wVMX3yL++WgihuDLUqFTjUkqpmdRD1oUpA22tQQQoRLirnbJmp1aGwKQn3RWZH3wv3AbY5jseuDM9RQJeajZmWUruoE3mpZPdSQwr8L6z+30i9/+3pXfeiTZUjO2AewArnGqcI9U2Cwxl0yUBpcrU1y82FqgNkU2irMxdotjvkHXJVo2eDSL2eRYI9LTzHHdGXE8L5xjJ3Gfh7v3zuva4fw322EjX4VNv8/jTHFiR+wPgP4zhTi6L5rkXS310GPZYI++IhgOLzfOoW1/xCN8daJHtGO3f8DmAJl+oAJPxv9itH9fJzYDVqp+fBTMuzBl0qIP4e669z2IK+5XvWwgaIkwRVn/4qU0A2Rsed2rj/RPSjqEsiAA08atP6b3Klw/JqOcb/SrYWDmn8UtSvQbnSAROLjHhUa+fHZXGHN8ex5CAKFCYDEwcJ4tQ79uysFoUZSLDIfEygorlQ3vOhOX6tEKr/SF4y8iTUVElRL4Zs6lSFJJFTbDWQsF70Z4Cp3FS+9h9WqIrldjW9axFTcpOcqafGiMcRAIwttZTAw5JaTITGyjOj",
+              "price": 137,
+              "to_city": "paris",
+              "to_city_code": "PAR"
+          }
+      ],
+      "hotel": {
+          "address": "177 Boulevard Haussmann,8th arr.,Paris,75008,France",
+          "currency": "EUR",
+          "description": "",
+          "end_date": "Wed, 17 Jul 2019 00:00:00 GMT",
+          "facilities": [],
+          "main_photo_url": "http://r-ec.bstatic.com/xdata/images/hotel/square350/162841587.jpg?k=7f0d627073b459540960e0ac966bf05f7173d3ad79a39a7062648c5e897ae005&o=",
+          "name": "Hotel Plaza Elysées",
+          "price_per_night": 247.725,
+          "room_type": "",
+          "stars": "4.0",
+          "start_date": "Sat, 13 Jul 2019 00:00:00 GMT",
+          "url": "https://www.booking.com/hotel/fr/plazaelysees.html"
       },
-      {
-        arrival_time: "22:15",
-        departure_time: "18:10",
-        duration: "5h 5m",
-        from_city: "tel aviv",
-        from_city_code: "TLV",
-        link:
-          "https://www.kiwi.com/deep?from=TLV&to=ORY&departure=19-07-2019&flightsId=10070a7c46b000001338de2d_0&price=137&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGWX9XpN2l63Ny8+1SV3OvCkUwiB0kC2udSPmPic51qzLv82cIFZWMt7Fv/rGf4mDhDMZMgDQidZayuXLsb2tHbS7V2J8ulK1gPDFEE77w8kDa0JuhTmAAA6kr0L1yl5U+EltUxVoDvfHCbCjFC3ArkLGhj2uVcxiyl61RWFC5oOdntgMigO6cPmDetRb9cva1+wQLjM0gz8Nv/eGFuQFF7oqu+RjfDolu/ImAZ6Yx30U0C3e4acFuQdA5fRuEvekdvc0dAVmxM9dy0dQGdTwojePPb7REwZER8gVmMnKLMfB5wJNWTRclaQ81/Bg/bJ+1SwBzp/RFGqA4Y9rgE5pIgexXqp+qCQMCFDZf3HdiyGMIMplAqUVX9rM4afJN/B7jYHii7YvgD3txzva041FtrWooHGrhWAJ2uovC+9+EXXRmTszjqt0hty933igGcvKGdOjaR1/ki42X/SC5KghRz47n7Gz+wW39Miy7OQk2wX51ruvCrsEJJjrCyjvG3U1JEQRHTuLk9DzBXQwdb3qxB0Po7YxiXimVxtPkPY/YfUHvxP80mNqGIBRRmOUkMfVLeHkxrprE9ZQ5lZiUO9zKMa72wS9oev8TAlTl9QmBvN04y1gng0EibHm8CQGIB1Gh7OYxJJhwsfcyD6mQR71OSEXEfH3896uYQKmyEEv5rxiUAXyPsC1fDlLZIkEiL55PofhrZCctAgijRKu60FXCTPQYoJm5hXg0PYMcGRzGVu9+7InH/IRPjEPS7J+4oojd",
-        price: 137,
-        to_city: "paris",
-        to_city_code: "PAR"
-      },
-      {
-        arrival_time: "23:25",
-        departure_time: "19:10",
-        duration: "5h 15m",
-        from_city: "tel aviv",
-        from_city_code: "TLV",
-        link:
-          "https://www.kiwi.com/deep?from=TLV&to=CDG&departure=17-07-2019&flightsId=100725c346ae0000cc2217c7_0&price=144&passengers=1&affilid=picky&lang=en&currency=EUR&booking_token=xlfCK4DnW9vdUZ+D9I2V7oeCzQomDQeVxMNtOeojJHCepvAJOToxpgcHOu8NspDcVZQgbsA87Qad4i9qxtWat1+1HVEn2VGQgMCG40xaLR3oeBFCcf4NKA/Ka88lcJZGTIJlTNC5ztoLi5eSUkUYP3av5cDS63AlgtJ9mJE7ktB/N35nwSwz/9FCqCuyIZKGGyyTKXMasld7A7NYFonCh0U0fw0IbiJ0ZXnhnNTtMJXBhIs30pg7s/faA1z042mz/nLxuFeIxZorFu64pCVen7f/G58Jua155IrB3ZWzM/VHDzFaBHclERGKJvRSVN+pIiuCvlnKtINdTJWonTMsxqT1QwVNzULPe/M9mEhw5y0n8n9pdVHo8FnakjEcIDf8bRYec5sgch5r9lgqGxWXnzJQABfV0HGi+mewPuTtT93JEn87FKqM75MSh06pqMclkODlS4mpz0agvvIE7Og03W5IslCBZBhT/7IkoVZWSFQh6k6ET5ovTzBPIzKEH5yd3uK1w5pxOeyPto7A7tREJgDo5tZvorN7Cgf1EA2fe8M7EgceT0oCmqRQonztLUhOSoZ78eFClz2ZnEPz3S94WsX6sNqH0Hb/Rh853IVDOPt4UaQ0R+sxgmTuUHJ791uYgREEqI3E0Th3Jryc7lU7YYR1KdI9S/5YO/hRvb9G06dCesFAxdy2iOchk9YUc4Usi/eHEogDu6am7c9mp7JHLF6hJZCsX4yY8YJoFADC/mUj1CPg5WhzWnzBdoe8hXQVdDEsPmn3JjtGEzMFjWGnpyOOtm2X4dabLeEfKifrTKwrBhoUfOZV/JC5pNYS2maCtLRT7MjURs3mW8CqSFkz7JPK5JT11Iuc50s0j/iPXOCRKTsWbV5Kvk7m4e8R0MSr",
-        price: 144,
-        to_city: "paris",
-        to_city_code: "PAR"
-      }
-    ],
-    hotel: {
-      address: "8 Rue De Richelieu,1st arr.,Paris,75001,France",
-      currency: "EUR",
-      description: "",
-      end_date: "Sun, 21 Jul 2019 00:00:00 GMT",
-      facilities: [],
-      main_photo_url:
-        "http://r-ec.bstatic.com/xdata/images/hotel/square350/76732898.jpg?k=8420cfd98a16d48a2ca4d3510cfb1d77059911686cc4eedd3f99c04c52cabd03&o=",
-      name: "La Clef Louvre",
-      price_per_night: 401.0,
-      room_type: "",
-      stars: "5.0",
-      start_date: "Wed, 17 Jul 2019 00:00:00 GMT",
-      url: "https://www.booking.com/hotel/fr/citadines-aparthotel-louvre.html"
-    },
-    people_number: "2",
-    pictures: [],
-    places: [
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "rue cler near eiffel tower, 75007 paris, france",
-          city: "paris",
-          description:
-            "This lively cobblestone street effectively preserves the ambience of Paris of old and is home to countless small shops.",
-          id: 885,
-          name: "Rue Cler",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/01/23/3c/13/picking-the-best-flowers.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        },
-        {
-          address: "1 pl trocadero et du 11 novembre, 75116 paris, france",
-          city: "paris",
-          description: "",
-          id: 882,
-          name: "Palais de Chaillot",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/01/0e/4c/64/palais-de-chaillot.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        }
+      "hotel_rsrv": null,
+      "id": -1,
+      "people_number": "2",
+      "pictures": [],
+      "places": [
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "78 avenue de suffren, 75015 paris, france",
+                  "city": "paris",
+                  "description": "At the heart of Paris, near the Eiffel Tower, the Village Suisse is a gathering of antique dealers, decorators and one-of-a-kind art galleries. Since 1900, this pedestrian space welcomes the lovers of classic and modern art. It also offers to those...\nClosed todayHours Today: ClosedSee all hours",
+                  "id": 890,
+                  "name": "Le Village Suisse",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/17/81/0d/19/heroines-romanesques.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "1-2 hours",
+                  "website": ""
+              },
+              {
+                  "address": "rue cler near eiffel tower, 75007 paris, france",
+                  "city": "paris",
+                  "description": "This lively cobblestone street effectively preserves the ambience of Paris of old and is home to countless small shops.",
+                  "id": 885,
+                  "name": "Rue Cler",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/23/3c/13/picking-the-best-flowers.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "1 rue de la legion d'honneur, 75007 paris, france",
+                  "city": "paris",
+                  "description": "This beautiful museum, once a railroad station, now houses a staggering collection of Impressionist art, as well as other items created between 1848 and 1914. In 2011, the museum is running a renovation of the top floor (impressionist gallery). Only...\nClosed todayHours Today: ClosedSee all hours",
+                  "id": 156,
+                  "name": "Musee d'Orsay",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/ab/64/la-terrasse-lille-et.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "More than 3 hours",
+                  "website": ""
+              },
+              {
+                  "address": "40 boulevard haussmann, 75009 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1081,
+                  "name": "Galeries Lafayette Paris Haussmann",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/0c/aa/fb/74/underneath-the-glass.jpg",
+                  "price": 0,
+                  "rate": 4,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "63 rue de monceau, 75008 paris, france",
+                  "city": "paris",
+                  "description": "Closed todayHours Today: ClosedSee all hours",
+                  "id": 382,
+                  "name": "Musee Nissim de Camondo",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/9b/d9/74/musee-nissim-de-camondo.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              }
+          ],
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "24 rue de sevres, 75007 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1104,
+                  "name": "Le Bon Marche Rive Gauche",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/07/35/35/46/le-bon-marche.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "64 boulevard haussmann, 75009 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 887,
+                  "name": "Paris Takashimaya",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/c3/25/15/2.jpg",
+                  "price": 0,
+                  "rate": 4,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "64 boulevard haussmann, 75009 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1080,
+                  "name": "Printemps",
+                  "phone number": "",
+                  "photo_url": "https://cdn0.iconfinder.com/data/icons/travel-line-color-hipster-on-the-way/512/map-512.png",
+                  "price": 0,
+                  "rate": 4,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "158 boulevard haussmann, 75008 paris, france",
+                  "city": "paris",
+                  "description": "Built by Edouard André and his wife Nélie Jacquemart, both avid art collectors, in the new Paris being laid out by Baron Haussmann towards the end of the 19th century, this private mansion offers visitors a unique opportunity to explore a wealthy...\nClosed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
+                  "id": 180,
+                  "name": "Musee Jacquemard-Andre",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/0e/76/9f/85/cours-exterieure-du-musee.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "2-3 hours",
+                  "website": ""
+              },
+              {
+                  "address": "1 pl trocadero et du 11 novembre, 75116 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 882,
+                  "name": "Palais de Chaillot",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/01/0e/4c/64/palais-de-chaillot.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              }
+          ],
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "38 rue de sevres, 75007 paris, france",
+                  "city": "paris",
+                  "description": "",
+                  "id": 1194,
+                  "name": "La Grande Epicerie de Paris",
+                  "phone number": "",
+                  "photo_url": "https://cdn0.iconfinder.com/data/icons/travel-line-color-hipster-on-the-way/512/map-512.png",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "rue du cloitre notre-dame, 75004 paris, france",
+                  "city": "paris",
+                  "description": "A visit of the Towers of Notre Dame de Paris, built from 1160 in the Flamboyant Gothic style, gives visitors a close-up view of the Cathedral's flying buttresses, spires and roofs. Gargoyles and chimeras adorn the outer gallery of the North Tower...\nClosed NowHours Today: 7:45 AM - 6:45 PMSee all hours",
+                  "id": 182,
+                  "name": "Tours de la Cathedrale Notre-Dame",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-o/02/6b/c2/19/filename-48842881-jpg.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "boulevard richard lenoir, 75011 paris, france",
+                  "city": "paris",
+                  "description": "Closed todayHours Today: ClosedSee all hours",
+                  "id": 886,
+                  "name": "Bastille Market",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/05/65/64/bastille-market.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "< 1 hour",
+                  "website": ""
+              },
+              {
+                  "address": "16 rue du repos, 75020 paris, france",
+                  "city": "paris",
+                  "description": "This famous cemetery is the burial site of numerous French luminaries - authors, writers, musicians and more.",
+                  "id": 179,
+                  "name": "Pere-Lachaise Cemetery (Cimetiere du Pere-Lachaise)",
+                  "phone number": "",
+                  "photo_url": "https://cdn0.iconfinder.com/data/icons/travel-line-color-hipster-on-the-way/512/map-512.png",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "1-2 hours",
+                  "website": ""
+              },
+              {
+                  "address": "38 rue saint maur, 75011 paris, france",
+                  "city": "paris",
+                  "description": "Closed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
+                  "id": 391,
+                  "name": "Atelier des Lumieres",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/12/a9/45/c4/photo4jpg.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "< 1 hour",
+                  "website": ""
+              }
+          ],
+          [
+              {
+                  "address": "330, Rue De Vaugirard,15th arr.,Paris,75015,France",
+                  "city": "paris",
+                  "description": "",
+                  "id": -1,
+                  "name": "Quality Hotel Abaca Paris 15 by HappyCulture",
+                  "phone number": "",
+                  "photo_url": "",
+                  "price": 124.8,
+                  "rate": 5,
+                  "suggested_duration": "",
+                  "website": "https://www.booking.com/hotel/fr/quality-hotel-abaca-paris-15eme.html"
+              },
+              {
+                  "address": "140 rue du bac, 75007 paris, france",
+                  "city": "paris",
+                  "description": "Closed NowHours Today: 7:45 AM - 1:00 PM, 2:30 PM - 7:00 PMSee all hours",
+                  "id": 384,
+                  "name": "Chapelle Notre Dame de la Medaille Miraculeuse",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/09/bf/a0/64/caption.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "139 rue mouffetard, 75005 paris, france",
+                  "city": "paris",
+                  "description": "A large street market in the Latin Quarter.\nClosed NowHours Today: 9:00 AM - 1:00 PMSee all hours",
+                  "id": 884,
+                  "name": "Rue Mouffetard Market",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-o/01/23/2b/8f/while-not-the-most-hygenic.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "6 place sainte genevieve, 75005 paris, france",
+                  "city": "paris",
+                  "description": "This 16th-century cathedral is a mixture of Renaissance, Baroque and Gothic architecture.\nClosed NowHours Today: 8:45 AM - 7:45 PMSee all hours",
+                  "id": 883,
+                  "name": "Eglise Saint-Etienne-du-Mont de Paris",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/09/53/27/19/st-etienne-du-mont.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": null,
+                  "website": ""
+              },
+              {
+                  "address": "place du pantheon, 75005 paris, france",
+                  "city": "paris",
+                  "description": "With the Pantheon, architect Jacques-Germain Soufflot met Louis XV’s wish to glorify the monarchy in the form of a church dedicated to Saint Geneviève, the patron saint of Paris. The edifice was deconsecrated during the Revolution in 1791 and...\nClosed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
+                  "id": 176,
+                  "name": "Pantheon",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/02/1a/da/41/il-pantheon.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "2-3 hours",
+                  "website": ""
+              },
+              {
+                  "address": "79 rue de varenne, 75007 paris, france",
+                  "city": "paris",
+                  "description": "Located in this 18th-century hotel (Hotel Biron), Musee Rodin holds an impressive collection of works by this famous French sculptor and his circle as Camille Claudel. The museum also features an exquisit garden and a temporary exhibition hall.\nClosed todayHours Today: ClosedSee all hours",
+                  "id": 169,
+                  "name": "Musee Rodin",
+                  "phone number": "",
+                  "photo_url": "https://media-cdn.tripadvisor.com/media/photo-w/0f/ec/32/31/vue-de-la-cour-d-honneur.jpg",
+                  "price": 0,
+                  "rate": 4.5,
+                  "suggested_duration": "More than 3 hours",
+                  "website": ""
+              }
+          ]
       ],
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "79 rue de varenne, 75007 paris, france",
-          city: "paris",
-          description:
-            "Located in this 18th-century hotel (Hotel Biron), Musee Rodin holds an impressive collection of works by this famous French sculptor and his circle as Camille Claudel. The museum also features an exquisit garden and a temporary exhibition hall.\nClosed todayHours Today: ClosedSee all hours",
-          id: 169,
-          name: "Musee Rodin",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/0f/ec/32/31/vue-de-la-cour-d-honneur.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "More than 3 hours",
-          website: ""
-        },
-        {
-          address: "1 rue de la legion d'honneur, 75007 paris, france",
-          city: "paris",
-          description:
-            "This beautiful museum, once a railroad station, now houses a staggering collection of Impressionist art, as well as other items created between 1848 and 1914. In 2011, the museum is running a renovation of the top floor (impressionist gallery). Only...\nClosed todayHours Today: ClosedSee all hours",
-          id: 156,
-          name: "Musee d'Orsay",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-s/02/1c/ab/64/la-terrasse-lille-et.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "More than 3 hours",
-          website: ""
-        },
-        {
-          address: "99 rue de rivoli, 75001 paris, france",
-          city: "paris",
-          description:
-            "Home to Leonardo da Vinci's Mona Lisa, the Louvre is considered the world's greatest art museum, with an unparalleled collection of items covering the full spectrum of art through the ages.\nClosed NowHours Today: 9:00 AM - 6:00 PMSee all hours",
-          id: 158,
-          name: "Louvre Museum",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/05/6b/c7/ee/musee-du-louvre.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "< 1 hour",
-          website: ""
-        },
-        {
-          address: "17 rue geoffroy l asnier, 75004 paris, france",
-          city: "paris",
-          description: "Closed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
-          id: 389,
-          name: "Memorial de la Shoah",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-s/01/63/6c/49/copyright-memorial-de.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        },
-        {
-          address: "boulevard richard lenoir, 75011 paris, france",
-          city: "paris",
-          description: "Closed todayHours Today: ClosedSee all hours",
-          id: 886,
-          name: "Bastille Market",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-s/03/05/65/64/bastille-market.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "< 1 hour",
-          website: ""
-        }
-      ],
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "jardin des tuileries - cote seine, 75001 paris, france",
-          city: "paris",
-          description: "Closed NowHours Today: 9:00 AM - 6:00 PMSee all hours",
-          id: 168,
-          name: "Musee de l'Orangerie",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/0d/fd/7e/16/photo1jpg.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "< 1 hour",
-          website: ""
-        },
-        {
-          address: "63 rue de monceau, 75008 paris, france",
-          city: "paris",
-          description: "Closed todayHours Today: ClosedSee all hours",
-          id: 382,
-          name: "Musee Nissim de Camondo",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/01/9b/d9/74/musee-nissim-de-camondo.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        },
-        {
-          address: "158 boulevard haussmann, 75008 paris, france",
-          city: "paris",
-          description:
-            "Built by Edouard Andr\u00e9 and his wife N\u00e9lie Jacquemart, both avid art collectors, in the new Paris being laid out by Baron Haussmann towards the end of the 19th century, this private mansion offers visitors a unique opportunity to explore a wealthy...\nClosed NowHours Today: 10:00 AM - 6:00 PMSee all hours",
-          id: 180,
-          name: "Musee Jacquemard-Andre",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/0e/76/9f/85/cours-exterieure-du-musee.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "2-3 hours",
-          website: ""
-        }
-      ],
-      [
-        {
-          address: "9 Villa de Saxe,7th arr.,Paris,75007,France",
-          city: "paris",
-          description: "",
-          id: -1,
-          name: "Hotel Villa Saxe Eiffel",
-          "phone number": "",
-          photo_url: "",
-          price: 168.21,
-          rate: 5,
-          suggested_duration: "",
-          website: "https://www.booking.com/hotel/fr/villa-saxe-eiffel.html"
-        },
-        {
-          address: "10 rue servandoni, 75006 paris, france",
-          city: "paris",
-          description:
-            "Language is one of the fundamental abilities that makes us human. It has also played a key role in the evolution of people and modern society. To reveal the secrets of language, Mundolingua gives you the opportunity to discover language, languages...\nClosed NowHours Today: 10:00 AM - 7:00 PMSee all hours",
-          id: 387,
-          name: "Mundolingua",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-w/06/e2/81/01/mundolingua.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: "1-2 hours",
-          website: ""
-        },
-        {
-          address: "139 rue mouffetard, 75005 paris, france",
-          city: "paris",
-          description:
-            "A large street market in the Latin Quarter.\nClosed NowHours Today: 9:00 AM - 1:00 PMSee all hours",
-          id: 884,
-          name: "Rue Mouffetard Market",
-          "phone number": "",
-          photo_url:
-            "https://media-cdn.tripadvisor.com/media/photo-o/01/23/2b/8f/while-not-the-most-hygenic.jpg",
-          price: 0.0,
-          rate: 4.5,
-          suggested_duration: null,
-          website: ""
-        }
-      ]
-    ],
-    price: 1734,
-    start_date: "17/07/2019"
+      "price": 1125,
+      "start_date": "13/07/2019"
   }
-];
+]

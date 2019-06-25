@@ -1,4 +1,9 @@
-import { SELECT_TRIP, FETCH_TRIPS, CLEAR_TRIPS } from "../actions/types";
+import {
+  SELECT_TRIP,
+  FETCH_TRIPS,
+  CLEAR_TRIPS,
+  UPDATE_TRIP
+} from "../actions/types";
 
 const initialState = {
   trips: null,
@@ -10,6 +15,7 @@ export default function(state = initialState, action) {
     default:
       return state;
     case SELECT_TRIP:
+    case UPDATE_TRIP:
       return { ...state, trip: action.payload };
     case FETCH_TRIPS:
       return { ...state, trips: action.payload };

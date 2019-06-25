@@ -5,14 +5,20 @@ import {
   faPlaneArrival,
   faPlaneDeparture
 } from "@fortawesome/free-solid-svg-icons";
+import PytheasApi from "../../api/Api";
+import { updateTrip } from "../../actions/tripAction";
+import { connect } from "react-redux";
 
 export class Flight extends Component {
   constructor(props) {
     super(props);
     this.state = {
       reservationMode: false,
-      confirmationNumber: ""
+      confirmationNumber: "",
+      flight: {}
     };
+
+    this.confirm = this.confirm.bind(this);
   }
   getReservation = () => {
     this.setState({ reservationMode: true });
@@ -22,6 +28,27 @@ export class Flight extends Component {
     this.setState({ confirmationNumber: e.target.value });
   };
 
+  async confirm() {
+    const body = {
+      profile: this.props.profile.id,
+      flight_rsrv: {
+        arrival_time: this.props.arrivalTime,
+        departure_time: this.props.departureTime,
+        from_city: this.props.from,
+        from_city_code: this.props.fromCode,
+        to_city: this.props.destination,
+        to_city_code: this.props.destinationCode,
+        duration: this.props.duration,
+        price: this.props.price,
+        reservationNumber: this.state.confirmationNumber
+      },
+      hotel_rsrv: "",
+      trip: this.props.trips.trip
+    };
+    const trip = await PytheasApi.put("/trip", body);
+    trip.this.props.updateTrip(trip);
+  }
+
   render() {
     const orderTicket = (
       <div className="order-ticket">
@@ -29,17 +56,24 @@ export class Flight extends Component {
           <p className="price-header">Price</p>
           <p className="price-content">{this.props.price}€</p>
         </div>
-        <div className="order">
-          <p className="order-text">
-            <a
-              href={this.props.link}
-              onClick={this.getReservation}
-              target="_blank"
-            >
-              ORDER
-            </a>
-          </p>
-        </div>
+        {this.props.reservationNumber ? (
+          <div className="order">
+            <p className="order-text">{this.props.reservationNumber}</p>
+          </div>
+        ) : (
+          <div className="order">
+            <p className="order-text">
+              <a
+                href={this.props.link}
+                onClick={this.getReservation}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ORDER
+              </a>
+            </p>
+          </div>
+        )}
       </div>
     );
     const reservation = (
@@ -50,7 +84,7 @@ export class Flight extends Component {
           name="reservation"
           className="reservation-number"
         />
-        <div className="confirm">
+        <div className="confirm" onClick={() => this.confirm()}>
           <p className="confirm-text">Confirm</p>
         </div>
       </div>
@@ -100,4 +134,12 @@ export class Flight extends Component {
   }
 }
 
-export default Flight;
+const mapStateToProps = state => ({
+  user: state.user.token,
+  trips: state.trips
+});
+
+export default connect(
+  mapStateToProps,
+  { updateTrip }
+)(Flight);

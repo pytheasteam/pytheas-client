@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { removeBg } from "../../common/styleHelper";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
@@ -8,13 +7,18 @@ import { fetchTrips, selectTrip, fetchExplore } from "../../actions/tripAction";
 import "./Hotels.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Header from "../../components/header/Header";
+import PytheasApi from "../../api/Api";
 
 export class Hotels extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reservationMode: false
+      reservationMode: false,
+      confirmationNumber: ""
     };
+
+    this.confirm = this.confirm.bind(this);
   }
   componentWillUnmount() {
     removeBg("hotels-bg");
@@ -22,6 +26,20 @@ export class Hotels extends Component {
 
   componentDidMount() {
     document.body.className += " hotels-bg";
+  }
+
+  handleChange = e => {
+    console.log(e.target.value);
+    this.setState({ confirmationNumber: e.target.value });
+  };
+
+  async confirm() {
+    const body = {
+      profile: this.props.profile.id,
+      hotel_rsrv: "",
+      trip: this.props.trips.trip
+    };
+    const status = await PytheasApi.put("/trip", body);
   }
 
   render() {
@@ -68,7 +86,7 @@ export class Hotels extends Component {
           name="reservation"
           className="reservation-number"
         />
-        <div className="confirm">
+        <div className="confirm" onClick={() => this.confirm()}>
           <p className="confirm-text">Confirm</p>
         </div>
       </div>
@@ -77,6 +95,7 @@ export class Hotels extends Component {
         href={trip.hotel.url}
         onClick={() => this.setState({ reservationMode: true })}
         target="_blank"
+        rel="noopener noreferrer"
         className="book-url"
       >
         <div className="book">
@@ -87,20 +106,7 @@ export class Hotels extends Component {
 
     return (
       <div className="hotels">
-        <div className="header">
-          <IonToolbar className="toolbar-background">
-            <IonButton
-              fill="clear"
-              className="back-btn"
-              onClick={() =>
-                window.history.back() || this.props.history.push("/explore")
-              }
-            >
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-          </IonToolbar>
-          <p className="title">Hotel</p>
-        </div>
+        <Header title="Hotel" back={() => window.history.back()} />
         <div className="hotels-container">{hotel}</div>
         {booking}
       </div>
