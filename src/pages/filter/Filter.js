@@ -25,7 +25,7 @@ const fabStyle = {
   width: "187px",
   boxShadow: "none",
   position: "relative",
-  margin: "10% auto"
+  margin: "100pt auto"
 };
 
 export class Filter extends Component {
