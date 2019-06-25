@@ -186,7 +186,7 @@ const mapStateToProps = state => {
 };
 
 const WrappedWithGoogleApi = GoogleApiWrapper({
-  apiKey: GOOGLE_API_KEY
+  apiKey: process.env.GOOGLE_API_KEY
 })(ViewMap);
 
 export default connect(
