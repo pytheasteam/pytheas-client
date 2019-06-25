@@ -9,7 +9,6 @@ import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips } from "../../actions/tripAction";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import MapAttraction from "../../components/mapAttraction/MapAttraction";
-import { GOOGLE_API_KEY } from "../../consts";
 import Geocode from "react-geocode";
 import location from "../assets/location.png";
 import locationStroke from "../assets/locationStroke.png";
@@ -90,7 +89,7 @@ export class ViewMap extends Component {
   }
 
   async calculateCoords(address) {
-    Geocode.setApiKey(process.env.GOOGLE_API_KEY || GOOGLE_API_KEY);
+    Geocode.setApiKey(process.env.GOOGLE_API_KEY);
     return await Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
