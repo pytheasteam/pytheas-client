@@ -84,6 +84,7 @@ export class Hotels extends Component {
           type="text"
           placeholder="Enter reservation number"
           name="reservation"
+          onChange={this.handleChange}
           className="reservation-number"
         />
         <div className="confirm" onClick={() => this.confirm()}>

@@ -53,7 +53,6 @@ export class Flights extends Component {
                 departureTime={flight.departure_time}
                 duration={flight.duration}
                 price={flight.price}
-                reservationNumber="IlOVEnOGA"
               />
             );
           })

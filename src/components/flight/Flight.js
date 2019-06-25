@@ -83,6 +83,7 @@ export class Flight extends Component {
           placeholder="Enter reservation number"
           name="reservation"
           className="reservation-number"
+          onChange={this.handleChange}
         />
         <div className="confirm" onClick={() => this.confirm()}>
           <p className="confirm-text">Confirm</p>
