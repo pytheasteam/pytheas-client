@@ -38,6 +38,10 @@ export class ViewMap extends Component {
   componentDidMount() {
     document.body.className += " trip-main-bg";
     const tripId = this.props.match.params.tripId;
+    if (!this.props.trips.trips[tripId]) {
+      window.history.back();
+      return null;
+    }
     const attractions = this.props.trips.trips[tripId].places[0];
     this.getCoordinatesFromAddress(attractions);
   }
@@ -79,7 +83,7 @@ export class ViewMap extends Component {
         if (status === "OK") {
           directionsDisplay.setDirections(response);
         } else {
-          window.alert("Directions request failed due to " + status);
+          console.log("Directions request failed due to " + status);
         }
       }
     );
@@ -117,12 +121,12 @@ export class ViewMap extends Component {
   render() {
     const tripId = this.props.match.params.tripId;
     const trip = this.props.trips.trips[tripId];
-    const dayAttractions = trip.places[0];
-    this.showDirections();
     if (!trip) {
       window.history.back();
       return null;
     }
+    const dayAttractions = trip.places[0];
+    this.showDirections();
     return Object.keys(this.state.center).length !== 0 ? (
       <div className="view-map">
         <div className="header">
@@ -146,9 +150,7 @@ export class ViewMap extends Component {
         <div className="map-view">
           <Map
             google={this.props.google}
-            zoom={13}
             center={this.state.center}
-            initialCenter={this.state.center}
             onReady={this.handleMapReady}
           >
             {this.state.attractions.map((attraction, i) => {
