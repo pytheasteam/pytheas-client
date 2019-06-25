@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./MapAttraction.scss";
+import Common from "../../utils/common";
 
 export class MapAttraction extends Component {
   render() {
@@ -17,7 +18,7 @@ export class MapAttraction extends Component {
             }}
           />
           <p className="title" style={{ opacity }}>
-            {this.props.title}
+            {Common.formatName(this.props.title, 24)}
           </p>
           <p
             className="set-current"

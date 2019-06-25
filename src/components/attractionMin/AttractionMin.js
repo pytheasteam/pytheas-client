@@ -2,16 +2,9 @@ import React, { Component } from "react";
 import { IonIcon } from "@ionic/react";
 import "./AtrractionMin.scss";
 import { upperFistLetter, tagIcons } from "../../common/styleHelper";
-
-const maxlimit = 13;
+import Common from "../../utils/common";
 
 export class AttractionMin extends Component {
-  formatName(attractionName) {
-    return attractionName.length > maxlimit
-      ? attractionName.substring(0, maxlimit - 3) + "..."
-      : attractionName;
-  }
-
   render() {
     const attractionName = upperFistLetter(this.props.city);
     return (
@@ -29,7 +22,7 @@ export class AttractionMin extends Component {
           }}
         />
         <p aria-labelledby={attractionName} className="city-name">
-          {this.formatName(attractionName)}
+          {Common.formatName(attractionName, 13)}
         </p>
         <IonIcon className="tag-icon" name={tagIcons.music} />
         <IonIcon className="tag-icon" name={tagIcons.test2} />

@@ -9,4 +9,10 @@ export default class Common {
         1
     );
   }
+
+  static formatName(attractionName, maxlimit) {
+    return attractionName.length > maxlimit
+      ? attractionName.substring(0, maxlimit - 3) + "..."
+      : attractionName;
+  }
 }

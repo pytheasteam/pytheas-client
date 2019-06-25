@@ -1,7 +1,7 @@
 import { SELECT_TRIP, FETCH_TRIPS, CLEAR_TRIPS } from "../actions/types";
 
 const initialState = {
-  trips: [],
+  trips: null,
   trip: {}
 };
 

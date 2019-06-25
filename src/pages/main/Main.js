@@ -11,6 +11,7 @@ import "../../common/common-style.css";
 import { removeBg } from "../../common/styleHelper";
 import ProfilePanel from "../../components/profilePanel/ProfilePanel";
 import PytheasApi from "../../api/Api";
+import Loader from "../../components/loader/Loader";
 
 export class Main extends Component {
   constructor(props) {
@@ -41,13 +42,11 @@ export class Main extends Component {
   }
 
   render() {
-    return (
-      <div className="main">
-        <ProfilePanel
-          img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
-          trips={this.props.trips.trips.length}
-        />
-        {this.props.trips.trips.length > 0 ? (
+    const trips = this.props.trips.trips;
+    let content = <Loader />;
+    if (trips) {
+      content =
+        trips.length > 0 ? (
           <IonList>
             {this.props.trips.trips.map((trip, i) => {
               return (
@@ -67,8 +66,15 @@ export class Main extends Component {
           </IonList>
         ) : (
           <p className="no-trip">You dont have any trips</p>
-        )}
-
+        );
+    }
+    return (
+      <div className="main">
+        <ProfilePanel
+          img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+          trips={trips ? this.props.trips.trips.length : 0}
+        />
+        {content}
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <Link to="/profile">
             <IonFabButton>

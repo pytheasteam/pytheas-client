@@ -38,7 +38,7 @@ export class ViewMap extends Component {
   componentDidMount() {
     document.body.className += " trip-main-bg";
     const tripId = this.props.match.params.tripId;
-    if (!this.props.trips.trips[tripId]) {
+    if (!this.props.trips.trips || !this.props.trips.trips[tripId]) {
       window.history.back();
       return null;
     }
@@ -120,7 +120,7 @@ export class ViewMap extends Component {
 
   render() {
     const tripId = this.props.match.params.tripId;
-    const trip = this.props.trips.trips[tripId];
+    const trip = this.props.trips.trips && this.props.trips.trips[tripId];
     if (!trip) {
       window.history.back();
       return null;

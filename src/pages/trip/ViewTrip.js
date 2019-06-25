@@ -29,7 +29,9 @@ export class ViewTrip extends Component {
   };
 
   render() {
-    const trip = this.props.trips.trips[this.props.match.params.id];
+    const trip =
+      this.props.trips.trips &&
+      this.props.trips.trips[this.props.match.params.id];
     if (!trip) {
       this.props.history.push("/");
       return null;
