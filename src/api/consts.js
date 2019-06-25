@@ -5,7 +5,7 @@ const localhostApi = "http://10.0.0.10:5000/api";
 const localhostLogin = "http://10.0.0.10:5000/login";
 
 export const MOCK_MODE = false;
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 export const API_BASE = DEV_MODE ? localhostApi : serverApi;
 

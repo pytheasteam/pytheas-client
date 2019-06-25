@@ -11,4 +11,14 @@
     position: relative;
     top: 41pt;
   }
+
+  & .no-trip {
+    position: relative;
+    text-align: center;
+    color: #404040;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

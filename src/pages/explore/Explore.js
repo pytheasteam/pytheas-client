@@ -35,27 +35,30 @@ export class Explore extends Component {
       return null;
     }
     if (this.props.trips.trips) {
-      content = this.props.trips.trips.map((trip, i) => {
-        if (!trip) {
-          return null;
-        }
-        return (
-          <ExploreTrip
-            key={i}
-            city={trip.destination}
-            price={trip.price}
-            currency={trip.currency}
-            days={trip.days}
-            attractions={trip.places}
-            viewTrip={() => {
-              this.props.history.push(`/trips/${i}`);
-              this.props.selectTrip(trip);
-            }}
-          />
-        );
-      });
+      if (this.props.trips.trips.length === 0) {
+        content = <p className="no-trip">You don't have any explore trip</p>;
+      } else {
+        content = this.props.trips.trips.map((trip, i) => {
+          if (!trip) {
+            return null;
+          }
+          return (
+            <ExploreTrip
+              key={i}
+              city={trip.destination}
+              price={trip.price}
+              currency={trip.currency}
+              days={trip.days}
+              attractions={trip.places}
+              viewTrip={() => {
+                this.props.history.push(`/trips/${i}`);
+                this.props.selectTrip(trip);
+              }}
+            />
+          );
+        });
+      }
     }
-    console.log(content);
     return content ? (
       <div className="explore">
         <Header title="Explore" back={() => this.props.history.push("/")} />

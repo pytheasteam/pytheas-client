@@ -65,7 +65,7 @@ export class Main extends Component {
             })}
           </IonList>
         ) : (
-          <p className="no-trip">You dont have any trips</p>
+          <p className="no-trip">You don't have any trips</p>
         );
     }
     return (
