@@ -1,4 +1,8 @@
 export default class Common {
+  static isObjectEmpty(object) {
+    return Object.keys(object).length === 0 && object.constructor === Object;
+  }
+
   static getMonthName(month) {
     const monthNames = [
       "JAN",

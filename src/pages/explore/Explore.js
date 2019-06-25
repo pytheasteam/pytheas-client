@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { removeBg } from "../../common/styleHelper";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";

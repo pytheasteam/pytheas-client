@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./DayTrip.scss";
 import AttractionMin from "../attractionMin/AttractionMin";
+import Common from "../../utils/common";
 
 export class DayTrip extends Component {
   render() {
@@ -8,7 +9,7 @@ export class DayTrip extends Component {
       <div className="day-trip">
         <p className="day-info">DAY {this.props.day + 1}</p>
         {this.props.attractions.map((attraction, i) => {
-          if (!attraction || i === 0) {
+          if (Common.isObjectEmpty(attraction) || i === 0) {
             return null;
           }
           return (

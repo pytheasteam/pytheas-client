@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import "./Flights.scss";
 import { removeBg } from "../../common/styleHelper";
 import Flight from "../../components/flight/Flight";

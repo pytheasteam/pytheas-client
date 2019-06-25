@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  IonToolbar,
-  IonTitle,
-  IonButton,
-  IonIcon,
-  IonDatetime
-} from "@ionic/react";
+import { IonIcon, IonDatetime } from "@ionic/react";
 import "./Filter.scss";
 import Fab from "@material-ui/core/Fab";
 import moment from "moment";

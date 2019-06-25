@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import "./ViewAttraction.scss";
 import { removeBg } from "../../common/styleHelper";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
