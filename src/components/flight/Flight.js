@@ -40,7 +40,7 @@ export class Flight extends Component {
         to_city_code: this.props.destinationCode,
         duration: this.props.duration,
         price: this.props.price,
-        reservationNumber: this.state.confirmationNumber
+        reservation_number: this.state.confirmationNumber
       },
       hotel_rsrv: "",
       trip: this.props.trips.trip

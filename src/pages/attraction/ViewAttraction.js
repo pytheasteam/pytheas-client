@@ -41,7 +41,6 @@ export class ViewAttraction extends Component {
       this.props.history.push("/");
       return null;
     }
-    console.log(attraction.url);
 
     return (
       <div className="view-attraction">

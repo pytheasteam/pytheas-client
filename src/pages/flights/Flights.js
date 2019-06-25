@@ -4,6 +4,7 @@ import "./Flights.scss";
 import { removeBg } from "../../common/styleHelper";
 import Flight from "../../components/flight/Flight";
 import { connect } from "react-redux";
+import Header from "../../components/header/Header";
 
 export class Flights extends Component {
   constructor(props) {
@@ -61,18 +62,7 @@ export class Flights extends Component {
     const firstFlight = allFlights && allFlights[0];
     return (
       <div className="flights">
-        <div className="header">
-          <IonToolbar className="toolbar-background">
-            <IonButton
-              fill="clear"
-              className="back-btn"
-              onClick={() => window.history.back()}
-            >
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-          </IonToolbar>
-          <p className="title">Flights</p>
-        </div>
+        <Header title="Flights" back={() => window.history.back()} />
         <div className="flights-container">
           {this.state.more ? allFlights : firstFlight}
         </div>
