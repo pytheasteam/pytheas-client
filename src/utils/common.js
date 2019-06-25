@@ -11,7 +11,7 @@ export default class Common {
   }
 
   static formatName(attractionName, maxlimit) {
-    return attractionName.length > maxlimit
+    return attractionName && attractionName.length > maxlimit
       ? attractionName.substring(0, maxlimit - 3) + "..."
       : attractionName;
   }

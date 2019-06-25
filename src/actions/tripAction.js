@@ -1,20 +1,23 @@
 import { FETCH_TRIPS, SELECT_TRIP, CLEAR_TRIPS } from "../actions/types";
 import PytheasApi from "../api/Api";
-import { async } from "q";
 
-export const fetchTrips = () => dispatch => {
-  PytheasApi.get("/trip").then(body => {
+export const fetchTrips = () => async dispatch => {
+  await PytheasApi.get("/trip").then(body => {
     return dispatch({ type: FETCH_TRIPS, payload: body });
   });
 };
 
-export const selectTrip = trip => dispatch =>
-  dispatch({ type: SELECT_TRIP, payload: trip });
+export const selectTrip = trip => async dispatch =>
+  await dispatch({ type: SELECT_TRIP, payload: trip });
 
-export const fetchExplore = queerParams => async dispatch => {
-  await PytheasApi.get("/explore", queerParams).then(body => {
-    return dispatch({ type: FETCH_TRIPS, payload: body });
-  });
+export const fetchExplore = queryParams => async dispatch => {
+  await PytheasApi.get("/explore", queryParams)
+    .then(body => {
+      return dispatch({ type: FETCH_TRIPS, payload: body });
+    })
+    .catch(() => {
+      return dispatch({ type: FETCH_TRIPS, payload: -1 });
+    });
 };
 
 export const clearTrips = () => dispatch => {

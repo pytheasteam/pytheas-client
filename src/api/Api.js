@@ -41,15 +41,14 @@ export class PytheasApi {
         headers: {
           Authorization: token
         }
-      })
-        .then(response => {
-          if (response.ok) {
-            const resJson = response.json();
-            console.log(resJson);
-            return resolve(resJson);
-          }
-        })
-        .catch(err => reject(err));
+      }).then(response => {
+        if (response.ok) {
+          const resJson = response.json();
+          return resolve(resJson);
+        } else {
+          return reject();
+        }
+      });
     });
   }
 

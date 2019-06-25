@@ -25,6 +25,7 @@ export const login = () => dispatch => {
   })
     .then(res => res.json())
     .then(async body => {
+      console.log(body.token);
       await updateToken(body.token);
       return dispatch({ type: GOOGLE_LOGIN, payload: body.token });
     });

@@ -11,6 +11,7 @@ import Fab from "@material-ui/core/Fab";
 import moment from "moment";
 import { connect } from "react-redux";
 import { clearTrips } from "../../actions/tripAction";
+import Header from "../../components/header/Header";
 
 const iconStyle = {
   marginRight: "4px",
@@ -64,16 +65,7 @@ export class Filter extends Component {
   render() {
     return (
       <div className="filter">
-        <IonToolbar>
-          <IonButton
-            fill="clear"
-            className="back-btn"
-            onClick={() => window.history.back()}
-          >
-            <IonIcon slot="icon-only" name="arrow-back" />
-          </IonButton>
-          <IonTitle className="title">Filters</IonTitle>
-        </IonToolbar>
+        <Header title="Filters" back={() => window.history.back()} />
         <div className="container">
           <div lines="none" className="filter-item">
             <label position="floating" style={{ display: "block" }}>
@@ -83,11 +75,9 @@ export class Filter extends Component {
             <input
               type="text"
               name="destination"
-              // className="destination"
               value={this.state.destination}
               placeholder="Type your dest"
               onChange={this.handleChange}
-              // autoComplete="true"
             />
           </div>
           <div lines="none" className="filter-item">

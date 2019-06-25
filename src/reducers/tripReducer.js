@@ -14,6 +14,6 @@ export default function(state = initialState, action) {
     case FETCH_TRIPS:
       return { ...state, trips: action.payload };
     case CLEAR_TRIPS:
-      return { ...state, trips: [], trip: {} };
+      return { ...state, trips: null, trip: {} };
   }
 }

@@ -14,6 +14,7 @@ class Login extends Component {
     removeBg("gradient-bg");
   }
   componentDidUpdate(prevProps) {
+    console.log(this.props.user);
     if (this.props.user) this.props.history.push("/");
   }
   componentDidMount() {
