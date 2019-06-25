@@ -90,7 +90,7 @@ export class ViewMap extends Component {
   }
 
   async calculateCoords(address) {
-    Geocode.setApiKey(GOOGLE_API_KEY);
+    Geocode.setApiKey(process.env.GOOGLE_API_KEY || GOOGLE_API_KEY);
     return await Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
