@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { IonAvatar } from "@ionic/react";
 import "./ProfilePanel.scss";
 
 export class ProfilePanel extends Component {

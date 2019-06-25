@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips } from "../../actions/tripAction";
+import Header from "../../components/header/Header";
+import Common from "../../utils/common";
 
 export class ViewAttraction extends Component {
   componentWillUnmount() {
@@ -17,6 +19,18 @@ export class ViewAttraction extends Component {
   componentDidMount() {
     document.body.className += " trip-main-bg";
   }
+
+  formatDescription(description) {
+    let desc =
+      description.length > 0
+        ? description.split(/\.(?=[^\.]+$)/)[0]
+        : "Not available";
+    if (desc.startsWith("Close") || desc.startsWith("About")) {
+      desc = "Not available";
+    }
+    return desc;
+  }
+
   render() {
     const attraction =
       this.props.trips.trip.places &&
@@ -27,26 +41,17 @@ export class ViewAttraction extends Component {
       this.props.history.push("/");
       return null;
     }
+    console.log(attraction.url);
+
     return (
       <div className="view-attraction">
-        <div className="header">
-          <IonToolbar className="toolbar-background">
-            <IonButton
-              fill="clear"
-              onClick={() => {
-                window.history.back();
-              }}
-              className="back-btn"
-            >
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-          </IonToolbar>
+        <Header
+          title={Common.formatName(attraction.name, 20)}
+          back={() => {
+            window.history.back();
+          }}
+        />
 
-          <p className="trip-name">{attraction.name}</p>
-        </div>
-        <button className="go-to-map">
-          <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
-        </button>
         <div
           className="trip-picture"
           style={{
@@ -57,7 +62,9 @@ export class ViewAttraction extends Component {
         />
         <div className="description-container">
           <p className="title">Description</p>
-          <p className="description">{attraction.description}</p>
+          <p className="description">
+            {this.formatDescription(attraction.description)}
+          </p>
         </div>
       </div>
     );

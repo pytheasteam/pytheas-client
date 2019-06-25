@@ -3,6 +3,7 @@ import "./Trip.scss";
 import { upperFistLetter } from "../../common/styleHelper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import Common from "../../utils/common";
 
 export class Trip extends Component {
   render() {
@@ -10,7 +11,17 @@ export class Trip extends Component {
       (attractions, day) => attractions + day.length,
       0
     );
-    let days = "3";
+    const days = Common.date_diff_indays(
+      this.props.startDate,
+      this.props.endDate
+    );
+
+    const startDate = new Date(this.props.startDate);
+    let startDayDay = startDate.getDate();
+    if (startDayDay < 10) {
+      startDayDay = `0${startDayDay.toString()}`;
+    }
+    const startDayMonth = Common.getMonthName(startDate.getMonth());
     return (
       <div className="trip" onClick={() => this.props.viewTrip()}>
         <div className="trip-picture" />
@@ -33,8 +44,8 @@ export class Trip extends Component {
 
         <div className="trip-devider" />
         <div className="trip-date">
-          <p className="day">{this.props.day || "07"}</p>
-          <p className="month">{this.props.day || "JUN"}</p>
+          <p className="day">{startDayDay}</p>
+          <p className="month">{startDayMonth}</p>
         </div>
       </div>
     );
