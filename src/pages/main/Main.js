@@ -51,7 +51,7 @@ export class Main extends Component {
             {this.props.trips.trips.map((trip, i) => {
               return (
                 <Trip
-                  key={`${trip.start_date}-${trip.end_date}`}
+                  key={i}
                   city={trip.city}
                   startDate={trip.start_date}
                   endDate={trip.end_date}

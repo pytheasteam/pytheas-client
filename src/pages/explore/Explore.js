@@ -7,6 +7,7 @@ import { selectProfile } from "../../actions/profileAction";
 import { fetchTrips, selectTrip, fetchExplore } from "../../actions/tripAction";
 import "./Explore.scss";
 import ExploreTrip from "../../components/exploreTrip/ExploreTrip";
+import Loader from "../../components/loader/Loader";
 
 export class Explore extends Component {
   componentWillUnmount() {
@@ -16,13 +17,36 @@ export class Explore extends Component {
   componentDidMount() {
     document.body.className += " explore-bg";
     const queryString = this.props.location.search;
-    if (!this.props.trips.trips.length > 0) {
+    if (!this.props.trips.trips || !this.props.trips.trips.length > 0) {
       this.props.fetchExplore(queryString);
     }
   }
 
   render() {
-    return (
+    let content = null;
+    if (this.props.trips.trips) {
+      content = this.props.trips.trips.map((trip, i) => {
+        if (!trip) {
+          return null;
+        }
+        return (
+          <ExploreTrip
+            key={i}
+            city={trip.destination}
+            price={trip.price}
+            currency={trip.currency}
+            days={trip.days}
+            attractions={trip.places}
+            viewTrip={() => {
+              this.props.history.push(`/trips/${i}`);
+              this.props.selectTrip(trip);
+            }}
+          />
+        );
+      });
+    }
+    console.log(content);
+    return content ? (
       <div className="explore">
         <div className="header">
           <IonToolbar className="toolbar-background">
@@ -36,28 +60,10 @@ export class Explore extends Component {
           </IonToolbar>
           <p className="title">Explore</p>
         </div>
-        <div className="explore-trip-container">
-          {this.props.trips.trips.map((trip, i) => {
-            if (!trip) {
-              return null;
-            }
-            return (
-              <ExploreTrip
-                key={i}
-                city={trip.destination}
-                price={trip.price}
-                currency={trip.currency}
-                days={trip.days}
-                attractions={trip.places}
-                viewTrip={() => {
-                  this.props.history.push(`/trips/${i}`);
-                  this.props.selectTrip(trip);
-                }}
-              />
-            );
-          })}
-        </div>
+        <div className="explore-trip-container">{content}</div>
       </div>
+    ) : (
+      <Loader />
     );
   }
 }
