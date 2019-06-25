@@ -29,17 +29,17 @@ export class Hotels extends Component {
   }
 
   handleChange = e => {
-    console.log(e.target.value);
     this.setState({ confirmationNumber: e.target.value });
   };
 
   async confirm() {
     const body = {
       profile: this.props.profile.id,
-      hotel_rsrv: "",
+      hotel_rsrv: this.state.confirmationNumber,
       trip: this.props.trips.trip
     };
-    const status = await PytheasApi.put("/trip", body);
+    const trip = await PytheasApi.put("/trip", body);
+    trip.this.props.updateTrip(trip);
   }
 
   render() {

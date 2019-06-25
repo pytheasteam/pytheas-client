@@ -8,7 +8,7 @@ export class DayTrip extends Component {
       <div className="day-trip">
         <p className="day-info">DAY {this.props.day + 1}</p>
         {this.props.attractions.map((attraction, i) => {
-          if (!attraction) {
+          if (!attraction || i === 0) {
             return null;
           }
           return (

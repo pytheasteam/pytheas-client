@@ -17,6 +17,7 @@ import locationStroke from "../assets/locationStroke.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
+import Header from "../../components/header/Header";
 
 export class ViewMap extends Component {
   constructor(props) {
@@ -129,21 +130,13 @@ export class ViewMap extends Component {
     this.showDirections();
     return Object.keys(this.state.center).length !== 0 ? (
       <div className="view-map">
-        <div className="header">
-          <IonToolbar className="toolbar-background">
-            <IonButton
-              fill="clear"
-              onClick={() => {
-                window.history.back();
-              }}
-              className="back-btn"
-            >
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-          </IonToolbar>
+        <Header
+          title={`Trip to ${trip.city || trip.destination}`}
+          back={() => {
+            window.history.back();
+          }}
+        />
 
-          <p className="trip-name">Trip to {trip.city}</p>
-        </div>
         <button className="go-to-map">
           <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
         </button>

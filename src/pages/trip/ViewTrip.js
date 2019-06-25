@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./ViewTrip.scss";
 import { removeBg } from "../../common/styleHelper";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlane,
@@ -42,8 +41,12 @@ export class ViewTrip extends Component {
       (attractions, day) => attractions + day.length,
       0
     );
-
     let calculateDays = Common.date_diff_indays(trip.start_date, trip.end_date);
+    if (isNaN(calculateDays)) {
+      calculateDays = trip.days;
+    }
+    attractionLen -= calculateDays;
+
     return (
       <div className="trip-main-page">
         <Header
