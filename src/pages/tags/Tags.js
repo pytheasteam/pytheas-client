@@ -5,6 +5,7 @@ import "./Tags.scss";
 import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import NameDialog from "../../components/nameDialog/NameDialog";
 import PytheasApi from "../../api/Api";
+import Loader from "../../components/loader/Loader";
 
 export class Tags extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ export class Tags extends Component {
     this.state = {
       tags: null,
       dialogOpen: false,
-      selectedTags: []
+      selectedTags: [],
+      loading: true
     };
     this.getDialogInput = this.getDialogInput.bind(this);
     this.handleDialogClose = this.handleDialogClose.bind(this);
@@ -40,6 +42,7 @@ export class Tags extends Component {
         tags: selectedTags
       }).then(this.props.history.push("/profile"));
     }
+    this.setState({ loading: true });
   }
   handleDialogClose() {
     this.setState({ dialogOpen: false });
@@ -57,49 +60,53 @@ export class Tags extends Component {
       });
   }
   render() {
-    return (
-      this.state.tags && (
-        <div className="tags">
-          <div className="header">
-            <IonToolbar className="toolbar-background">
-              <IonButton
-                fill="clear"
-                onClick={() => {
-                  window.history.back();
-                }}
-                className="back-btn"
-              >
-                <IonIcon slot="icon-only" name="arrow-back" />
-              </IonButton>
-            </IonToolbar>
-          </div>
-          <p className="title">What you’re interested in?</p>
-          <div className="chip-container">
-            {this.state.tags.map((tag, i) => {
-              return (
-                <Chip
-                  key={tag.id}
-                  name={tag.name}
-                  select={() => this.selectTag(i)}
-                />
-              );
-            })}
-          </div>
-          <button
-            className="next"
-            onClick={() => this.setState({ dialogOpen: true })}
-          >
-            Next
-          </button>
-          <NameDialog
-            open={this.state.dialogOpen}
-            onCreate={this.getDialogInput}
-            handleDialogClose={this.handleDialogClose}
-            title="Enter profile name"
-            text="Next"
-          />
+    const tags = this.state.tags;
+    if (tags && this.state.loading) {
+      this.setState({ loading: false });
+    }
+    return this.state.loading ? (
+      <Loader />
+    ) : (
+      <div className="tags">
+        <div className="header">
+          <IonToolbar className="toolbar-background">
+            <IonButton
+              fill="clear"
+              onClick={() => {
+                window.history.back();
+              }}
+              className="back-btn"
+            >
+              <IonIcon slot="icon-only" name="arrow-back" />
+            </IonButton>
+          </IonToolbar>
         </div>
-      )
+        <p className="title">What you’re interested in?</p>
+        <div className="chip-container">
+          {this.state.tags.map((tag, i) => {
+            return (
+              <Chip
+                key={tag.id}
+                name={tag.name}
+                select={() => this.selectTag(i)}
+              />
+            );
+          })}
+        </div>
+        <button
+          className="next"
+          onClick={() => this.setState({ dialogOpen: true })}
+        >
+          Next
+        </button>
+        <NameDialog
+          open={this.state.dialogOpen}
+          onCreate={this.getDialogInput}
+          handleDialogClose={this.handleDialogClose}
+          title="Enter profile name"
+          text="Next"
+        />
+      </div>
     );
   }
 }

@@ -10,6 +10,7 @@ import "../../common/common-style.css";
 import "./Profile.css";
 import { styleBackBtn, styleToolkit as styleToolbar } from "./style";
 import PytheasApi from "../../api/Api";
+import Loader from "../../components/loader/Loader";
 
 export class Profile extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ export class Profile extends Component {
     const { profiles } = this.state;
 
     if (!profiles) {
-      return null;
+      return <Loader />;
     }
 
     const profileElms = profiles.map((profile, i) => (
