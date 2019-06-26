@@ -42,6 +42,7 @@ export class Main extends Component {
   }
 
   render() {
+    console.log(process.env);
     const trips = this.props.trips.trips;
     let content = null;
     if (trips) {
