@@ -66,15 +66,24 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+.trips-container {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  top: 21pt;
+}
 
 .main {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-content: center;
+  & .profile-coneiner {
+    position: fixed;
+  }
 
   & .trip {
-    margin: 61px auto 24px auto;
+    margin: 8pt auto;
   }
 
   & .no-trip {

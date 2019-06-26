@@ -43,7 +43,7 @@ export class Main extends Component {
 
   render() {
     const trips = this.props.trips.trips;
-    let content = <Loader />;
+    let content = null;
     if (trips) {
       content =
         trips.length > 0 ? (
@@ -52,7 +52,7 @@ export class Main extends Component {
               return (
                 <Trip
                   key={i}
-                  city={trip.city}
+                  city={trip.destination}
                   startDate={trip.start_date}
                   endDate={trip.end_date}
                   attractions={trip.places}
@@ -74,7 +74,12 @@ export class Main extends Component {
           img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
           trips={trips ? this.props.trips.trips.length : 0}
         />
-        {content}
+        {content ? (
+          <div className="trips-container">{content}</div>
+        ) : (
+          <Loader />
+        )}
+
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <Link to="/profile">
             <IonFabButton>
