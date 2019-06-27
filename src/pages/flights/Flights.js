@@ -22,7 +22,7 @@ export class Flights extends Component {
 
   getFlights() {
     const rsrv = this.props.trips.trip.flight_rsrv;
-    if (rsrv && rsrv !== "") {
+    if (rsrv && rsrv !== "" && Object.keys(rsrv).length > 0) {
       return [
         <Flight
           destination={rsrv.to_city}
@@ -38,10 +38,7 @@ export class Flights extends Component {
       ];
     }
 
-    if (
-      Object.keys(this.props.trips.trip).length > 0 &&
-      this.props.trips.trip.explore === true
-    ) {
+    if (Object.keys(this.props.trips.trip).length > 0) {
       return this.props.trips.trip.flights.map((flight, i) => {
         return (
           <Flight

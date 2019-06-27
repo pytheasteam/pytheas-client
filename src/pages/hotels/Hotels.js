@@ -42,18 +42,54 @@ export class Hotels extends Component {
     body.hotel_rsrv_code = this.state.confirmationNumber;
     body.profile = this.props.profile.id;
     const trip = await PytheasApi.put("/trip", body);
+    console.log(trip);
     this.props.updateTrip(trip);
   }
 
-  getHotel() {}
-
-  render() {
+  getBookingStatus() {
     const trip = this.props.trips ? this.props.trips.trip : {};
     if (trip === {}) {
       return null;
     }
     const confirmationNumber = trip.hotel_rsrv_code;
-    const hotel = (
+    return this.state.reservationMode ? (
+      <div className="reservation">
+        <input
+          type="text"
+          placeholder="Enter reservation number"
+          name="reservation"
+          onChange={this.handleChange}
+          className="reservation-number"
+        />
+        <div className="confirm" onClick={() => this.confirm()}>
+          <p className="confirm-text">Confirm</p>
+        </div>
+      </div>
+    ) : confirmationNumber ? (
+      <div className="book">
+        <p>{confirmationNumber}</p>
+      </div>
+    ) : (
+      <a
+        href={trip.hotel.url}
+        onClick={() => this.setState({ reservationMode: true })}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="book-url"
+      >
+        <div className="book">
+          <p>Book</p>
+        </div>
+      </a>
+    );
+  }
+
+  getHotel() {
+    const trip = this.props.trips ? this.props.trips.trip : {};
+    if (trip === {}) {
+      return null;
+    }
+    return (
       <React.Fragment>
         <div
           className="hotel-picture"
@@ -84,38 +120,14 @@ export class Hotels extends Component {
         </div>
       </React.Fragment>
     );
+  }
 
-    const booking = this.state.reservationMode ? (
-      <div className="reservation">
-        <input
-          type="text"
-          placeholder="Enter reservation number"
-          name="reservation"
-          onChange={this.handleChange}
-          className="reservation-number"
-        />
-        <div className="confirm" onClick={() => this.confirm()}>
-          <p className="confirm-text">Confirm</p>
-        </div>
-      </div>
-    ) : confirmationNumber ? (
-      <div className="book">
-        <p>{confirmationNumber}</p>
-      </div>
-    ) : (
-      <a
-        href={trip.hotel.url}
-        onClick={() => this.setState({ reservationMode: true })}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="book-url"
-      >
-        <div className="book">
-          <p>Book</p>
-        </div>
-      </a>
-    );
-
+  render() {
+    const hotel = this.getHotel();
+    const booking = this.getBookingStatus();
+    if (!hotel || !booking) {
+      return null;
+    }
     return (
       <div className="hotels">
         <Header title="Hotel" back={() => window.history.back()} />

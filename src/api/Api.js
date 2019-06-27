@@ -65,7 +65,7 @@ export class PytheasApi {
       })
         .then(response => {
           if (response.ok) {
-            return resolve();
+            return resolve(response.json());
           }
         })
         .catch(err => {
@@ -87,7 +87,7 @@ export class PytheasApi {
       })
         .then(response => {
           if (response.ok) {
-            return resolve();
+            return resolve(response.json());
           }
         })
         .catch(err => {

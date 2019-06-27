@@ -16,6 +16,7 @@ export default function(state = initialState, action) {
       return state;
     case SELECT_TRIP:
     case UPDATE_TRIP:
+      console.log(action.payload);
       return { ...state, trip: action.payload };
     case FETCH_TRIPS:
       return { ...state, trips: action.payload };

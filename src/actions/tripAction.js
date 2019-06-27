@@ -15,8 +15,9 @@ export const fetchTrips = () => async dispatch => {
 export const selectTrip = trip => async dispatch =>
   await dispatch({ type: SELECT_TRIP, payload: trip });
 
-export const updateTrip = trip => dispatch => {
-  return dispatch({ type: UPDATE_TRIP, payload: trip });
+export const updateTrip = trip => async dispatch => {
+  console.log(trip);
+  await dispatch({ type: UPDATE_TRIP, payload: trip });
 };
 
 export const fetchExplore = queryParams => async dispatch => {

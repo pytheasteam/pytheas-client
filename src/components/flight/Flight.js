@@ -15,7 +15,8 @@ export class Flight extends Component {
     this.state = {
       reservationMode: false,
       confirmationNumber: "",
-      flight: {}
+      flight: {},
+      loader: false
     };
 
     this.confirm = this.confirm.bind(this);
