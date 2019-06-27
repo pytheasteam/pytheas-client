@@ -24,7 +24,8 @@ export class ViewMap extends Component {
       center: {},
       attractions: [],
       currLocation: 0,
-      map: null
+      map: null,
+      showDirection: true
     };
 
     this.handleMapReady = this.handleMapReady.bind(this);
@@ -46,11 +47,11 @@ export class ViewMap extends Component {
   }
 
   handleMapReady(mapProps, map) {
-    this.setState({ map });
+    if (!this.state.map) this.setState({ map });
   }
 
   showDirections() {
-    if (this.state.map === null) {
+    if (this.state.map === null || !this.state.showDirection) {
       return;
     }
     const directionsService = new google.maps.DirectionsService();
@@ -86,6 +87,7 @@ export class ViewMap extends Component {
         }
       }
     );
+    this.setState({ showDirection: false });
   }
 
   async calculateCoords(address) {
