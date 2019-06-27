@@ -7,14 +7,17 @@ import Common from "../../utils/common";
 
 export class Trip extends Component {
   render() {
-    let attractionLen = this.props.attractions.reduce(
-      (attractions, day) => attractions + day.length,
-      0
-    );
     const days = Common.date_diff_indays(
       this.props.startDate,
       this.props.endDate
     );
+
+    let attractionLen = this.props.attractions.reduce(
+      (attractions, day) => attractions + day.length,
+      0
+    );
+
+    attractionLen -= days;
 
     const startDate = new Date(this.props.startDate);
     let startDayDay = startDate.getDate();

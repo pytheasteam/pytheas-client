@@ -25,6 +25,7 @@ export class ExploreTrip extends Component {
       (attractions, day) => attractions + day.length,
       0
     );
+    attractionLen -= this.props.days;
     return (
       <div className="explore-trip" onClick={() => this.props.viewTrip()}>
         <div className="picture" />

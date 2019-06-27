@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
+import { IonButton, IonIcon } from "@ionic/react";
 import "./Header.scss";
 
 export class Header extends Component {
