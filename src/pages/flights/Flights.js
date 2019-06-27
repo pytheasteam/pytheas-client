@@ -4,13 +4,17 @@ import { removeBg } from "../../common/styleHelper";
 import Flight from "../../components/flight/Flight";
 import { connect } from "react-redux";
 import Header from "../../components/header/Header";
+import Loader from "../../components/loader/Loader";
 
 export class Flights extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      more: false
+      more: false,
+      loader: false
     };
+
+    this.toggleLoader = this.toggleLoader.bind(this);
   }
   componentWillUnmount() {
     removeBg("flights-bg");
@@ -33,6 +37,7 @@ export class Flights extends Component {
           departureTime={rsrv.departure_time}
           duration={rsrv.duration}
           price={rsrv.price}
+          toggleLoader={() => this.toggleLoader()}
           reservationNumber={rsrv.reservation_number}
         />
       ];
@@ -52,6 +57,7 @@ export class Flights extends Component {
             departureTime={flight.departure_time}
             duration={flight.duration}
             price={flight.price}
+            toggleLoader={() => this.toggleLoader()}
           />
         );
       });
@@ -59,7 +65,14 @@ export class Flights extends Component {
     return null;
   }
 
+  toggleLoader() {
+    this.setState({ loader: !this.state.loader });
+  }
+
   render() {
+    if (this.state.loader) {
+      return <Loader />;
+    }
     const allFlights = this.getFlights();
     const firstFlight = allFlights && allFlights[0];
     return (

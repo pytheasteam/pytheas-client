@@ -15,8 +15,7 @@ export class Flight extends Component {
     this.state = {
       reservationMode: false,
       confirmationNumber: "",
-      flight: {},
-      loader: false
+      flight: {}
     };
 
     this.confirm = this.confirm.bind(this);
@@ -44,8 +43,10 @@ export class Flight extends Component {
     };
     body.flights = [];
     body.profile = this.props.profile.id;
-    const trip = await PytheasApi.put("/trip", body);
-    this.props.updateTrip(trip);
+    PytheasApi.put("/trip", body).then(trip => {
+      this.props.updateTrip(trip) && this.props.toggleLoader();
+    });
+    this.props.toggleLoader();
   }
 
   render() {

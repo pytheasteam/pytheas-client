@@ -14,13 +14,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../components/header/Header";
 import PytheasApi from "../../api/Api";
+import Loader from "../../components/loader/Loader";
 
 export class Hotels extends Component {
   constructor(props) {
     super(props);
     this.state = {
       reservationMode: false,
-      confirmationNumber: ""
+      confirmationNumber: "",
+      loader: false
     };
 
     this.confirm = this.confirm.bind(this);
@@ -41,9 +43,10 @@ export class Hotels extends Component {
     const body = this.props.trips.trip;
     body.hotel_rsrv_code = this.state.confirmationNumber;
     body.profile = this.props.profile.id;
-    const trip = await PytheasApi.put("/trip", body);
-    console.log(trip);
-    this.props.updateTrip(trip);
+    PytheasApi.put("/trip", body).then(trip => {
+      this.props.updateTrip(trip) && this.setState({ loader: false });
+    });
+    this.setState({ loader: true });
   }
 
   getBookingStatus() {
@@ -52,6 +55,13 @@ export class Hotels extends Component {
       return null;
     }
     const confirmationNumber = trip.hotel_rsrv_code;
+    if (confirmationNumber) {
+      return (
+        <div className="book">
+          <p>{confirmationNumber}</p>
+        </div>
+      );
+    }
     return this.state.reservationMode ? (
       <div className="reservation">
         <input
@@ -64,10 +74,6 @@ export class Hotels extends Component {
         <div className="confirm" onClick={() => this.confirm()}>
           <p className="confirm-text">Confirm</p>
         </div>
-      </div>
-    ) : confirmationNumber ? (
-      <div className="book">
-        <p>{confirmationNumber}</p>
       </div>
     ) : (
       <a
@@ -123,6 +129,7 @@ export class Hotels extends Component {
   }
 
   render() {
+    if (this.state.loader) return <Loader />;
     const hotel = this.getHotel();
     const booking = this.getBookingStatus();
     if (!hotel || !booking) {

@@ -42,11 +42,14 @@ export class Main extends Component {
   }
 
   render() {
-    const trips = this.props.trips.trips;
+    let trips = this.props.trips.trips;
     let bookedTrips = 0;
     let savedTrips = 0;
-    this.props.trips.trips &&
-      this.props.trips.trips.forEach(trip => {
+    if (trips === -1) {
+      trips = null;
+    }
+    trips &&
+      trips.forEach(trip => {
         if (trip.is_booked === 1) {
           bookedTrips += 1;
         } else {
