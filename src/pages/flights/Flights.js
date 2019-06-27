@@ -19,11 +19,11 @@ export class Flights extends Component {
   componentDidMount() {
     document.body.className += " flights-bg";
   }
-  render() {
+
+  getFlights() {
     const rsrv = this.props.trips.trip.flight_rsrv;
-    console.log(rsrv);
     if (rsrv && rsrv !== "") {
-      return (
+      return [
         <Flight
           destination={rsrv.to_city}
           destinationCode={rsrv.to_city_code}
@@ -33,39 +33,46 @@ export class Flights extends Component {
           departureTime={rsrv.departure_time}
           duration={rsrv.duration}
           price={rsrv.price}
-          reservationNumber={rsrv.reservationNumber}
+          reservationNumber={rsrv.reservation_number}
         />
-      );
+      ];
     }
-    const allFlights =
+
+    if (
       Object.keys(this.props.trips.trip).length > 0 &&
       this.props.trips.trip.explore === true
-        ? this.props.trips.trip.flights.map((flight, i) => {
-            return (
-              <Flight
-                key={i}
-                destination={flight.to_city}
-                destinationCode={flight.to_city_code}
-                from={flight.from_city}
-                fromCode={flight.from_city_code}
-                arrivalTime={flight.arrival_time}
-                link={flight.link}
-                departureTime={flight.departure_time}
-                duration={flight.duration}
-                price={flight.price}
-              />
-            );
-          })
-        : null;
+    ) {
+      return this.props.trips.trip.flights.map((flight, i) => {
+        return (
+          <Flight
+            key={i}
+            destination={flight.to_city}
+            destinationCode={flight.to_city_code}
+            from={flight.from_city}
+            fromCode={flight.from_city_code}
+            arrivalTime={flight.arrival_time}
+            link={flight.link}
+            departureTime={flight.departure_time}
+            duration={flight.duration}
+            price={flight.price}
+          />
+        );
+      });
+    }
+    return null;
+  }
 
+  render() {
+    const allFlights = this.getFlights();
     const firstFlight = allFlights && allFlights[0];
+    console.log(allFlights, firstFlight);
     return (
       <div className="flights">
         <Header title="Flights" back={() => window.history.back()} />
         <div className="flights-container">
           {this.state.more ? allFlights : firstFlight}
         </div>
-        {allFlights && allFlights.length > 0 && !this.state.more ? (
+        {allFlights && allFlights.length > 1 && !this.state.more ? (
           <div
             className="more-flights"
             onClick={() => this.setState({ more: true })}

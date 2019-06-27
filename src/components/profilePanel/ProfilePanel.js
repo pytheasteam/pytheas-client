@@ -16,11 +16,11 @@ export class ProfilePanel extends Component {
           style={{ backgroundImage: `url(${this.props.img})` }}
         />
         <div className="saved-trips">
-          <p className="saved-trips-number">0</p>
+          <p className="saved-trips-number">{this.props.saved}</p>
           <p className="saved-trips-text">SAVED</p>
         </div>
         <div className="trips">
-          <p className="trips-number">{this.props.trips}</p>
+          <p className="trips-number">{this.props.booked}</p>
           <p className="trips-text">TRIPS</p>
         </div>
         <button

@@ -43,6 +43,16 @@ export class Main extends Component {
 
   render() {
     const trips = this.props.trips.trips;
+    let bookedTrips = 0;
+    let savedTrips = 0;
+    this.props.trips.trips &&
+      this.props.trips.trips.forEach(trip => {
+        if (trip.is_booked === 1) {
+          bookedTrips += 1;
+        } else {
+          savedTrips += 1;
+        }
+      });
     let content = null;
     if (trips) {
       content =
@@ -72,7 +82,8 @@ export class Main extends Component {
       <div className="main">
         <ProfilePanel
           img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
-          trips={trips ? this.props.trips.trips.length : 0}
+          booked={bookedTrips}
+          saved={savedTrips}
         />
         {content ? (
           <div className="trips-container">{content}</div>

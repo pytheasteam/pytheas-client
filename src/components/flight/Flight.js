@@ -29,24 +29,23 @@ export class Flight extends Component {
   };
 
   async confirm() {
-    const body = {
-      profile: this.props.profile.id,
-      flight_rsrv: {
-        arrival_time: this.props.arrivalTime,
-        departure_time: this.props.departureTime,
-        from_city: this.props.from,
-        from_city_code: this.props.fromCode,
-        to_city: this.props.destination,
-        to_city_code: this.props.destinationCode,
-        duration: this.props.duration,
-        price: this.props.price,
-        reservation_number: this.state.confirmationNumber
-      },
-      hotel_rsrv: "",
-      trip: this.props.trips.trip
+    let body = this.props.trips.trip;
+    body.flight_rsrv = {
+      arrival_time: this.props.arrivalTime,
+      departure_time: this.props.departureTime,
+      from_city: this.props.from,
+      from_city_code: this.props.fromCode,
+      to_city: this.props.destination,
+      to_city_code: this.props.destinationCode,
+      duration: this.props.duration,
+      price: this.props.price,
+      reservation_number: this.state.confirmationNumber
     };
+    body.flights = [];
+    body.profile = this.props.profile.id;
+    console.log(JSON.stringify(body, null, 2));
     const trip = await PytheasApi.put("/trip", body);
-    trip.this.props.updateTrip(trip);
+    this.props.updateTrip(trip);
   }
 
   render() {
@@ -137,7 +136,8 @@ export class Flight extends Component {
 
 const mapStateToProps = state => ({
   user: state.user.token,
-  trips: state.trips
+  trips: state.trips,
+  profile: state.profile
 });
 
 export default connect(
