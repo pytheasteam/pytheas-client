@@ -65,7 +65,6 @@ export class Flights extends Component {
   render() {
     const allFlights = this.getFlights();
     const firstFlight = allFlights && allFlights[0];
-    console.log(allFlights, firstFlight);
     return (
       <div className="flights">
         <Header title="Flights" back={() => window.history.back()} />

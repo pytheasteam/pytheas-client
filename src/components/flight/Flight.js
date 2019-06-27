@@ -43,7 +43,6 @@ export class Flight extends Component {
     };
     body.flights = [];
     body.profile = this.props.profile.id;
-    console.log(JSON.stringify(body, null, 2));
     const trip = await PytheasApi.put("/trip", body);
     this.props.updateTrip(trip);
   }

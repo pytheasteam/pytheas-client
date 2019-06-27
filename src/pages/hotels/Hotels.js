@@ -3,7 +3,12 @@ import { removeBg } from "../../common/styleHelper";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
-import { fetchTrips, selectTrip, fetchExplore } from "../../actions/tripAction";
+import {
+  fetchTrips,
+  selectTrip,
+  fetchExplore,
+  updateTrip
+} from "../../actions/tripAction";
 import "./Hotels.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -33,20 +38,22 @@ export class Hotels extends Component {
   };
 
   async confirm() {
-    const body = {
-      profile: this.props.profile.id,
-      hotel_rsrv: this.state.confirmationNumber,
-      trip: this.props.trips.trip
-    };
+    const body = this.props.trips.trip;
+    body.hotel_rsrv_code = this.state.confirmationNumber;
+    body.profile = this.props.profile.id;
     const trip = await PytheasApi.put("/trip", body);
-    trip.this.props.updateTrip(trip);
+    this.props.updateTrip(trip);
   }
+
+  getHotel() {}
 
   render() {
     const trip = this.props.trips ? this.props.trips.trip : {};
-    const validExploreTrip =
-      Object.keys(trip).length > 0 && trip.explore === true;
-    const hotel = validExploreTrip ? (
+    if (trip === {}) {
+      return null;
+    }
+    const confirmationNumber = trip.hotel_rsrv_code;
+    const hotel = (
       <React.Fragment>
         <div
           className="hotel-picture"
@@ -76,7 +83,7 @@ export class Hotels extends Component {
           </div>
         </div>
       </React.Fragment>
-    ) : null;
+    );
 
     const booking = this.state.reservationMode ? (
       <div className="reservation">
@@ -91,7 +98,11 @@ export class Hotels extends Component {
           <p className="confirm-text">Confirm</p>
         </div>
       </div>
-    ) : validExploreTrip ? (
+    ) : confirmationNumber ? (
+      <div className="book">
+        <p>{confirmationNumber}</p>
+      </div>
+    ) : (
       <a
         href={trip.hotel.url}
         onClick={() => this.setState({ reservationMode: true })}
@@ -103,7 +114,7 @@ export class Hotels extends Component {
           <p>Book</p>
         </div>
       </a>
-    ) : null;
+    );
 
     return (
       <div className="hotels">
@@ -119,7 +130,8 @@ const mapStateToProps = state => {
   return {
     user: state.user.token,
     trips: state.trips,
-    explore: state.explore
+    explore: state.explore,
+    profile: state.profile
   };
 };
 
@@ -130,6 +142,7 @@ export default connect(
     selectProfile,
     fetchTrips,
     selectTrip,
-    fetchExplore
+    fetchExplore,
+    updateTrip
   }
 )(Hotels);
