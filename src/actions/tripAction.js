@@ -26,7 +26,7 @@ export const fetchExplore = queryParams => async dispatch => {
       return dispatch({ type: FETCH_TRIPS, payload: body });
     })
     .catch(() => {
-      return dispatch({ type: FETCH_TRIPS, payload: -1 });
+      return dispatch({ type: FETCH_TRIPS, payload: [] });
     });
 };
 
