@@ -16,7 +16,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
 import Header from "../../components/header/Header";
-import { GOOGLE_API_KEY } from "../../consts";
 
 export class ViewMap extends Component {
   constructor(props) {
@@ -92,7 +91,7 @@ export class ViewMap extends Component {
   }
 
   async calculateCoords(address) {
-    Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY || GOOGLE_API_KEY);
+    Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
     return await Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -189,7 +188,7 @@ const mapStateToProps = state => {
 };
 
 const WrappedWithGoogleApi = GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_API_KEY || GOOGLE_API_KEY
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY
 })(ViewMap);
 
 export default connect(

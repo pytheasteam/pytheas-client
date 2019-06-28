@@ -15,7 +15,9 @@ import Loader from "../../components/loader/Loader";
 export class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      update: true
+    };
   }
 
   componentWillUnmount() {
@@ -31,10 +33,8 @@ export class Profile extends Component {
       });
   }
 
-  componentDidUpdate(prevProps) {
-    this.fetchData();
-  }
   componentDidMount() {
+    console.log("herehere");
     this.fetchData();
     document.body.className += " gradient-bg";
   }
