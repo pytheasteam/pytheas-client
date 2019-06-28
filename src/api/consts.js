@@ -10,9 +10,9 @@ const myLocalhostLogin = "http://loaclhost:5000/login";
 export const MOCK_MODE = false;
 const DEV_MODE = process.env.REACT_APP_IS_PROD ? false : true;
 
-export const API_BASE = DEV_MODE ? localhostApi : serverApi;
+export const API_BASE = DEV_MODE ? myLocalhost : serverApi;
 
-export const LOGIN_PATH = DEV_MODE ? localhostLogin : serverLogin;
+export const LOGIN_PATH = DEV_MODE ? myLocalhostLogin : serverLogin;
 
 export const MAX_PROFILE_COUNT = 4;
 
