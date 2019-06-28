@@ -27,10 +27,13 @@
     width: 100%;
     position: relative;
     height: 137pt;
+    top: 48pt;
     background-image: url(https://picsum.photos/380/207);
   }
 
   & .description-container {
+    position: relative;
+    top: 51pt;
     .title {
       width: 90%;
       position: relative;
