@@ -1,5 +1,7 @@
-const serverApi = "https://pytheas-server.herokuapp.com/api";
-const serverLogin = "https://pytheas-server.herokuapp.com/login";
+const serverApi =
+  "http://ec2-15-188-3-17.eu-west-3.compute.amazonaws.com:5000/api";
+const serverLogin =
+  "http://ec2-15-188-3-17.eu-west-3.compute.amazonaws.com:5000/login";
 
 const localhostApi = "http://localhost:5000/api";
 const localhostLogin = "http://loaclhost:5000/login";
