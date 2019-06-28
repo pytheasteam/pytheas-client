@@ -64,11 +64,18 @@ export class ViewMap extends Component {
     directionsDisplay.setMap(this.state.map);
     const attractions = _.cloneDeep(this.state.attractions);
     let waypoints = attractions.map(attraction => {
+      if (!attraction || !attraction.lat || !attraction.lng) {
+        return null;
+      }
       return {
         location: { lat: attraction.lat, lng: attraction.lng },
         stopover: true
       };
     });
+    waypoints = waypoints.filter(point => !!point);
+    if (!waypoints) {
+      this.setState({ showDirection: false });
+    }
     const origin = waypoints.shift().location;
     const destination = waypoints.pop().location;
 
