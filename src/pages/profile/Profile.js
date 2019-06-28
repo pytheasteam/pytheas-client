@@ -34,7 +34,6 @@ export class Profile extends Component {
   }
 
   componentDidMount() {
-    console.log("herehere");
     this.fetchData();
     document.body.className += " gradient-bg";
   }

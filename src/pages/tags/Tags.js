@@ -36,11 +36,16 @@ export class Tags extends Component {
       selectedTags.push(this.state.tags[tag].name)
     );
     if (input.length > 0) {
-      console.log("Creating new profile (need to be checked)...");
-      await PytheasApi.post("/profile", {
+      console.log("Creating new profile...");
+      PytheasApi.post("/profile", {
         name: input,
         tags: selectedTags
-      }).then(this.props.history.push("/profile"));
+      })
+        .then(this.props.history.push("/profile"))
+        .catch(err => {
+          console.log(err);
+          this.props.history.push("/profile");
+        });
     }
     this.setState({ loading: true });
   }
