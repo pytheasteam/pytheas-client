@@ -8,6 +8,9 @@ import {
   faEuroSign,
   faBookmark
 } from "@fortawesome/free-solid-svg-icons";
+import PytheasApi from "../../api/Api";
+import { updateTrip, saveTrip } from "../../actions/tripAction";
+import { connect } from "react-redux";
 
 export class ExploreTrip extends Component {
   constructor(props) {
@@ -19,7 +22,18 @@ export class ExploreTrip extends Component {
         euro: <FontAwesomeIcon icon={faEuroSign} />
       }
     };
+    this.save = this.save.bind(this);
   }
+
+  async save(e) {
+    e.preventDefault();
+    console.log("here");
+    // const body = this.props.trips.trip;
+    // PytheasApi.put("/trip", body).then(trip =>
+    //   this.props.saveTrip(this.props.index, trip)
+    // );
+  }
+
   render() {
     let attractionLen = this.props.attractions.reduce(
       (attractions, day) => attractions + day.length,
@@ -53,8 +67,15 @@ export class ExploreTrip extends Component {
             </div>
           </div>
 
-          <div className="save">
-            <FontAwesomeIcon icon={faBookmark} />
+          <div className="save" onClick={this.save}>
+            <FontAwesomeIcon
+              className={
+                this.props.trips.trips[this.props.index].explore
+                  ? ""
+                  : "starred"
+              }
+              icon={faBookmark}
+            />
           </div>
         </div>
       </div>
@@ -62,4 +83,13 @@ export class ExploreTrip extends Component {
   }
 }
 
-export default ExploreTrip;
+const mapStateToProps = state => ({
+  user: state.user.token,
+  trips: state.trips,
+  profile: state.profile
+});
+
+export default connect(
+  mapStateToProps,
+  { updateTrip, saveTrip }
+)(ExploreTrip);

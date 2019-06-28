@@ -13,11 +13,10 @@
 .profile-wrapper {
   margin: auto;
   margin-top: 15px;
-
-  /* Have enough space for 2 items in a row */
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 80%;
+  width: 100%;
 }
 
 .back-btn {

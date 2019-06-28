@@ -5,6 +5,7 @@ export const SELECT_TRIP = "SELECT_TRIP";
 export const FETCH_TRIPS = "FETCH_TRIPS";
 export const CLEAR_TRIPS = "CLEAR_TRIPS";
 export const UPDATE_TRIP = "UPDATE_TRIP";
+export const SAVE_TRIP = "SAVE_TRIP";
 
 export const SELECT_PROFILE = "SELECT_PROFILE";
 

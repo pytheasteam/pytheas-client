@@ -45,6 +45,7 @@ export class Explore extends Component {
           return (
             <ExploreTrip
               key={i}
+              index={i}
               city={trip.destination}
               price={trip.price}
               currency={trip.currency}

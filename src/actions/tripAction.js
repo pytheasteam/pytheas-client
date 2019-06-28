@@ -2,7 +2,8 @@ import {
   FETCH_TRIPS,
   SELECT_TRIP,
   CLEAR_TRIPS,
-  UPDATE_TRIP
+  UPDATE_TRIP,
+  SAVE_TRIP
 } from "../actions/types";
 import PytheasApi from "../api/Api";
 
@@ -18,6 +19,10 @@ export const selectTrip = trip => async dispatch =>
 export const updateTrip = trip => async dispatch => {
   console.log(trip);
   await dispatch({ type: UPDATE_TRIP, payload: trip });
+};
+
+export const saveTrip = (i, trip) => async dispatch => {
+  await dispatch({ type: SAVE_TRIP, payload: [i, trip] });
 };
 
 export const fetchExplore = queryParams => async dispatch => {

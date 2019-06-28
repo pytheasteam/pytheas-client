@@ -27,6 +27,7 @@
       right: 5%;
       font-size: 23pt;
       bottom: 4pt;
+      z-index: 100;
       color: rgba(193, 193, 193, 1);
       border: rgba(167, 167, 167, 1);
     }
@@ -116,5 +117,9 @@
         }
       }
     }
+  }
+
+  .starred {
+    color: #fece4d;
   }
 }
