@@ -103,7 +103,7 @@ export class Filter extends Component {
               name="price"
               value={this.state.price}
               onChange={this.handleChange}
-              placeholder="Replace with Range"
+              placeholder="Enter price in dollars"
             />
           </div>
           <div lines="none" className="filter-item">
@@ -115,7 +115,7 @@ export class Filter extends Component {
               name="people"
               value={this.state.people}
               onChange={this.handleChange}
-              placeholder="Replace with Options"
+              placeholder=""
             />
           </div>
         </div>
