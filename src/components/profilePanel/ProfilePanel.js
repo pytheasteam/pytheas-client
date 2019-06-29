@@ -3,7 +3,7 @@ import "./ProfilePanel.scss";
 
 export class ProfilePanel extends Component {
   render() {
-    const name = "SHAKED ZRIHEN";
+    const name = "TEST USER";
 
     return (
       <div className="profile-panel">
