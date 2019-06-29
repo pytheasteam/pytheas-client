@@ -78,7 +78,7 @@ export class Profile extends Component {
             style={styleBackBtn}
             onClick={() => this.props.history.push("/")}
           >
-            <IonIcon slot="icon-only" name="arrow-back" />
+            <IonIcon slot="icon-only" name="ios-arrow-back" />
           </IonButton>
         </IonToolbar>
 

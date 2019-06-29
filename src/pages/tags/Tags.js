@@ -6,6 +6,7 @@ import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import NameDialog from "../../components/nameDialog/NameDialog";
 import PytheasApi from "../../api/Api";
 import Loader from "../../components/loader/Loader";
+import Header from "../../components/header/Header";
 
 export class Tags extends Component {
   constructor(props) {
@@ -73,19 +74,14 @@ export class Tags extends Component {
       <Loader />
     ) : (
       <div className="tags">
-        <div className="header">
-          <IonToolbar className="toolbar-background">
-            <IonButton
-              fill="clear"
-              onClick={() => {
-                window.history.back();
-              }}
-              className="back-btn"
-            >
-              <IonIcon slot="icon-only" name="arrow-back" />
-            </IonButton>
-          </IonToolbar>
-        </div>
+        <Header
+          back={() => {
+            window.history.back();
+          }}
+          title=""
+          backgroundColor="white"
+          arrowColor="#ff5347"
+        />
         <p className="title">What you’re interested in?</p>
         <div className="chip-container">
           {this.state.tags.map((tag, i) => {

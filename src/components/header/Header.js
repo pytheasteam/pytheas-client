@@ -4,28 +4,24 @@ import "./Header.scss";
 
 export class Header extends Component {
   render() {
-    const { title, back } = this.props;
+    const { title, back, backgroundColor, arrowColor } = this.props;
+    const style = backgroundColor ? { background: backgroundColor } : null;
+    const arrowStyle = arrowColor ? { color: arrowColor } : null;
     return (
-      <div className="header">
+      <div className="header" style={style}>
         <div className="back-btn-container">
           <IonButton
             fill="clear"
             className="back-btn ios button button-clear button-has-icon-only ion-activatable ion-focusable hydrated"
             onClick={back}
           >
-            <IonIcon slot="icon-only" name="ios-arrow-back" />
+            <IonIcon
+              style={arrowStyle}
+              slot="icon-only"
+              name="ios-arrow-back"
+            />
           </IonButton>
         </div>
-
-        {/* <IonToolbar className="toolbar-background ios hydrated">
-          <IonButton
-            fill="clear"
-            className="back-btn ios button button-clear button-has-icon-only ion-activatable ion-focusable hydrated"
-            onClick={back}
-          >
-            <IonIcon slot="icon-only" name="ios-arrow-back" />
-          </IonButton>
-        </IonToolbar> */}
         <p className="title">{`${title}`}</p>
       </div>
     );
