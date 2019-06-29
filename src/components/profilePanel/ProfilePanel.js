@@ -27,9 +27,9 @@ export class ProfilePanel extends Component {
           variant="extended"
           size="medium"
           className="edit-profile"
-          onClick={() => {
-            this.props.history.push("/explore");
-          }}
+          // onClick={() => {
+          //   this.props.history.push("/explore");
+          // }}
           aria-label="Add"
         >
           Edit profile

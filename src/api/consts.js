@@ -4,7 +4,7 @@ const serverLogin =
   "http://ec2-15-188-3-17.eu-west-3.compute.amazonaws.com:5000/login";
 
 const localhostApi = "http://localhost:5000/api";
-const localhostLogin = "http://loaclhost:5000/login";
+const localhostLogin = "http://localhost:5000/login";
 
 export const MOCK_MODE = false;
 const DEV_MODE = process.env.REACT_APP_IS_PROD ? false : true;
