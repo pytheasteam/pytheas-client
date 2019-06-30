@@ -16,7 +16,7 @@ export class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      update: true
+      profiles: null
     };
   }
 
@@ -44,6 +44,7 @@ export class Profile extends Component {
     if (!profiles) {
       return <Loader />;
     }
+    console.log(JSON.stringify(profiles, null, 2));
 
     const profileElms = profiles.map((profile, i) => (
       <ProfileElement

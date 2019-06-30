@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { API_BASE } from "../../api/consts";
 import Chip from "../../components/chip/Chip";
 import "./Tags.scss";
-import { IonButton, IonIcon, IonToolbar } from "@ionic/react";
 import NameDialog from "../../components/nameDialog/NameDialog";
 import PytheasApi from "../../api/Api";
 import Loader from "../../components/loader/Loader";
@@ -15,7 +14,8 @@ export class Tags extends Component {
       tags: null,
       dialogOpen: false,
       selectedTags: [],
-      loading: true
+      loading: true,
+      fetching: false
     };
     this.getDialogInput = this.getDialogInput.bind(this);
     this.handleDialogClose = this.handleDialogClose.bind(this);
@@ -41,14 +41,12 @@ export class Tags extends Component {
       PytheasApi.post("/profile", {
         name: input,
         tags: selectedTags
-      })
-        .then(this.props.history.push("/profile"))
-        .catch(err => {
-          console.log(err);
-          this.props.history.push("/profile");
-        });
+      }).catch(err => {
+        console.log(err);
+        this.props.history.push("/profile");
+      });
     }
-    this.setState({ loading: true });
+    this.setState({ fetching: true });
   }
   handleDialogClose() {
     this.setState({ dialogOpen: false });
@@ -70,7 +68,7 @@ export class Tags extends Component {
     if (tags && this.state.loading) {
       this.setState({ loading: false });
     }
-    return this.state.loading ? (
+    return this.state.loading || this.state.fetching ? (
       <Loader />
     ) : (
       <div className="tags">
