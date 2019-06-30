@@ -81,7 +81,8 @@ export class Main extends Component {
           <p className="no-trip">You don't have any trips</p>
         );
     }
-    const image = "https://avatars3.githubusercontent.com/u/30412727?s=460&v=4";
+    const image =
+      "https://scontent.ftlv5-1.fna.fbcdn.net/v/t31.0-8/10633503_532581280242828_820388520116113143_o.jpg?_nc_cat=109&_nc_oc=AQkI35Z6jIlugec9g9_X9jM9qEBtnrACs_P469jZrwWj6Kp7vsWy83_LpOJ-W0Jr5LM&_nc_ht=scontent.ftlv5-1.fna&oh=5cd6ee4ebcf7409679959de7298cdf4a&oe=5DB8887A";
     return (
       <div className="main">
         <ProfilePanel

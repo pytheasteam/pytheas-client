@@ -49,7 +49,7 @@ export class Profile extends Component {
     const profileElms = profiles.map((profile, i) => (
       <ProfileElement
         key={i}
-        profile={{ ...profile, pic: PICTURE_GENERATOR }}
+        profile={profile}
         onClick={(e, p) => {
           this.props.history.push("/filter");
           this.props.selectProfile(profile);
