@@ -115,7 +115,7 @@ export class Filter extends Component {
               name="people"
               value={this.state.people}
               onChange={this.handleChange}
-              placeholder=""
+              placeholder="Enter number of people"
             />
           </div>
         </div>
