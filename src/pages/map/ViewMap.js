@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
 import Header from "../../components/header/Header";
+import Loader from "../../components/loader/Loader";
 
 export class ViewMap extends Component {
   constructor(props) {
@@ -126,15 +127,52 @@ export class ViewMap extends Component {
     this.setState({ attractions: locations, center: locations[0] });
   }
 
-  render() {
+  initMapAttractions(dayAttractions) {
+    return dayAttractions.map((attraction, i) => {
+      return (
+        <MapAttraction
+          key={attraction.name}
+          img={attraction.photo_url || "https://picsum.photos/113"}
+          address={attraction.address}
+          title={attraction.name}
+          current={i === this.state.currLocation}
+          setCurrent={() =>
+            this.setState({
+              currLocation: i,
+              center: this.state.attractions[i]
+            })
+          }
+        />
+      );
+    });
+  }
+
+  initMarkersFromAttractions(attractions) {
+    return attractions.map((attraction, i) => {
+      if (i === this.state.currLocation) {
+        return <Marker icon={location} key={i} position={attraction} />;
+      }
+      return <Marker icon={locationStroke} key={i} position={attraction} />;
+    });
+  }
+
+  initTrip() {
     const tripId = this.props.match.params.tripId;
-    const trip = this.props.trips.trips && this.props.trips.trips[tripId];
-    if (!trip) {
+    return this.props.trips.trips && this.props.trips.trips[tripId];
+  }
+
+  render() {
+    const trip = this.initTrip();
+    if (!trip || !this.state.center) {
       window.history.back();
       return null;
     }
     const dayAttractions = trip.places[0];
+    const mapAttractions = this.initMapAttractions(dayAttractions);
+    const markers = this.initMarkersFromAttractions(this.state.attractions);
+
     this.showDirections();
+
     return Object.keys(this.state.center).length !== 0 ? (
       <div className="view-map">
         <Header
@@ -153,37 +191,14 @@ export class ViewMap extends Component {
             center={this.state.center}
             onReady={this.handleMapReady}
           >
-            {this.state.attractions.map((attraction, i) => {
-              if (i === this.state.currLocation) {
-                return <Marker icon={location} key={i} position={attraction} />;
-              }
-              return (
-                <Marker icon={locationStroke} key={i} position={attraction} />
-              );
-            })}
+            {markers}
           </Map>
         </div>
-        <div className="attractions-container">
-          {dayAttractions.map((attraction, i) => {
-            return (
-              <MapAttraction
-                key={attraction.name}
-                img={attraction.photo_url || "https://picsum.photos/113"}
-                address={attraction.address}
-                title={attraction.name}
-                current={i === this.state.currLocation}
-                setCurrent={() =>
-                  this.setState({
-                    currLocation: i,
-                    center: this.state.attractions[i]
-                  })
-                }
-              />
-            );
-          })}
-        </div>
+        <div className="attractions-container">{mapAttractions}</div>
       </div>
-    ) : null;
+    ) : (
+      <Loader />
+    );
   }
 }
 

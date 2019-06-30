@@ -42,7 +42,6 @@ export class Tags extends Component {
         name: input,
         tags: selectedTags
       }).catch(err => {
-        console.log(err);
         this.props.history.push("/profile");
       });
     }
