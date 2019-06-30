@@ -103,7 +103,7 @@ export class Filter extends Component {
               name="price"
               value={this.state.price}
               onChange={this.handleChange}
-              placeholder="Enter price in dollars"
+              placeholder="Enter max price in dollars"
             />
           </div>
           <div lines="none" className="filter-item">
