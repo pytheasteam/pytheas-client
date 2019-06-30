@@ -1,5 +1,6 @@
 .tags {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   & .header {
@@ -37,7 +38,7 @@
     padding: 0 10pt 0 10pt;
     text-align: center;
     width: 147pt;
-    position: fixed;
+    position: absolute;
     bottom: 2pt;
     height: 39pt;
     border-radius: 27pt;
