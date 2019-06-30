@@ -26,12 +26,12 @@
     left: 21pt;
     top: 51pt;
     margin: 2pt auto 43pt auto;
-    position: fixed;
+    position: absolute;
     display: block;
   }
 
   & .next {
-    margin: 33pt auto;
+    margin: 20pt auto;
     border: 1pt solid transparent;
     color: white;
     background: linear-gradient(to right, #fe784d 0%, #ff5347 100%);
