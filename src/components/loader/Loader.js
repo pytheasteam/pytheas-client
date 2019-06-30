@@ -9,6 +9,8 @@ export class Loader extends Component {
       <div className="loader">
         <img src={logo} alt="loader" />
         <img className="search" src={loader} alt="loader" />
+        <p className="title">{this.props.title || ""}</p>
+        <p className="subtitle">{this.props.subtitle || ""}</p>
       </div>
     );
   }

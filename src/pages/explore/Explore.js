@@ -69,7 +69,7 @@ export class Explore extends Component {
         <div className="explore-trip-container">{content}</div>
       </div>
     ) : (
-      <Loader />
+      <Loader title="Go packaging..." subtitle="(It may take us a minute...)" />
     );
   }
 }
