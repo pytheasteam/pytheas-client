@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { IonIcon, IonButton, IonToolbar } from "@ionic/react";
 import ProfileElement from "../../components/profileElement";
-import { MAX_PROFILE_COUNT, PICTURE_GENERATOR } from "../../api/consts";
+import { MAX_PROFILE_COUNT } from "../../api/consts";
 import { connect } from "react-redux";
 import { login } from "../../actions/userAction";
 import { selectProfile } from "../../actions/profileAction";
@@ -64,7 +64,7 @@ export class Profile extends Component {
           profile={{
             id: "add",
             name: "Add Profile",
-            pic: "https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+            image: "https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
           }}
           onClick={() => this.props.history.push("/new-profile")}
         />

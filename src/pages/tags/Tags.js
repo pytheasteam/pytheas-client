@@ -31,7 +31,7 @@ const PICTURES_TAGS = {
   neighborhoods:
     "https://cdn.vox-cdn.com/thumbor/cSTfh-7oey-jQxP_4JkM-Ejv5bE=/4x0:783x519/1200x800/filters:focal(4x0:783x519)/cdn.vox-cdn.com/uploads/chorus_image/image/37093906/ex.0.0.png",
   beaches:
-    "https://www.eurocheapo.com/blog/wp-content/uploads/2013/05/National-Portrait-Gallery.jpg",
+    "http://static.asiawebdirect.com/m/phuket/portals/phuket-com/homepage/yourguide/romantic/beaches/pagePropertiesImage/phuket-romantic-beaches.jpg",
   "art museums": "",
   "history museums":
     "https://mymodernmet.com/wp/wp-content/uploads/2018/03/history-of-museums-thumbnail.jpg",
@@ -73,11 +73,15 @@ export class Tags extends Component {
       images.push(PICTURES_TAGS[tag]);
     });
     if (input.length > 0) {
+      let image = Common.getRandomValueFromArray(images);
+      if (PICTURES_TAGS[input]) {
+        image = PICTURES_TAGS[input];
+      }
       console.log("Creating new profile...");
       PytheasApi.post("/profile", {
         name: input,
         tags: selectedTags,
-        image: Common.getRandomValueFromArray(images)
+        image: image
       }).catch(err => {
         this.props.history.push("/profile");
       });
