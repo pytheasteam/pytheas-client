@@ -32,9 +32,10 @@ export class ExploreTrip extends Component {
 
   async save(e) {
     console.log("Saving trip from explore");
-    const body = this.props.trips.trip;
-    if (body.id === -1 || !this.state.saved) {
-      await PytheasApi.put("/trip", body).then(trip =>
+    const body = this.props.trips.trips[this.props.index];
+    console.log(body, this.props.index);
+    if (body && (body.id === -1 || !this.state.saved)) {
+      PytheasApi.put("/trip", body).then(trip =>
         this.props.saveTrip(this.props.index, trip)
       );
       this.setState({ saved: true });
@@ -42,21 +43,28 @@ export class ExploreTrip extends Component {
   }
 
   render() {
+    console.log(`this saved: ${this.state.saved}`);
     let attractionLen = this.props.attractions.reduce(
       (attractions, day) => attractions + day.length,
       0
     );
     attractionLen -= this.props.days;
     const style = this.state.image
-      ? { backgroundImage: `url(${this.state.image})` }
+      ? { backgroundImage: `url(${this.state.image})`, backgroundSize: "cover" }
       : {};
     return (
       <div className="explore-trip">
-        <div className="trip-container" onClick={() => this.props.viewTrip()}>
-          <div className="picture" style={style} />
+        <div className="trip-container">
+          <div
+            className="picture"
+            style={style}
+            onClick={() => this.props.viewTrip()}
+          />
           <div className="trip-info">
-            <p className="trip-name">Trip to {this.props.city}</p>
-            <div className="info">
+            <p className="trip-name" onClick={() => this.props.viewTrip()}>
+              Trip to {this.props.city}
+            </p>
+            <div className="info" onClick={() => this.props.viewTrip()}>
               <div className="days-container">
                 <p className="number">{this.props.days}</p>
                 <p className="days">DAYS</p>
@@ -81,10 +89,10 @@ export class ExploreTrip extends Component {
           <div className="save" onClick={this.save}>
             <FontAwesomeIcon
               className={
-                this.props.trips.trips[this.props.index].explore ||
+                !this.props.trips.trips[this.props.index].explore ||
                 this.state.saved
-                  ? ""
-                  : "starred"
+                  ? "starred"
+                  : ""
               }
               icon={faBookmark}
             />
