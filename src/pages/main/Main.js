@@ -81,10 +81,14 @@ export class Main extends Component {
           <p className="no-trip">You don't have any trips</p>
         );
     }
+    const image = "https://avatars3.githubusercontent.com/u/30412727?s=460&v=4";
     return (
       <div className="main">
         <ProfilePanel
-          img="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+          img={
+            image ||
+            "https://ionicframework.com/docs/demos/api/avatar/avatar.svg"
+          }
           booked={bookedTrips}
           saved={savedTrips}
         />
