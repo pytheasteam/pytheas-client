@@ -62,7 +62,10 @@ export class Explore extends Component {
     }
     return content ? (
       <div className="explore">
-        <Header title="Explore" back={() => this.props.history.push("/")} />
+        <Header
+          title="Explore"
+          back={() => this.props.history.push("/filter")}
+        />
         <div className="explore-trip-container">{content}</div>
       </div>
     ) : (

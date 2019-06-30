@@ -11,27 +11,34 @@ import {
 import PytheasApi from "../../api/Api";
 import { updateTrip, saveTrip } from "../../actions/tripAction";
 import { connect } from "react-redux";
+import Common from "../../utils/common";
 
 export class ExploreTrip extends Component {
   constructor(props) {
     super(props);
+    let images = Common.collapsPhotos(this.props.attractions);
+    const image = Common.getRandomValueFromArray(images);
     this.state = {
       currency: {
         USD: <FontAwesomeIcon icon={faDollarSign} />,
         nis: <FontAwesomeIcon icon={faShekelSign} />,
         euro: <FontAwesomeIcon icon={faEuroSign} />
-      }
+      },
+      image: image,
+      saved: false
     };
     this.save = this.save.bind(this);
   }
 
   async save(e) {
-    e.preventDefault();
-    console.log("here");
-    // const body = this.props.trips.trip;
-    // PytheasApi.put("/trip", body).then(trip =>
-    //   this.props.saveTrip(this.props.index, trip)
-    // );
+    console.log("Saving trip from explore");
+    const body = this.props.trips.trip;
+    if (body.id === -1 || !this.state.saved) {
+      await PytheasApi.put("/trip", body).then(trip =>
+        this.props.saveTrip(this.props.index, trip)
+      );
+      this.setState({ saved: true });
+    }
   }
 
   render() {
@@ -40,37 +47,42 @@ export class ExploreTrip extends Component {
       0
     );
     attractionLen -= this.props.days;
+    const style = this.state.image
+      ? { backgroundImage: `url(${this.state.image})` }
+      : {};
     return (
-      <div className="explore-trip" onClick={() => this.props.viewTrip()}>
-        <div className="picture" />
-        <div className="trip-info">
-          <p className="trip-name">Trip to {this.props.city}</p>
-          <div className="info">
-            <div className="days-container">
-              <p className="number">{this.props.days}</p>
-              <p className="days">DAYS</p>
-            </div>
-            <div className="attractions-container">
-              <p className="location">
-                <FontAwesomeIcon
-                  className="total-attraction-number"
-                  icon={faMapMarkerAlt}
-                />
-              </p>
-              <p className="attraction">{attractionLen}</p>
-            </div>
-            <div className="price-container">
-              <div className="icon">
-                {this.state.currency[this.props.currency]}
+      <div className="explore-trip">
+        <div className="trip-container" onClick={() => this.props.viewTrip()}>
+          <div className="picture" style={style} />
+          <div className="trip-info">
+            <p className="trip-name">Trip to {this.props.city}</p>
+            <div className="info">
+              <div className="days-container">
+                <p className="number">{this.props.days}</p>
+                <p className="days">DAYS</p>
               </div>
-              <div className="price">{this.props.price}</div>
+              <div className="attractions-container">
+                <p className="location">
+                  <FontAwesomeIcon
+                    className="total-attraction-number"
+                    icon={faMapMarkerAlt}
+                  />
+                </p>
+                <p className="attraction">{attractionLen}</p>
+              </div>
+              <div className="price-container">
+                <div className="icon">
+                  {this.state.currency[this.props.currency]}
+                </div>
+                <div className="price">{this.props.price}</div>
+              </div>
             </div>
           </div>
-
           <div className="save" onClick={this.save}>
             <FontAwesomeIcon
               className={
-                this.props.trips.trips[this.props.index].explore
+                this.props.trips.trips[this.props.index].explore ||
+                this.state.saved
                   ? ""
                   : "starred"
               }

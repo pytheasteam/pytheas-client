@@ -59,7 +59,7 @@ export class Filter extends Component {
   render() {
     return (
       <div className="filter">
-        <Header title="Filters" back={() => window.history.back()} />
+        <Header title="Filters" back={() => this.props.history.push("/")} />
         <div className="container">
           <div lines="none" className="filter-item">
             <label position="floating" style={{ display: "block" }}>

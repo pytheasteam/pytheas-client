@@ -3,6 +3,19 @@ export default class Common {
     return Object.keys(object).length === 0 && object.constructor === Object;
   }
 
+  static getRandomValueFromArray(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+  static collapsPhotos(photosArrays) {
+    const images = [];
+    photosArrays.forEach(day => {
+      day.forEach(attraction => {
+        images.push(attraction.photo_url);
+      });
+    });
+    return images;
+  }
   static getMonthName(month) {
     const monthNames = [
       "JAN",

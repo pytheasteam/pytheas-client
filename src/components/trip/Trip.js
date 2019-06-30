@@ -16,7 +16,10 @@ export class Trip extends Component {
       (attractions, day) => attractions + day.length,
       0
     );
-
+    const image = Common.getRandomValueFromArray(
+      Common.collapsPhotos(this.props.attractions)
+    );
+    const style = image ? { backgroundImage: `url(${image})` } : {};
     attractionLen -= days;
 
     const startDate = new Date(this.props.startDate);
@@ -27,7 +30,7 @@ export class Trip extends Component {
     const startDayMonth = Common.getMonthName(startDate.getMonth());
     return (
       <div className="trip" onClick={() => this.props.viewTrip()}>
-        <div className="trip-picture" />
+        <div className="trip-picture" style={style} />
         <div className="trip-content">
           <p className="city-name">{upperFistLetter(this.props.city)}</p>
           <div className="total-attractions">

@@ -8,6 +8,15 @@
   border-radius: 5pt;
   background: white;
   box-shadow: 0pt 3pt 6pt rgba(0, 0, 0, 0.16);
+  & .save {
+    position: absolute;
+    right: 5%;
+    font-size: 23pt;
+    bottom: 20pt;
+    z-index: 100;
+    color: rgba(193, 193, 193, 1);
+    border: rgba(167, 167, 167, 1);
+  }
 
   & .picture {
     position: relative;
@@ -22,15 +31,7 @@
     position: relative;
     left: 2%;
     top: 47pt;
-    & .save {
-      position: absolute;
-      right: 5%;
-      font-size: 23pt;
-      bottom: 4pt;
-      z-index: 100;
-      color: rgba(193, 193, 193, 1);
-      border: rgba(167, 167, 167, 1);
-    }
+
     & .trip-name {
       position: absolute;
       bottom: -1pt;

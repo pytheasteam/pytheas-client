@@ -46,7 +46,10 @@ export class ViewTrip extends Component {
       calculateDays = trip.days;
     }
     attractionLen -= calculateDays;
-
+    const image = Common.getRandomValueFromArray(
+      Common.collapsPhotos(trip.places)
+    );
+    const style = image ? { backgroundImage: `url(${image})` } : {};
     return (
       <div className="trip-main-page">
         <Header
@@ -64,7 +67,7 @@ export class ViewTrip extends Component {
           >
             <FontAwesomeIcon className="icon" icon={faMapMarkerAlt} />
           </button>
-          <div className="trip-picture" />
+          <div className="trip-picture" style={style} />
           <div className="trip-info">
             <div className="days-info">
               <p className="number">{trip.days || calculateDays}</p>
