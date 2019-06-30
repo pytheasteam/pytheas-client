@@ -1,6 +1,9 @@
 .hotels-bg {
   background-color: #f7f7f7;
 }
+a {
+  text-decoration: none;
+}
 
 .hotels {
   display: flex;
@@ -83,17 +86,18 @@
 
   & .book {
     display: flex;
+    text-decoration: none;
     flex-flow: row;
     align-items: center;
     justify-content: center;
     width: 55%;
-    bottom: 13pt;
+    bottom: -80px;
     background: #ff5347;
     height: 39pt;
     left: 50%;
     border-radius: 30pt;
     margin-left: -28.5%;
-    position: fixed;
+    position: relative;
 
     & p {
       text-decoration: none;
