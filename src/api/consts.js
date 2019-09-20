@@ -1,7 +1,6 @@
-const serverApi =
-  "http://ec2-15-188-3-17.eu-west-3.compute.amazonaws.com:5000/api";
-const serverLogin =
-  "http://ec2-15-188-3-17.eu-west-3.compute.amazonaws.com:5000/login";
+const HOST = "ec2-35-180-46-153.eu-west-3.compute.amazonaws.com";
+const serverApi = `http://${HOST}:5000/api`;
+const serverLogin = `http://${HOST}:5000/login`;
 
 const localhostApi = "http://localhost:5000/api";
 const localhostLogin = "http://localhost:5000/login";
