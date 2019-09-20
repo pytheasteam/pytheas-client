@@ -1,4 +1,4 @@
-const HOST = "ec2-35-180-46-153.eu-west-3.compute.amazonaws.com";
+const HOST = "ec2-35-180-113-77.eu-west-3.compute.amazonaws.com";
 const serverApi = `http://${HOST}:5000/api`;
 const serverLogin = `http://${HOST}:5000/login`;
 
